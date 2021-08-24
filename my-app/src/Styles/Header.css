@@ -1,3 +1,21 @@
+a:hover{
+    color: red;
+}
+
 header{
     display: flex;
+    flex-wrap: wrap
+}
+
+.header__wrapper{
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
+}
+
+.NavMain{
+    list-style: none;
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
 }
