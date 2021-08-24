@@ -2,7 +2,7 @@ import logo from './logo.svg';
 
 import Header from './Components/Header';
 import Nav from './Components/Navigation';
-
+import './Styles/Main.scss'
 
 
 let navList = ['home','sale','handbags','wallets','accessories','mens store','shoes','vintage','services','contact us'];

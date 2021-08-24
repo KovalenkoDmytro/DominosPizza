@@ -1,5 +1,5 @@
 // import '../Styles/Header.css'
-import '../Styles/Header.scss'
+import './Header.scss'
 
 function Header(){
     return(
