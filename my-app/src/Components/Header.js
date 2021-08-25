@@ -1,4 +1,3 @@
-// import '../Styles/Header.css'
 import './Header.scss'
 
 function Header(){

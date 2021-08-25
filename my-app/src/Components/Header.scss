@@ -12,10 +12,11 @@ header {
         justify-content: space-between;
     }
 
-    .NavMain {
+    nav.NavMain {
         list-style: none;
         display: flex;
         flex: 0 0 100%;
         justify-content: space-between;
+        
     }
 }
