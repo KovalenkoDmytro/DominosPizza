@@ -4,8 +4,8 @@ import './Content.scss'
 function Content(props){
     let card = props.cards.map(function(elem){
         return(<div className="card"><img className='product__icon' src={elem.img} alt={elem.title}/> 
-                    <a href="#!">{elem.title}</a>
-                    <span className='price'>{elem.price}</span>
+                    <a className="card__title" href="#!">{elem.title}</a>
+                    <span className='card__price'>{elem.price}</span>
                     <button className='btn small'>buy now</button>
                 </div>
         );

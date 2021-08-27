@@ -1,0 +1,37 @@
+@import '../Styles/Main.scss';
+
+.layout{
+    .cards{
+        display: grid;
+        @media(max-width: 978px){
+                
+        }
+        @media(min-width: 978px){
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 5em;    
+        }
+        .card{
+            display: flex;
+            flex-wrap: wrap;
+            // flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid $border_color;
+            border-bottom: 0.5em solid $btn_color;
+            padding: 2.8em 4.8em;
+            font-family: 'Bebas Neue';
+            .product__icon{
+                max-width: 25em;
+            }
+            .card__title{
+                color: $text_color;
+                text-decoration: none;
+                font-size: 2.7em;
+            }
+            .card__price{
+                font-size: 2.7em;
+                color: $text_color;
+            }
+        }
+    }
+}

@@ -61,7 +61,7 @@ function App() {
       <section className='banner'>
         <MainBanner/>
       </section>
-      <section>
+      <section className='layout'>
         <Content cards={cards}/>
       </section>
       <footer>
