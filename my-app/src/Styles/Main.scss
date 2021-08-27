@@ -1,7 +1,16 @@
 @import '../Components/Header.scss';
 @import '../Components/Footer.scss';
 
-// $mainColor: #39c6b2;
+$mainColor: #39c6b2;
+$btn_color: #3cc395;
+
+.btn.small{
+    background-color: $btn_color;
+}
+    
+  
+
+ 
 
 // .nav.NavMain{
 //     background: $mainColor;
