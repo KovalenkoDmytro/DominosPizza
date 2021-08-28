@@ -1,5 +1,5 @@
 @import '../Components/Header.scss';
-@import '../Components/Footer.scss';
+
 
 
 @font-face {
@@ -25,21 +25,41 @@ $mainColor: #39c6b2;
 $btn_color: #3cc395;
 $border_color: #e4e4e4;
 $text_color:#afafaf;
-
-
+$laptop : (min-width: 978px);
+html{
+    font-size: 10px;
+    font-family: 'Bebas Neue';
+}
 .App {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 10px;
 }
 
+a{
+    &:hover{
+        color: red;
+        transition: all 0.5s;
+    }
+}
+
 .btn {
     width: max-content;
+    font-family: 'Bebas Neue';
+    color: #ffffff;
+    cursor: pointer;
 }
 
 .btn.small {
     background-color: $btn_color;
-
+    border: none; 
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.9em;   
+    &:hover{
+        background-color: red;
+        transition: all 0.5s;
+    }
 }
 
 

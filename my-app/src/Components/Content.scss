@@ -1,16 +1,39 @@
 @import '../Styles/Main.scss';
 
-.layout{
-    .cards{
+.layout {
+    .content__title {
+        background-color: $mainColor;
+        position: relative;
+        font-family: 'Bebas Neue';
+        color: white;
+        padding: 2rem 0;
+        font-size: 3.1rem;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100vw;
+            left: 50%;
+            margin-left: -50vw;
+            background-color: $mainColor;
+            z-index: -1;
+        }
+    }
+
+    .cards {
         display: grid;
-        @media(max-width: 978px){
-                
-        }
-        @media(min-width: 978px){
+
+        @media(max-width: 978px) {}
+
+        @media(min-width: 978px) {
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 5em;    
+            grid-gap: 5em;
+            padding: 4em 0 7em;
         }
-        .card{
+
+        .card {
             display: flex;
             flex-wrap: wrap;
             // flex-direction: column;
@@ -20,15 +43,26 @@
             border-bottom: 0.5em solid $btn_color;
             padding: 2.8em 4.8em;
             font-family: 'Bebas Neue';
-            .product__icon{
+
+            .product__icon {
                 max-width: 25em;
             }
-            .card__title{
+
+            .card__title {
                 color: $text_color;
                 text-decoration: none;
                 font-size: 2.7em;
+                width: 100%;
+                text-align: center;
+                margin: 1em 0;
+
+                &:hover {
+                    color: #000000;
+                    transition: all 0.5s;
+                }
             }
-            .card__price{
+
+            .card__price {
                 font-size: 2.7em;
                 color: $text_color;
             }

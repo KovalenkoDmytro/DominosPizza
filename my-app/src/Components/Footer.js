@@ -2,7 +2,7 @@ import './Footer.scss'
 
 function Footer(props){
     let links = props.list.map(elem=><li className="footer --link_item"> <a href="#!">{elem}</a></li>);
-    let title = props.titles.map(elem=> <ul className="footer__title" >{elem}{links}</ul>);
+    let title = props.titles.map(elem=> <ul className="footer__links" ><span className="footer__title">{elem}</span>{links}</ul>);
 
     return(
         <>
