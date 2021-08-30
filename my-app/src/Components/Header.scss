@@ -5,29 +5,66 @@ a:hover {
 header {
     display: flex;
     flex-wrap: wrap;
-    
+
     .header__wrapper {
         display: flex;
         flex: 0 0 100%;
         justify-content: space-between;
         padding: 2rem 0;
         align-items: center;
-       
-        .logo{
+
+        .logo {
             font-size: 4.9rem;
             color: #39c6b2;
             font-family: 'Lobster';
         }
-        input{
-            height: 3rem;
-            border-radius: 0;
-            border:1px solid grey;
+
+        .form {
             width: 45%;
             position: relative;
-            &:after{
+            input {
+                height: 3rem;
+                border-radius: 0;
+                border: 1px solid grey;
+               width: 100%;
+            }
+            &::before {
                 position: absolute;
-                
-             
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                content: '';
+                background: url('./magnifying-glass.svg') no-repeat center;
+                background-size: contain;
+                height: 70%;
+                width: 3rem;
+
+            }
+        }
+
+        .header.--item {
+            display: flex;
+
+            .coast {
+                margin-left: 1.5rem;
+                font-size: 3.3rem;
+                font-family: 'Bebas Neue';
+                color: #afafaf;
+            }
+            .basket{
+                position: relative;
+                &::before {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    content: '';
+                    background: url('./shopping-basket.svg') no-repeat center;
+                    background-size: contain;
+                    height: 70%;
+                    width: 3rem;
+    
+                }
             }
         }
     }
@@ -37,6 +74,6 @@ header {
         display: flex;
         flex: 0 0 100%;
         justify-content: space-between;
-        
+
     }
 }

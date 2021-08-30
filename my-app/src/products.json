@@ -2,31 +2,37 @@
     {
       "img": "https://blog.technavio.com/wp-content/uploads/2018/10/shoe-companies.jpg",
       "title": "Branded shoes",
+      "logdescription":"logdescription",
       "price": 200
     },
     {
       "img": "https://ae01.alicdn.com/kf/HTB1XIblXQ9E3KVjSZFrq6y0UVXaR/DAYIFUN-brand-women-Clothing-Slim-Fitness-t-shirt-LONDON-print-T-shirts-Casual-T-Shirts-Skateboard.jpg_Q90.jpg_.webp",
       "title": "Branded tees",
+      "logdescription":"logdescription",
       "price": 26
     },
     {
       "img": "https://image.ceneostatic.pl/data/products/94839352/i-adidas-jr-branded-t-shirt-365-rozmiar-140cm.jpg",
       "title": "Branded thirt",
+      "logdescription":"logdescription",
       "price": 25
     },
     {
       "img": "https://ae01.alicdn.com/kf/H28bc4c2abdac4f87bbcf858a7ac134c0Z/Men-wallets-Genuine-Leather-Wallets-Men-Short-Wallet-Business-Brand-Leather-Card-Holder-Money-Cash-Wallet.jpg_Q90.jpg_.webp",
       "title": "Branded walet",
+      "logdescription":"logdescription",
       "price": 55
     },
     {
       "img": "https://assets.afcdn.com/story/20150305/608646_w600h600cx300cy300.jpg",
       "title": "Branded women bag",
+      "logdescription":"logdescription",
       "price": 778
     },
     {
       "img": "https://i.pinimg.com/originals/ec/9c/ff/ec9cffa040a85fd1a4e7e58d052938f3.jpg",
       "title": "Branded cargo pants",
+      "logdescription":"logdescription",
       "price": 150
     }
   ]

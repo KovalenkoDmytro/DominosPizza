@@ -8,11 +8,9 @@ function Header(){
                     <img src="../public/images/logo.png" alt="Aditii" />
                 </div>
 
-                <input type="search" name="search" className="search" placeholder="" />    
+                <div className="form" > <input type="search" name="search" className="search" placeholder="" />  </div>  
                 <div className="header --item">
-                    <a href="basket.php" className="basket">
-                        <img src="" alt="basket" />
-                    </a>
+                    <a href="basket.php" className="basket"></a>
                     <div className="coast">$300</div>
                 </div>
             </div>
