@@ -9,8 +9,10 @@ export default function SyncSlider() {
   return (
     <>
       <div className="container">
-        <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} className="bigSlider"
-          fade={true} dots={true} adaptiveHeight={true}>
+      
+
+        <Slider  className="bigSlider" asNavFor={nav2} ref={(slider1) => setNav1(slider1)}        
+          fade={true} dots={true} adaptiveHeight={false} arrows={false} slidesToShow={2}>
           {products.map(item => (
             <div className="slide__item">
               <img src={item.img} alt={item.title} />
@@ -21,15 +23,17 @@ export default function SyncSlider() {
               </div>
             </div>
           ))}
+          
+            
         </Slider>
-        <h4>Second Slider</h4>
+
         <Slider
           asNavFor={nav1}
           ref={(slider2) => setNav2(slider2)}
           slidesToShow={3}
           swipeToSlide={true}
           focusOnSelect={true}
-          arrows={false} className="smallSlider" >
+          arrows={true} className="smallSlider" >
           {products.map(item => (
             <div className="slide__item">
               <img src={item.img} alt={item.title} />

@@ -114,6 +114,9 @@ html {
     font-family: 'Bebas Neue';
 }
 
+#root{
+    overflow: hidden;
+}
 .App {
     max-width: 1200px;
     margin: 0 auto;
@@ -133,6 +136,8 @@ a {
     color: #ffffff;
     cursor: pointer;
     font-size: 2.7rem;
+    display: block;
+    text-decoration: none;
 }
 
 .btn.outline {
