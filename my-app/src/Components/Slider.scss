@@ -1,6 +1,7 @@
 .container {
     .bigSlider {
         position: relative;
+         padding: 1rem 0;
         .slide__item {
             .item__content {
                 color: #ffffff;
@@ -44,9 +45,18 @@
                 color: #ffffff;
             }
         }
+        .slick-track {
+            display: flex;
+            height: 100%;
+          }
+          .slick-track .slick-slide {
+            display: flex;
+            height: auto;
+          }
     }
 
     .smallSlider {
+        padding: 1rem 0;
         .slide__item{
             .content__title{
                 font-size: 2.7rem;
@@ -84,5 +94,6 @@
         display: flex;
         align-content: center;
         align-items: center;
+        
     }
 }

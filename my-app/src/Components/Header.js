@@ -1,6 +1,11 @@
-import './Header.scss'
+import './Header.scss';
 
-function Header(){
+
+
+function Header(props){
+   
+  
+
     return(
         <>
             <div className="header__wrapper">
@@ -11,11 +16,13 @@ function Header(){
                 <div className="form" > <input type="search" name="search" className="search" placeholder="" />  </div>  
                 <div className="header --item">
                     <a href="basket.php" className="basket"></a>
-                    <div className="coast">$300</div>
+                    <div className="coast">number {props.coast}</div>
                 </div>
             </div>
+          
         </>
     )
+    
 }
 
-export default Header
+export default Header;

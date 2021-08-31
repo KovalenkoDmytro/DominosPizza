@@ -12,7 +12,7 @@ export default function SyncSlider() {
       
 
         <Slider  className="bigSlider" asNavFor={nav2} ref={(slider1) => setNav1(slider1)}        
-          fade={true} dots={true} adaptiveHeight={false} arrows={false} slidesToShow={2}>
+           dots={true} adaptiveHeight={true} arrows={false} slidesToShow={1}>
           {products.map(item => (
             <div className="slide__item">
               <img src={item.img} alt={item.title} />
@@ -44,6 +44,8 @@ export default function SyncSlider() {
             </div>
           ))}
         </Slider>
+
+       
       </div>
     </>
   );
