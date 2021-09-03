@@ -12,7 +12,7 @@ import './Styles/Main.scss';
 import products from './products.json';
 
 import Content from './Components/Content';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 let navList = ['home','sale','handbags','wallets','accessories','mens store','shoes','vintage','services','contact us'];
 let footerList = ['Alexis Hudson','American Apparel','Ben Sherman','Big Buddha','Chanel','Christian Audigier','Coach','Cole Haan'];
 let footerTitles = ['featured sale', 'mens store', 'woomen store', 'quick links'];
@@ -24,6 +24,9 @@ function App() {
  
   const [basket, setPriceInBasket] = useState(0);
   const [currency, setCurrency]= useState('dolars');
+  
+  const [totalPrice, setTotalPrice]= useState(0);
+  
   function changeHandel(a){
     setPriceInBasket(basket + a);
   }
@@ -32,6 +35,18 @@ function App() {
   }
 
 
+  useEffect(
+    function getTotalPice(){
+    let total = 0;
+    JSON.parse( localStorage.getItem('addToBasket')).forEach(element => {
+        total += Number(element.price)
+    });
+  
+    setTotalPrice(total)
+  
+}
+  )
+  
 
   
 
@@ -40,7 +55,7 @@ function App() {
     
     <div className="App">
       <header >
-        <Header coast ={basket} changeCurrency={changeCurrency} currency={currency} />
+        <Header coast ={basket} changeCurrency={changeCurrency} currency={currency} totalPrice={totalPrice}/>
         <Nav list={navList}/>
    
       </header>
@@ -48,7 +63,7 @@ function App() {
         <MainBanner/>
       </section>
       <section className='layout'>
-        <Content cards={products}  changeHandel={changeHandel} currency={currency}/>
+        <Content cards={products}  changeHandel={changeHandel} currency={currency}  />
       </section>
       <footer>
         <Footer list ={footerList} titles={footerTitles}/>

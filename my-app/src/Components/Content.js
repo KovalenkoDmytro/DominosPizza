@@ -13,13 +13,7 @@ function addToLocalStorage(price, photo){
 
 
 
-function getTotalPice(products){
-    let total = 0;
-    products.forEach(element => {
-        total += Number(element.price)
-    });
-    console.log(total);
-}
+
 
 
 
@@ -50,7 +44,6 @@ function Content(props) {
                 let photo = e.target.parentElement.firstChild.currentSrc;
 
                 addToLocalStorage(price ,photo );
-                getTotalPice(JSON.parse( localStorage.getItem('addToBasket')))
             }}>+add to basket </button>
         </div>
         );
