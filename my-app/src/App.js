@@ -23,20 +23,20 @@ let footerTitles = ['featured sale', 'mens store', 'woomen store', 'quick links'
 function App() {
  
   const [basket, setPriceInBasket] = useState(0);
-  
+  const [currency, setCurrency]= useState('dolars');
   function changeHandel(a){
     setPriceInBasket(basket + a);
   }
-  
-        
-   
+  function changeCurrency(currency){
+    setCurrency(currency)
+  }
 
   return (
 
     
     <div className="App">
       <header >
-        <Header coast ={basket} />
+        <Header coast ={basket} changeCurrency={changeCurrency} currency={currency} />
         <Nav list={navList}/>
       {/* <button className='btn small' onClick={()=>{AddToBasket(2)}}>buy now</button> */}
       </header>
@@ -44,7 +44,7 @@ function App() {
         <MainBanner/>
       </section>
       <section className='layout'>
-        <Content cards={products}  changeHandel={changeHandel}/>
+        <Content cards={products}  changeHandel={changeHandel} currency={currency}/>
       </section>
       <footer>
         <Footer list ={footerList} titles={footerTitles}/>
