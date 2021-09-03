@@ -1,19 +1,31 @@
 import './Header.scss';
 
+// let products = JSON.parse( localStorage.getItem('addToBasket'))
+// function getTotalPice(products){
+//     let total = 0;
+//     products.forEach(element => {
+//         total += Number(element.price)
+//     });
+//     console.log(total);
+// }
+
+
+
+
 function Header(props) {
 
     function changeCurrentCoust(coast, currency) {
         if (currency == "zloty") {
-            return (<span>{Math.ceil(coast * 3.79)} zł</span>);
+            return (<span>{Math.ceil(coast * 3.79)}</span>);
         }
         else if (currency == 'euro') {
-            return (<span>{Math.ceil(coast * 0.84)} &#8364;</span>);
+            return (<span>{Math.ceil(coast * 0.84)}</span>);
         } else if (currency == 'dolars') {
             return coast;
         }
 
     }
-
+  
     return (
         <>
             <div className="header__wrapper">
@@ -36,7 +48,8 @@ function Header(props) {
                     <a href="basket.php" className="basket"></a>
                     <div className="total">
                         <div className="coast">
-                            {/* {props.coast} */}
+                            {/* {getTotalPice(products)} */}
+                        {/* JSON.parse( localStorage.getItem('addToBasket')) */}
                             {changeCurrentCoust(props.coast, props.currency)}
                         </div>
                         <div className="currency">{props.currency}</div>

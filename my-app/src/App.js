@@ -31,6 +31,10 @@ function App() {
     setCurrency(currency)
   }
 
+
+
+  
+
   return (
 
     
@@ -38,7 +42,7 @@ function App() {
       <header >
         <Header coast ={basket} changeCurrency={changeCurrency} currency={currency} />
         <Nav list={navList}/>
-      {/* <button className='btn small' onClick={()=>{AddToBasket(2)}}>buy now</button> */}
+   
       </header>
       <section className='banner'>
         <MainBanner/>
