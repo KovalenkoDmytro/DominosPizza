@@ -35,21 +35,29 @@ function App() {
   }
 
 
-  useEffect(
-    function getTotalPice(){
-    let total = 0;
-    JSON.parse( localStorage.getItem('addToBasket')).forEach(element => {
-        total += Number(element.price)
-    });
   
-    setTotalPrice(total)
-  
-}
-  )
-  
+    
+ 
+ 
 
-  
+  useEffect(()=>{
+    // let total = totalPrice;
+    // if(localStorage.getItem('addToBasket') !=null){
+    //   JSON.parse( localStorage.getItem('addToBasket')).forEach(element => {
+    //     total += Number(element.price)
+    // })
 
+    // console.log(JSON.parse( localStorage.getItem('addToBasket')).lenght);
+  //  setTotalPrice(total);
+  //  console.log(total);
+  });
+
+   
+   
+// console.log(length);
+
+ 
+  
   return (
 
     

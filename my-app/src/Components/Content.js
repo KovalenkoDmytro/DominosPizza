@@ -1,15 +1,19 @@
-import './Content.scss'
+import { useEffect , useState} from 'react';
+import './Content.scss';
 
-let productsLS =[]
+// let productsLS =[]
+// function addToLocalStorage(price, photo){
+//     let product ={
+//         "price": price,
+//         "photo": photo
+//     };
+    // productsLS.push(product)
+    // if(localStorage.getItem('addToBasket') !=null){
+    //     productsLS = productsLS.concat( JSON.parse(localStorage.getItem('addToBasket')) )
+    // }
+    // localStorage.setItem('addToBasket', JSON.stringify(productsLS))
+// }
 
-function addToLocalStorage(price, photo){
-    let product ={
-        "price": price,
-        "photo": photo
-    };
-    productsLS.push(product)
-    localStorage.setItem('addToBasket', JSON.stringify(productsLS))
-}
 
 
 
@@ -19,6 +23,36 @@ function addToLocalStorage(price, photo){
 
 
 function Content(props) {
+    
+
+    const [ls, setLS]= useState([]);
+    
+    function addLS(price,photo){
+        setLS([...ls,
+        {
+            "price":price,
+            // "photo":photo
+        }])
+     }
+    
+     useEffect(()=>{
+         const raw = JSON.parse(localStorage.getItem('addToBasket'))||[] 
+         console.log(raw);
+         let total = 0;
+
+         JSON.parse(localStorage.getItem('addToBasket')).forEach(element => {
+            total += Number(element.price)
+            console.log(Number(element.price));
+        })
+        console.log(total);
+            setLS(raw)
+        
+            
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem('addToBasket', JSON.stringify(ls))
+    },[ls])
 
     function toConvertCurrency(newCurrency, price) {
         if (newCurrency == "zloty") {
@@ -42,12 +76,13 @@ function Content(props) {
 
                 let price =e.target.previousSibling.textContent;
                 let photo = e.target.parentElement.firstChild.currentSrc;
-
-                addToLocalStorage(price ,photo );
+                addLS(price)
+                // addToLocalStorage(price ,photo );
             }}>+add to basket </button>
         </div>
         );
     })
+
 
 
     return (

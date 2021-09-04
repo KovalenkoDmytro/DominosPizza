@@ -48,10 +48,10 @@ function Header(props) {
                     <a href="basket.php" className="basket"></a>
                     <div className="total">
                         <div className="coast">
-                           {props.totalPrice}
-                                
-                            {changeCurrentCoust(props.coast, props.currency)}
-                          
+                          lS {props.totalPrice}
+
+                         -----  actSes{changeCurrentCoust(props.coast, props.currency)}
+                        
                         </div>
                         <div className="currency">{props.currency}</div>
                     </div>
