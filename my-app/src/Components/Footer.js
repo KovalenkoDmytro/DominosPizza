@@ -1,15 +1,27 @@
-import './Footer.scss'
+import Sales from "../pages/Sales";
+import PrivatePolitic from "../pages/PrivatePolitic";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-function Footer(props){
-    let links = props.list.map(elem=><li className="footer --link_item"> <a href="#!">{elem}</a></li>);
-    let title = props.titles.map(elem=> <ul className="footer__links" ><span className="footer__title">{elem}</span>{links}</ul>);
-
+function Footer(){
     return(
         <>
-        <div className="footer__content">{title}</div>
-        <div className="footer__author">&copy;powered by DKovalenko</div>
+        <footer>
+            <div className="footer__links">
+            <Router>
+              
+                <Link to='/sales'>Sales</Link>
+                <Link to='/private_politic'>PrivatePolitic</Link>
+             
+                <Switch>
+                   
+                    <Route  path="/sales" component={Sales} />
+                    <Route  path="/private_politic" component={PrivatePolitic} />
+                </Switch>
+            </Router>
+            </div>
+        </footer>
+
         </>
     )
 }
-
-export default Footer
+ export default Footer;

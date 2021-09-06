@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "name" : "Margherita",
+        "logdescription":"sos pomidorowy, mozzarella",
+        "price" : 21.90,
+        "img" : "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_margherita_839291_792x0.webp"
+    },
+    {   
+        "id" : 2,
+        "name" : "Farmhouse",
+        "logdescription":"sos pomidorowy, mozzarella, szynka, pieczarki, cebula",
+        "price" : 36.90,
+        "img" : "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_farmhouse_794618_792x0.webp"
+    },
+    {
+        "id" : 3,    
+        "name" : "Pepperoni",
+        "logdescription":"sos pomidorowy, podwójna mozzarella, podwójna kiełbasa pepperoni",
+        "price" : 36.90,
+        "img" : "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_pepperoni_865727_792x0.webp"
+    }
+]

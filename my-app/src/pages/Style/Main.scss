@@ -1,0 +1,192 @@
+@mixin flex {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.containerFirst___item {
+    @include flex();
+    flex-wrap: wrap;
+
+    .--content__item {
+        width: 50%;
+    }
+
+    .--content__item.--first {
+        width: 50%;
+        @include flex();
+        flex-wrap: wrap;
+        position: relative;
+        cursor: pointer;
+
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        &>div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #dd082b;
+            padding: 0.5rem 2.2rem 0.6rem 2.1rem;
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-color: #0000003a;
+        }
+
+        img {
+            max-width: 100%;
+
+        }
+
+        .item__title {
+            width: 100%;
+
+        }
+
+        .item__content {
+            width: 50%;
+            @include flex();
+            flex-direction: column;
+
+        }
+    }
+
+    .--content__item.--second {
+        @include flex();
+        flex-wrap: wrap;
+        padding-left: 4rem;
+
+        .item__title {
+            font-size: 2.7rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .item__content_wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+            .item__content {
+                width: 50%;
+                @include flex();
+                flex-direction: column;
+
+                img {
+                    width: auto;
+                    max-height: 67px;
+                }
+
+                span {
+                    font-size: 1.4rem;
+                    line-height: 1.7rem;
+                    font-weight: 700;
+                    margin: 2.1rem 0 1.6rem;
+                }
+
+                button {
+                    width: 87%;
+                }
+            }
+        }
+
+        .contact {
+
+            width: 85%;
+            padding-top: 2.9rem;
+            margin: 2.7rem auto 0;
+            border-top: 2px dashed #f4efe8;
+
+            line-height: 1.7rem;
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+}
+
+.containerFirst___item.--second {
+    justify-content: center;
+
+    .newsletter__background {
+        width: 100%;
+        position: relative;
+    }
+
+    .newsletter {
+        position: absolute;
+        @include flex();
+        flex-direction: column;
+        width: 25%;
+
+        form {
+            @include flex();
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            width: 75%;
+            .email {
+                display: flex;
+                width: 100%;
+
+                input {
+                    margin: 0 auto;
+                    font-size: 1.4rem;
+                    line-height: 1.7rem;
+                    color: #192b38;
+                    padding: 16px 20px 15px 20px;
+                    margin-top: 8px;
+                    border: 2px solid #f4efe8;
+                    border-radius: 0.8rem;
+                    width: 100%;
+                }
+            }
+
+            .privatPolitic {
+                width: 100%;
+                @include flex();
+                justify-content: center;
+
+                p {
+                    width: auto;
+                    max-height: 7rem;
+                    overflow-y: scroll;
+                    line-height: 1.4rem;
+                    font-weight: 500;
+                    margin-left: 1.7rem;
+                    font-size: 1.2rem;
+                }
+            }
+
+            button {
+                width: 100%;
+                text-transform: uppercase;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}

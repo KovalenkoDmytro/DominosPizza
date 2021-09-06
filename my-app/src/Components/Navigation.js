@@ -1,12 +1,30 @@
-import '../Styles/Nav.scss'
-function Nav(props){
-    let nav = props.list.map(elem=><li className="nav --item"><a href="#!">{elem}</a></li>)
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import React from "react";
+import Main from '../pages/Main';
+import Menu from '../pages/Menu';
 
-    return(
+import ContactUs from '../pages/ContactUs';
+import './Styles/Navigation.scss';
+
+let navArray = ['main', 'menu', 'contact_us', 'sales','private_politic'];
+
+function Nav() {
+    let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
+    return (
         <>
-        <nav className="NavMain">{nav}</nav>
+         
+            <Router>
+                <nav className="navigation">
+                    {navItems}
+                </nav>
+                <Switch>
+                    <Route  path="/main" component={Main} />
+                    <Route  path="/menu" component={Menu} />
+                    <Route  path="/contact_us" component={ContactUs} />
+              
+                </Switch>
+            </Router>
         </>
     )
 }
-
 export default Nav

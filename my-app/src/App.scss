@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+}
+#root{
+    font-size: 1.4rem;
+}
+
+button{
+    width: max-content;
+    font-size: 1.4rem;
+    display: block;
+    color: #ffffff;
+    border:3px solid #ffffff;
+
+box-shadow: 0px 0px 8px rgba(0,0,0,0.28);
+border-radius: .8rem;
+
+padding: 1.4rem 2rem;
+
+background-color: #dd082b;
+transition: all 0.3s;
+cursor: pointer;
+&:hover{background-color: #81071c;}
+}
+
+a{
+    text-decoration: none;
+    color: #172c3a;
+}
+#root{
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #172c3a;
+}

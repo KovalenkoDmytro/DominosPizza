@@ -1,0 +1,25 @@
+nav {
+    display: flex;
+    list-style: none;
+    padding: 1rem 0;
+
+    li {
+
+        padding: 0 1rem;
+
+        a {
+            color: #102c3b;
+            font-size: 1rem;
+            text-transform: capitalize;
+            font-weight: 500;
+            &:hover{
+                color: #006491;
+            }
+        }
+
+        &+li {
+            margin-left: 2rem;
+        }
+    }
+
+}
