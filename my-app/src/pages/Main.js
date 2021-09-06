@@ -15,12 +15,12 @@ function Main() {
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="" />
                                 <span>Gotowe już w 30 minut</span>
-                                <button>Zamów z dostawą</button>
+                                <button className="solid">Zamów z dostawą</button>
                             </div>
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="" />
                                 <span>Gotowe już w 15 minut</span>
-                                <button> Zamów z odbiorem</button>
+                                <button className="solid"> Zamów z odbiorem</button>
                             </div>
 
                         </div>
@@ -41,7 +41,7 @@ function Main() {
                                 <input type="checkbox" name="" id="" />
                                 <p>Wyrażam zgodę na kontaktowanie się ze mną, w tym na przesyłanie informacji handlowych i marketingowych o Pizza Domino’s od DP Polska S.A. z siedzibą w Warszawie za pośrednictwem środków komunikacji elektronicznej (e-mail), jak również wyrażam zgodę na przetwarzanie w tym celu danych osobowych (adresu e-mail) przez DP Polska S.A. z siedzibą w Warszawie. Podstawą prawną przetwarzania danych jest art. 6 ust. 1 lit. a) RODO. Przysługuje mi prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem.</p>
                             </div>
-                            <button type="submit">Odbierz rabat</button>
+                            <button className="solid" type="submit">Odbierz rabat</button>
                         </form>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ function Pizza(props) {
 
 
             <p className='product__logdescription'>{elem.logdescription}</p>
-            <button >+add to basket</button>
+            <button className='outline' >+add to basket</button>
         </div>)
     });
 
