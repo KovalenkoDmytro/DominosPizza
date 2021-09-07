@@ -1,23 +1,18 @@
-nav {
+.navigation2 {
     display: flex;
-    list-style: none;
     padding: 2rem 0;
 
     li {
+        list-style: none;
+        &+li{
+            margin-left: 2rem;
+        }
         a {
-            color: #102c3b;
             font-size: 1.6rem;
-            text-transform: capitalize;
             font-weight: 500;
             &:hover{
                 color: #006491;
             }
         }
-
-        &+li {
-            margin-left: 2rem;
-            padding: 0 1rem;
-        }
     }
-
 }

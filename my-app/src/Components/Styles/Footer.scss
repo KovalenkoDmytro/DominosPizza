@@ -1,0 +1,38 @@
+footer {
+    padding-bottom: 5.7rem;
+  
+    .footer__links {
+        padding: 2rem 0;
+        &.--first{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+            border-bottom: 1px solid #F6F1EB;
+        }
+        &.--second {
+            display: flex;
+
+            li+li {
+                margin-left: 1rem;
+            }
+        }
+    }
+    .developer{
+        text-align: center;
+    }
+
+}
+
+.socialMedia {
+    display: flex;
+
+    li+li {
+        margin-left: 1rem;
+    }
+
+    img {
+        width: 2rem;
+        height: 2rem;
+    }
+}

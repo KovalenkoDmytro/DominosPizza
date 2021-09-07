@@ -3,7 +3,7 @@ import { useState } from "react";
 import Favorits from "./Menu/Favorits";
 import Sale from "./Menu/Sale";
 import Pizza from "./Menu/Pizza";
-
+import "./Style/Menu.scss";
   
 
 function Menu() {
@@ -16,7 +16,7 @@ function Menu() {
 
     return (
         <>
-            <div className="layout">Menu
+            <div className="layout menu__page">
                 <Router>
                     <ul className="navigation2">
                         <li><Link to='/favorits'>Favorits</Link></li>

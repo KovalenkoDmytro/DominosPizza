@@ -1,9 +1,20 @@
+@import './Fonts.scss';
+
 * {
     box-sizing: border-box;
+    font-family: "Museo Sans"
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 html {
     font-size: 10px;
+    overflow-x: hidden;
+   
 }
 
 #root {
@@ -14,8 +25,7 @@ button {
     font-size: 1.4rem;
     border-radius: .8rem;
     padding: 1.4rem 2rem;
-
-
+    cursor: pointer;
     &.solid {
         width: max-content;
         display: block;
@@ -24,12 +34,12 @@ button {
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
         background-color: #dd082b;
         transition: all 0.3s;
-        cursor: pointer;
+        &:hover {
+            background-color: #81071c;
+        }
     }
 
-    &:hover {
-        background-color: #81071c;
-    }
+    
 
     &.outline {
         color: #ffffff;
