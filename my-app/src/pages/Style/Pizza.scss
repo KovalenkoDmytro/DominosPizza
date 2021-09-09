@@ -53,9 +53,20 @@
                 position: absolute;
                 right: 0;
                 top: 0;
+                &:hover{
+                    .heart{
+                        display: none;
+                    }
+                    .heartHover{
+                        display: block;
+                    }  
+                }
                 img{
                     height: 2.5rem;
                     width: 2.5rem;
+                    &.heartHover{
+                        display: none;
+                    }
                 }
             }
             .product__title__wrapper {

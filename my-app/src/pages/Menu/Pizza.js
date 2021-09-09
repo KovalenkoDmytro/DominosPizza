@@ -1,10 +1,15 @@
 import React from 'react';
 import pizza from '../../data/pizza.json'
 import '../Style/Pizza.scss'
-import heart from '../../fonts/icons/heart.svg'
+
+import heart from '../../fonts/icons/heart.svg';
+import heartHover from '../../fonts/icons/heart_hover.svg';
+
+import Context from '../../Context';
+import { useContext } from 'react';
 
 function Pizza(props) {
-
+    let addPrice = useContext(Context)
 
     let card = pizza.map(function (elem) {
         return (<div className="card" key={elem.id}>
@@ -12,8 +17,8 @@ function Pizza(props) {
                 let productName = e.target.parentElement.children[2].innerText;
                 props.addFavorit(productName)
             }}> 
-            <img src={heart} alt={heart} />
-            
+            <img className="heart" src={heart} alt={heart} />
+            <img className="heartHover" src={heartHover} alt={heartHover} />
              </div>
             <img className='product__icon' alt={elem.name} src={elem.img} width="396" height="396" />
             <div className="product__title__wrapper">
@@ -22,7 +27,7 @@ function Pizza(props) {
 
             </div>
             <p className='product__logdescription'>{elem.logdescription}</p>
-            <button className='outline' >+add to basket</button>
+            <button className='outline' onClick={()=>{addPrice(elem.name,elem.img,elem.price)}}>+add to basket</button>
         </div>)
     });
 
