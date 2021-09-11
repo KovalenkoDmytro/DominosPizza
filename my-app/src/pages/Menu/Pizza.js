@@ -8,6 +8,12 @@ import heartHover from '../../fonts/icons/heart_hover.svg';
 import Context from '../../Context';
 import { useContext } from 'react';
 
+import Bestseller from '../../fonts/icons/favourite.svg';
+import New from '../../fonts/icons/new.svg';
+import Hot from '../../fonts/icons/chili-pepper.svg';
+import Vege from '../../fonts/icons/vegan.svg';
+
+
 function Pizza(props) {
     let addPrice = useContext(Context)
 
@@ -16,18 +22,24 @@ function Pizza(props) {
             <div className="addToFavorit" onClick={(e) => {
                 let productName = e.target.parentElement.children[2].innerText;
                 props.addFavorit(productName)
-            }}> 
-            <img className="heart" src={heart} alt={heart} />
-            <img className="heartHover" src={heartHover} alt={heartHover} />
-             </div>
+            }}>
+                <img className="heart" src={heart} alt={heart} />
+                <img className="heartHover" src={heartHover} alt={heartHover} />
+            </div>
             <img className='product__icon' alt={elem.name} src={elem.img} width="396" height="396" />
             <div className="product__title__wrapper">
                 <span className='product__title'>{elem.name}</span>
                 <span className='product__price'>{elem.price}</span>
-
+            </div>
+            <div className="infoTag">
+                {elem.sorte === "Bestseller" ? <img className="tagIcon" src={Bestseller} alt='Bestseller' width='25px' height='25px'/> : ""}
+                {elem.sorte === "New" ? <img className="tagIcon" src={New} alt='New' width='25px' height='25px'/> : ""}
+                {elem.sorte === "Hot" ? <img className="tagIcon" src={Hot} alt='Hot' width='25px' height='25px'/> : ""}
+                {elem.sorte === "Vege" ? <img className="tagIcon" src={Vege} alt='Vege' width='25px' height='25px'/> : ""}
+                <div className="tagIcon">{elem.sorte}</div>
             </div>
             <p className='product__logdescription'>{elem.logdescription}</p>
-            <button className='outline' onClick={()=>{addPrice(elem.name,elem.img,elem.price)}}>+add to basket</button>
+            <button className='outline' onClick={() => { addPrice(elem.name, elem.img, elem.price) }}>+add to basket</button>
         </div>)
     });
 

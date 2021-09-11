@@ -37,10 +37,9 @@
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         margin-top: 10rem;
         .card {
-            width: 32%;
+            width: 33.33%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -84,7 +83,15 @@
                     color: #172c3a;
                 }
             }
-
+            .infoTag{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                align-content: center;
+                .tagIcon{
+                    margin-right: 1rem;
+                }
+            }
             .product__logdescription {
                 font-size: 1.6rem;
                 line-height: 1.9rem;
