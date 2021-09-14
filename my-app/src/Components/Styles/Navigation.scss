@@ -5,13 +5,9 @@ nav {
 
     li {
         a {
-            color: #102c3b;
             font-size: 1.6rem;
             text-transform: capitalize;
             font-weight: 500;
-            &:hover{
-                color: #006491;
-            }
         }
 
         &+li {

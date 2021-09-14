@@ -10,39 +10,43 @@ function App() {
 
   let [totalPrice, setTotalPrice] = useState([]);
 
-  useEffect(()=>{
-    const products = localStorage.getItem("products") || []
-    setTotalPrice(JSON.parse(products))
-  },[])
-
-
-  useEffect(()=>{
-    localStorage.setItem("products", JSON.stringify(totalPrice))
-  },[totalPrice])
-
- 
-  function addPrice(name, url ,price){
-    let product = {
-        name: name,
-        photo: url,
-        price: price
+  useEffect(() => {
+    if (localStorage.getItem("products") == null) {
+      localStorage.setItem("products", '')
+    } else {
+      const products = localStorage.getItem("products") || [];
+      setTotalPrice(JSON.parse(products))
     }
-     setTotalPrice([...totalPrice, product])
+  }, [])
+
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(totalPrice))
+  }, [totalPrice])
+
+
+  function addPrice(name, url, price) {
+    let product = {
+      name: name,
+      photo: url,
+      price: price
+    }
+    setTotalPrice([...totalPrice, product])
   }
 
-  
-  function returnTotalprice(totalPrice){
+
+  function returnTotalprice(totalPrice) {
     let count = 0
     totalPrice.forEach(element => {
-        count += element.price
+      count += element.price
     });
     return (count.toFixed(2))
   }
 
 
   return (
-    <Context.Provider value = {addPrice}>
-      <Header totalPrice={returnTotalprice(totalPrice)}/>
+    <Context.Provider value={addPrice}>
+      <Header totalPrice={returnTotalprice(totalPrice)} />
       <Navigation />
       <Footer />
     </Context.Provider>

@@ -6,7 +6,8 @@ import heart from '../../fonts/icons/heart.svg';
 import heartHover from '../../fonts/icons/heart_hover.svg';
 
 import Context from '../../Context';
-import { useContext } from 'react';
+import { ContextFavorit } from '../../Context';
+import { useContext} from 'react';
 
 import Bestseller from '../../fonts/icons/favourite.svg';
 import New from '../../fonts/icons/new.svg';
@@ -15,13 +16,25 @@ import Vege from '../../fonts/icons/vegan.svg';
 
 
 function Pizza(props) {
-    let addPrice = useContext(Context)
+    let addPrice = useContext(Context);
+    let addFavorit = useContext(ContextFavorit);
+
+  
 
     let card = pizza.map(function (elem) {
         return (<div className="card" key={elem.id}>
-            <div className="addToFavorit" onClick={(e) => {
-                let productName = e.target.parentElement.children[2].innerText;
-                props.addFavorit(productName)
+            <div className="addToFavorit"  onClick={(e) => {
+                
+                let productFavorit ={
+                    name: e.target.parentElement.nextElementSibling.nextElementSibling.firstChild.innerText,
+                    img: e.target.parentElement.nextSibling.src,
+                    description: e.target.parentElement.parentElement.children[4].innerText,
+                    price:e.target.parentElement.nextElementSibling.nextElementSibling.lastChild.innerText
+                }
+                addFavorit(productFavorit)
+               
+                  
+                e.target.parentElement.classList.toggle('Active');
             }}>
                 <img className="heart" src={heart} alt={heart} />
                 <img className="heartHover" src={heartHover} alt={heartHover} />

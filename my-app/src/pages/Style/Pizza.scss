@@ -52,6 +52,14 @@
                 position: absolute;
                 right: 0;
                 top: 0;
+                &.Active{
+                    img.heartHover{
+                        display: block;
+                    }
+                    .heart{
+                        display: none;
+                    } 
+                }
                 &:hover{
                     .heart{
                         display: none;
