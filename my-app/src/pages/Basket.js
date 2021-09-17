@@ -25,11 +25,10 @@ function Basket(props) {
                             <div className="tagIcon">{elem.sort}</div>
                         </div>
                         <span className="product__price">{elem.price}</span>
-                        <button className="del" onClick={(e)=>{
-                            console.log("clickX");
+                        <button className="del" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
-                    }}> 
-                    </button>
+                        }}>
+                        </button>
                     </li>)}
 
             </div>
