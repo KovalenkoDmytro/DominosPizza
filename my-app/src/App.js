@@ -25,14 +25,21 @@ function App() {
   }, [totalPrice])
 
 
-  function addPrice(name, url, price) {
+  function addPrice(name, url, price, description, sort) {
     let product = {
-      name: name,
-      photo: url,
-      price: price
+      name,
+      url,
+      price,
+      description,
+      sort,
     }
     setTotalPrice([...totalPrice, product])
   }
+
+  function delProductFromBasket(delProduct){
+    let newProducts =   totalPrice.filter(elem => elem.name !== delProduct );
+    setTotalPrice(newProducts)
+}
 
 
   function returnTotalprice(totalPrice) {
@@ -47,7 +54,7 @@ function App() {
   return (
     <Context.Provider value={addPrice}>
       <Header totalPrice={returnTotalprice(totalPrice)} />
-      <Navigation />
+      <Navigation  products ={totalPrice} delProduct={delProductFromBasket} />
       <Footer />
     </Context.Provider>
   );

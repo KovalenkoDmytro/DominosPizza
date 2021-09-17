@@ -15,7 +15,7 @@ function Menu() {
         let flag = true
         favorits.forEach(element => {
             if (product.name === element.name) {
-                alert("product has already been added")
+                alert("product already has been added")
                 flag = false;
             }
         });
@@ -45,8 +45,6 @@ function Menu() {
         let newProducts =   favorits.filter(elem => elem.name !== delProduct );
         setFavorits(newProducts)
     }
-
-
 
     return (
 

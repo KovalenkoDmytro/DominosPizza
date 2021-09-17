@@ -52,7 +52,7 @@ function Pizza(props) {
                 <div className="tagIcon">{elem.sorte}</div>
             </div>
             <p className='product__logdescription'>{elem.logdescription}</p>
-            <button className='outline' onClick={() => { addPrice(elem.name, elem.img, elem.price) }}>+add to basket</button>
+            <button className='outline' onClick={() => { addPrice(elem.name, elem.img, elem.price, elem.logdescription, elem.sorte) }}>+add to basket</button>
         </div>)
     });
 
