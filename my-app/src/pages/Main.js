@@ -1,5 +1,43 @@
 import './Style/Main.scss';
+import React, { useState, useEffect } from 'react';
+
 function Main() {
+    const [lableValidatin, setDataValidation] = useState('')
+    const [inputValidatin, setInputValidation] = useState(false)
+    const [checkValidatin, setCheckValidation] = useState(false)
+
+    useEffect(() => {
+    }, [lableValidatin])
+    useEffect(() => {
+    }, [checkValidatin])
+
+
+    function checkValidateForm(e) {
+        e.preventDefault()
+
+        if (!inputValidatin) setDataValidation("Invalid email address")
+        else if (!checkValidatin) setDataValidation("you gotta accept privat politic")
+        else {
+            setDataValidation("")
+            alert('Form has been validat')
+        }
+    }
+
+    function inputValidate(e) {
+        let value = e.target.value
+        if (value.includes("@") && value.includes(".") && value.length < 40 && value.length > 4) {
+            setDataValidation('')
+            setInputValidation(true)
+        } else {
+            setDataValidation('Invalid email address')
+        }
+    }
+
+    function validateCheck(e) {
+        setCheckValidation(e.target.checked);
+    }
+
+
     return (
         <>
             <div className="layout">
@@ -34,14 +72,22 @@ function Main() {
                     <div className="newsletter">
                         <h2 className="newsletter__title">Odbierz rabat -50% na drugą pizzę </h2>
                         <p className="newsletter__subtittle">Zapisz się do naszego newslettera i otrzymuj najlepsze promocje</p>
+
+
+
+
+
                         <form action="">
-                            <div className="email"><input type="email" name="" id="" placeholder="" /></div>
+                            {/* <div className="email" onChange={ inputValidate} > */}
+                            <input type="email" name="email" id="email" placeholder="enter you e-mail" onChange={inputValidate} />
+                            <label htmlFor="email">{lableValidatin}</label>
+                            {/* </div> */}
 
                             <div className="privatPolitic">
-                                <input type="checkbox" name="" id="" />
+                                <input type="checkbox" name="" id="" onChange={validateCheck} />
                                 <p>Wyrażam zgodę na kontaktowanie się ze mną, w tym na przesyłanie informacji handlowych i marketingowych o Pizza Domino’s od DP Polska S.A. z siedzibą w Warszawie za pośrednictwem środków komunikacji elektronicznej (e-mail), jak również wyrażam zgodę na przetwarzanie w tym celu danych osobowych (adresu e-mail) przez DP Polska S.A. z siedzibą w Warszawie. Podstawą prawną przetwarzania danych jest art. 6 ust. 1 lit. a) RODO. Przysługuje mi prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem.</p>
                             </div>
-                            <button className="solid" type="submit">Odbierz rabat</button>
+                            <button className="solid" type="submit" onClick={checkValidateForm} >Odbierz rabat</button>
                         </form>
                     </div>
                 </div>
