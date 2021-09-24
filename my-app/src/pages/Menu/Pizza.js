@@ -15,25 +15,21 @@ import Hot from '../../fonts/icons/chili-pepper.svg';
 import Vege from '../../fonts/icons/vegan.svg';
 
 
-function Pizza(props) {
+function Pizza() {
     let addPrice = useContext(Context);
     let addFavorit = useContext(ContextFavorit);
 
-  
-
     let card = pizza.map(function (elem) {
-        return (<div className="card" key={elem.id}>
+        return (<div className="card" key={elem.id} data-active="">
             <div className="addToFavorit"  onClick={(e) => {
-                
                 let productFavorit ={
                     name: e.target.parentElement.nextElementSibling.nextElementSibling.firstChild.innerText,
                     img: e.target.parentElement.nextSibling.src,
                     description: e.target.parentElement.parentElement.children[4].innerText,
-                    price:e.target.parentElement.nextElementSibling.nextElementSibling.lastChild.innerText
+                    price:e.target.parentElement.nextElementSibling.nextElementSibling.lastChild.innerText,
+                    classActive : true
                 }
                 addFavorit(productFavorit)
-               
-                  
                 e.target.parentElement.classList.toggle('Active');
             }}>
                 <img className="heart" src={heart} alt={heart} />
@@ -52,7 +48,7 @@ function Pizza(props) {
                 <div className="tagIcon">{elem.sorte}</div>
             </div>
             <p className='product__logdescription'>{elem.logdescription}</p>
-            <button className='outline' onClick={() => { addPrice(elem.name, elem.img, elem.price, elem.logdescription, elem.sorte) }}>+add to basket</button>
+            <button className='outline' onClick={() => { addPrice[0](elem.name, elem.img, elem.price, elem.logdescription, elem.sorte) }}>+add to basket</button>
         </div>)
     });
 
@@ -66,7 +62,6 @@ function Pizza(props) {
                     <h1>Pizza</h1>
                 </div>
                 <div className="cards">{card}</div>
-
             </div>
         </>
     )

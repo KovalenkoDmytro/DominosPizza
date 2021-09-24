@@ -9,7 +9,11 @@ import { useState, useEffect } from 'react';
 function App() {
 
   let [totalPrice, setTotalPrice] = useState([]);
+  let [salePrice, setSalePrice] = useState( []);
 
+  // let [countProducts, setCountProducts] = useState(0);
+
+  
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
       localStorage.setItem("products", '')
@@ -17,13 +21,27 @@ function App() {
       const products = localStorage.getItem("products") || [];
       setTotalPrice(JSON.parse(products))
     }
+    
+    
+    // setCountProducts(
+    //   JSON.parse(localStorage.getItem("products")).length
+    // )
+   
   }, [])
+
+
+  useEffect(() => {
+  
+  }, [salePrice])
 
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(totalPrice))
   }, [totalPrice])
 
+
+  // useEffect(() => {
+  // }, [countProducts])
 
   function addPrice(name, url, price, description, sort) {
     let product = {
@@ -34,6 +52,7 @@ function App() {
       sort,
     }
     setTotalPrice([...totalPrice, product])
+    // setCountProducts(totalPrice.length)
   }
 
   function delProductFromBasket(delProduct){
@@ -51,9 +70,41 @@ function App() {
   }
 
 
+  // add sale-price and check coupon
+  function changeTotalPrice(saleValue, Pizzas, article ){
+    let count = 0
+    let countPizzas = 0
+    totalPrice.forEach(element => {
+      count += element.price;
+      countPizzas+=1;
+    });
+
+    let newPrice = count - (count/100) * saleValue;
+    let SaleCoupon = {
+      price: newPrice,
+      coupon: article,
+      count: Pizzas,
+    }
+
+    if(countPizzas >= Pizzas){
+      if(salePrice.length > 0){ 
+        salePrice.forEach(element => {
+            if(element.coupon === SaleCoupon.coupon){
+              alert('coupon has been activited')
+            }else{
+              setSalePrice([ SaleCoupon])
+            }
+        });
+      }
+      else{setSalePrice([ SaleCoupon])}
+    }else(alert(`missing ${Pizzas - countPizzas} pizzas`))
+  }
+
+
   return (
-    <Context.Provider value={addPrice}>
-      <Header totalPrice={returnTotalprice(totalPrice)} />
+    <Context.Provider value={[addPrice,changeTotalPrice]} >
+      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice}  /> 
+      {/* countProducts={countProducts} */}
       <Navigation  products ={totalPrice} delProduct={delProductFromBasket} />
       <Footer />
     </Context.Provider>
