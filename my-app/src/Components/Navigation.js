@@ -10,7 +10,7 @@ import './Styles/Navigation.scss';
 
 
 
-let navArray = ['main', 'menu', 'contact_us', 'basket'];
+let navArray = ['main', 'menu', 'contact_us', 'basket', 'Favorits', 'sale', 'pizza'];
 
 function Nav(props) {
     let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)

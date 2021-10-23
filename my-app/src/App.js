@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.scss';
+
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Navigation from './Components/Navigation';
 import Context from './Context';
 import { useState, useEffect } from 'react';
+
 
 function App() {
 
@@ -111,6 +113,7 @@ function App() {
     < Context.Provider value={[addPrice, changeTotalPrice]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  { /* countProducts={countProducts} */}
       <Navigation products={totalPrice} delProduct={delProductFromBasket} />
+
       <Footer />
     </Context.Provider>
   );

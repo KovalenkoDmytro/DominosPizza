@@ -1,7 +1,7 @@
 
 import '../Style/Favorits.scss';
 
-
+import './Favorits.scss';
 
 
 function Favorits(props) {
@@ -16,10 +16,10 @@ function Favorits(props) {
                             <span className="product__description">{elem.description}</span>
                         </div>
                         <span className="product__price">{elem.price}</span>
-                        <button className="del" onClick={(e) => {
+                        <button className="del outline" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
                         }}>
-                        </button>
+                        x</button>
                     </li>)}
             </div>
         </>

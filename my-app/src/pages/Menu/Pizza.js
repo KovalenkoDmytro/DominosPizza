@@ -38,7 +38,7 @@ function Pizza() {
             <img className='product__icon' alt={elem.name} src={elem.img} width="396" height="396" />
             <div className="product__title__wrapper">
                 <span className='product__title'>{elem.name}</span>
-                <span className='product__price'>{elem.price}</span>
+                <span className='product__price'>{elem.price + ' zł'}</span>
             </div>
             <div className="infoTag">
                 {elem.sorte === "Bestseller" ? <img className="tagIcon" src={Bestseller} alt='Bestseller' width='25px' height='25px'/> : ""}
