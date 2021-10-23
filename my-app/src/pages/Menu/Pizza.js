@@ -56,6 +56,7 @@ function Pizza() {
 
     return (
         <>
+        {console.log('rendered')}
             <div className="pizza__page">
                 <div className="banner">
                     <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/menuBanners/mobile/600x240-pizza1.jpg" alt="pizza" width="1200" height="300" />
