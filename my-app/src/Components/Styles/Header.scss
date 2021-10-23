@@ -1,5 +1,4 @@
-header{
-    
+header {
     // position: fixed;
     width: 100%;
     display: flex;
@@ -8,7 +7,7 @@ header{
     align-content: center;
     padding: 1.6rem 0 3.2rem;
     position: relative;
-    &::before{
+    &::before {
         position: absolute;
         content: "";
         width: 100vw;
@@ -17,10 +16,16 @@ header{
         margin-left: 50%;
         background-color: lightcyan;
         z-index: -2;
-        background-image: linear-gradient(to bottom, #fefefd 0px, #f6f1eb 28.3rem, #f1eae2 28.3rem, #f1eae2 28.5rem, #fff 28.5rem);;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-   }
-   .logo{
-       width: 20%;
-   }
+        background-image: linear-gradient(to bottom, #fefefd 0px, #f6f1eb 28.3rem, #f1eae2 28.3rem, #f1eae2 28.5rem, #fff 28.5rem);
+        ;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+        width: 20%;
+    }
+    .basket {
+        .total.__cossOff {
+            text-decoration: line-through;
+        }
+    }
 }
