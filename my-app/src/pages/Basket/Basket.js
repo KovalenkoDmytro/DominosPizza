@@ -1,9 +1,9 @@
-import Bestseller from '../fonts/icons/favourite.svg';
-import New from '../fonts/icons/new.svg';
-import Hot from '../fonts/icons/chili-pepper.svg';
-import Vege from '../fonts/icons/vegan.svg';
+import Bestseller from '../../fonts/icons/favourite.svg';
+import New from '../../fonts/icons/new.svg';
+import Hot from '../../fonts/icons/chili-pepper.svg';
+import Vege from '../../fonts/icons/vegan.svg';
 import './Basket.scss';
-
+import iconBasketEmpty from './emptyBasket.jpg'
 
 function Basket(props) {
 
@@ -11,7 +11,11 @@ function Basket(props) {
     function showContent() {
         if (props.products.length === 0) {
             return (
-                <h3>Koszyk jest pusty</h3>
+                <>
+                    <img src={iconBasketEmpty} alt="empty basket" />
+                    <h3>Twój koszyk jest pusty</h3>
+                    <p>Nic straconego! Na pewno znajdziesz coś smakowitego w naszym menu. Dodaj do koszyka produkty, na które masz ochotę i zamów je online - szybko i wygodnie.</p>
+                </>
             )
         } else {
             return (

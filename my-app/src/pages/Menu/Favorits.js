@@ -1,6 +1,5 @@
 
 import '../Style/Favorits.scss';
-
 import './Favorits.scss';
 
 
@@ -9,8 +8,11 @@ function Favorits(props) {
     function showContent() {
         if (props.globalStore.length === 0) {
             return (
-                <h3>Tutaj znajdziesz swoje ulubione produkty</h3>
-
+                <>
+                     <img src={iconFavoritEmpty} alt="empty basket" />
+                    <h3>Tutaj znajdziesz swoje ulubione produkty</h3>
+                    <p>Aby móc przeglądać polubione produkty dodaj produkt</p>
+                </>
             )
         } else {
             return (
