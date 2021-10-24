@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import React from "react";
 import Main from '../pages/Main';
-// import Menu from '../pages/Menu';
 import Basket from "../pages/Basket";
 import Sale from "../pages/Menu/Sale";
 import Favorits from "../pages/Menu/Favorits";
@@ -72,7 +71,6 @@ function Nav(props) {
                     </nav>
                     <Switch>
                         <Route path="/main" component={Main} />
-                        {/* <Route path="/menu" component={Menu} /> */}
                         <Route path="/contact_us" component={ContactUs} />
                         <Route exact path="/basket" render={(props) => <Basket products={products}  delProduct ={funDelProduct} {...props} />} />
                         <Route path="/sale" component={Sale} />

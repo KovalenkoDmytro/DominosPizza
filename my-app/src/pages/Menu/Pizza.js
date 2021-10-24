@@ -52,7 +52,15 @@ function Pizza() {
         </div>)
     });
 
+//     function checkFaviruts(products) {
+//         const favoritsProducts = JSON.parse(localStorage.getItem('productsFavorits')
+//         // if(favoritsProducts !== null){
+//         //     favoritsProducts.forEach(element => {
+//         //         console.log(element)
+//         //     });
 
+//         // };
+//   }
 
     return (
         <>
