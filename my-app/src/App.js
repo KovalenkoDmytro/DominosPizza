@@ -99,13 +99,13 @@ function App() {
       if (salePrice.length > 0) {
         salePrice.forEach(element => {
           if (element.coupon === SaleCoupon.coupon) {
-            alert('coupon has been activited')
+            alert('kupon już zostal zrealizowany')
           } else {
             setSalePrice([SaleCoupon])
           }
         });
       } else { setSalePrice([SaleCoupon]) }
-    } else (alert(`missing ${Pizzas - countPizzas} pizzas`))
+    } else (alert(`żeby zrealizować kupon należy dodać do koszyka jeszcie ${Pizzas - countPizzas} pizzy`))
   }
 
 

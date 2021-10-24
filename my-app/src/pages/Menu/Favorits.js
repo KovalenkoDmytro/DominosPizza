@@ -5,10 +5,15 @@ import './Favorits.scss';
 
 
 function Favorits(props) {
-    return (
-        <>
-            <div className="favoritsContent">
-                {props.globalStore.map((elem, index) =>
+
+    function showContent() {
+        if (props.globalStore.length === 0) {
+            return (
+                <h3>Lista ulubionych jest pusta</h3>
+            )
+        } else {
+            return (
+                props.globalStore.map((elem, index) =>
                     <li className="favoritProduct" key={index} >
                         <img src={elem.img} alt={elem.name} height='225' width='225' />
                         <div className="product__wrapper">
@@ -19,9 +24,20 @@ function Favorits(props) {
                         <button className="del outline" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
                         }}>
-                        x</button>
-                    </li>)}
+                            x</button>
+                    </li>)
+            )
+        }
+
+    }
+
+    return (
+        <>
+            <div className="favoritsContent">
+                <h1 className="big_lable">Ulubione</h1>
+                {showContent()}
             </div>
+
         </>
     )
 }

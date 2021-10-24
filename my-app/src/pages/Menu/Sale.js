@@ -37,7 +37,7 @@ function Sale() {
 
     return (
         <>
-            <h1>Zastosuj kupon na zniżkę</h1>
+            <h1 className="big_lable">Kupony rabatowy</h1>
 
             <ul className="sales">
                 {sales.map((elem) => <li key={elem.article} className="sale__item" data-sale={elem.sale} data-pizzas={elem.pizzas} data-article={elem.article}> <img src={elem.img} alt={elem.title} />
@@ -48,7 +48,7 @@ function Sale() {
                         let countPizzas = Number(e.target.parentElement.attributes['data-pizzas'].value);
                         let couponArticle = e.target.parentElement.attributes['data-article'].value;
                         addSalePrice[1](salePercent, countPizzas, couponArticle);
-                        alert('kupon zostal zrealizowany');
+
                     }}> użyj kupon </button>    </li>)}
             </ul>
         </>
