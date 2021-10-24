@@ -9,7 +9,8 @@ function Favorits(props) {
     function showContent() {
         if (props.globalStore.length === 0) {
             return (
-                <h3>Lista ulubionych jest pusta</h3>
+                <h3>Tutaj znajdziesz swoje ulubione produkty</h3>
+
             )
         } else {
             return (

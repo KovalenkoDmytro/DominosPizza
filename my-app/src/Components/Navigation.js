@@ -17,8 +17,8 @@ function Nav(props) {
     let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
     let products = props.products;
     let funDelProduct = props.delProduct;
-    
-    
+
+
     let [favorits, setFavorits] = useState([]);
 
     function addFavorit(product) {
@@ -26,9 +26,9 @@ function Nav(props) {
         favorits.forEach(element => {
             if (product.name === element.name) {
                 flag = false;
-                let newProducts =   favorits.filter(elem => elem.name !== product.name );
+                let newProducts = favorits.filter(elem => elem.name !== product.name);
                 setFavorits(newProducts)
-                }
+            }
         });
 
         if (flag) {
@@ -53,18 +53,18 @@ function Nav(props) {
     }, [favorits])
 
 
-    function delProduct(delProduct){
-        let newProducts =   favorits.filter(elem => elem.name !== delProduct );
+    function delProduct(delProduct) {
+        let newProducts = favorits.filter(elem => elem.name !== delProduct);
         setFavorits(newProducts)
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     return (
         <>
-      <ContextFavorit.Provider value={addFavorit}>
+            <ContextFavorit.Provider value={addFavorit}>
                 <Router>
                     <nav className="navigation">
                         {navItems}
@@ -72,13 +72,13 @@ function Nav(props) {
                     <Switch>
                         <Route path="/main" component={Main} />
                         <Route path="/contact_us" component={ContactUs} />
-                        <Route exact path="/basket" render={(props) => <Basket products={products}  delProduct ={funDelProduct} {...props} />} />
+                        <Route exact path="/basket" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/sale" component={Sale} />
-                        <Route  path="/favorits" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
+                        <Route path="/favorits" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route path="/pizza" component={Pizza} />
                     </Switch>
                 </Router>
-                </ContextFavorit.Provider>
+            </ContextFavorit.Provider>
         </>
     )
 }
