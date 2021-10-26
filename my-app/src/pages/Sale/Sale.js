@@ -1,5 +1,6 @@
 import Context from '../../Context';
 import { useContext } from 'react';
+import './Sale.scss';
 
 
 const sales = [{
@@ -37,7 +38,7 @@ function Sale() {
 
     return (
         <>
-            <h1 className="big_lable">Kupony rabatowy</h1>
+            <h1 className="big_lable">Kupony rabatowe</h1>
 
             <ul className="sales">
                 {sales.map((elem) => <li key={elem.article} className="sale__item" data-sale={elem.sale} data-pizzas={elem.pizzas} data-article={elem.article}> <img src={elem.img} alt={elem.title} />

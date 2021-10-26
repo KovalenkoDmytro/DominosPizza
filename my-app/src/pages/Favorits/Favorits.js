@@ -1,7 +1,7 @@
 
 import '../Style/Favorits.scss';
 import './Favorits.scss';
-
+import favoritsIcon from './favoritsIcon.png'
 
 function Favorits(props) {
 
@@ -9,7 +9,7 @@ function Favorits(props) {
         if (props.globalStore.length === 0) {
             return (
                 <>
-                     <img src={iconFavoritEmpty} alt="empty basket" />
+                     <img src={favoritsIcon} alt="empty basket" />
                     <h3>Tutaj znajdziesz swoje ulubione produkty</h3>
                     <p>Aby móc przeglądać polubione produkty dodaj produkt</p>
                 </>

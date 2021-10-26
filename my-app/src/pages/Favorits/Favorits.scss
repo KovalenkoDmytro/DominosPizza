@@ -1,0 +1,8 @@
+.favoritsContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .favoritProduct{
+        width: 100%;
+    }
+}

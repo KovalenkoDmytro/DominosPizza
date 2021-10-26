@@ -3,5 +3,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        .infoTag{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
     }
 }

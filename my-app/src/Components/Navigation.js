@@ -2,16 +2,16 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import React from "react";
 import Main from '../pages/Main';
 import Basket from "../pages/Basket/Basket";
-import Sale from "../pages/Menu/Sale";
-import Favorits from "../pages/Menu/Favorits";
-import ContactUs from '../pages/ContactUs';
+import Sale from "../pages/Sale/Sale";
+import Favorits from "../pages/Favorits/Favorits";
+
 import Pizza from "../pages/Menu/Pizza";
 import './Styles/Navigation.scss';
 import { useState, useEffect } from "react";
 import { ContextFavorit } from "../Context";
 
 
-let navArray = ['main', 'contact_us', 'basket', 'favorits', 'sale', 'pizza'];
+let navArray = ['main', 'basket', 'favorits', 'sale', 'pizza'];
 
 function Nav(props) {
     let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
@@ -71,7 +71,6 @@ function Nav(props) {
                     </nav>
                     <Switch>
                         <Route path="/main" component={Main} />
-                        <Route path="/contact_us" component={ContactUs} />
                         <Route exact path="/basket" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/sale" component={Sale} />
                         <Route path="/favorits" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
