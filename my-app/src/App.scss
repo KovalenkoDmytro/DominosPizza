@@ -26,6 +26,7 @@ button {
     border-radius: .8rem;
     padding: 1.4rem 2rem;
     cursor: pointer;
+    
     &.solid {
         width: max-content;
         display: block;
@@ -43,8 +44,14 @@ button {
 
     &.outline {
         color: #ffffff;
-        border: 3px solid #81071c;
-        color: #81071c;
+        border: 3px solid #dd082b;
+        color: #dd082b;
+        background-color: #ffffff;
+    
+        &:hover{
+            border-color: #006491;
+            color: #006491;;
+        }
     }
 }
 

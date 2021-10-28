@@ -11,10 +11,13 @@ function Basket(props) {
     function showContent() {
         if (props.products.length === 0) {
             return (
-                <>
-                    <img src={iconBasketEmpty} alt="empty basket" />
-                    <h3>Twój koszyk jest pusty</h3>
-                    <p>Nic straconego! Na pewno znajdziesz coś smakowitego w naszym menu. Dodaj do koszyka produkty, na które masz ochotę i zamów je online - szybko i wygodnie.</p>
+                <>  
+                    <div className="content_wrapper">
+                        <img src={iconBasketEmpty} alt="empty basket" />
+                        <h3>Twój koszyk jest pusty</h3>
+                        <p>Nic straconego! Na pewno znajdziesz coś smakowitego w naszym menu. Dodaj do koszyka produkty, na które masz ochotę i zamów je online - szybko i wygodnie.</p>
+                    </div>
+                    
                 </>
             )
         } else {

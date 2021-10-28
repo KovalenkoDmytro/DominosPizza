@@ -71,7 +71,7 @@ function Pizza() {
                 </div>
                 <div className="cards">{card}</div>
             </div>
-            /
+            
         </>
     )
 }

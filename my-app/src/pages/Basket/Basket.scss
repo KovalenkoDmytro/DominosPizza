@@ -1,8 +1,35 @@
 .basket_page{
+    .content_wrapper{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        max-width: 35rem;
+        margin: auto;
+        p{
+            text-align: center;
+        }
+    }
     .product{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid #ebebeb;
+        &:last-child{
+            border: none;
+        }
+        .product__wrapper{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            .product__name{
+                color: #dd082b;
+                font-size: 2.4rem;
+                margin-bottom: .5rem;
+                text-transform: uppercase;
+            }
+        }
         .infoTag{
             display: flex;
             align-items: center;

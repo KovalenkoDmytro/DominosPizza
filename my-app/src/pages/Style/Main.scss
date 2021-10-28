@@ -141,17 +141,28 @@
         position: absolute;
         @include flex();
         flex-direction: column;
-        width: 20%;
-
+        &__title{
+            font-size: 2.7rem;
+            line-height: 3.2rem;
+        }    
+        &__subtittle{
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+            font-weight: 500; 
+            max-width: 40rem;
+            text-align: center;
+            margin-top: 0;
+        }
         form {
             @include flex();
             justify-content: center;
             flex-wrap: wrap;
             position: relative;
-            width: 75%;
-            .email {
-                display: flex;
-                width: 100%;
+            width: 20%;
+            label[for="email"]{
+                color: red;
+            }
+         
 
                 input {
                     margin: 0 auto;
@@ -164,7 +175,7 @@
                     border-radius: 0.8rem;
                     width: 100%;
                 }
-            }
+          
 
             .privatPolitic {
                 width: 100%;
@@ -172,6 +183,7 @@
                 justify-content: center;
 
                 p {
+                    scrollbar-width: thin;
                     width: auto;
                     max-height: 7rem;
                     overflow-y: scroll;

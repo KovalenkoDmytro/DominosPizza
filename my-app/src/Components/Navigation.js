@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { ContextFavorit } from "../Context";
 
 
-let navArray = ['main', 'basket', 'favorits', 'sale', 'pizza'];
+let navArray = ['Strona glówna', 'koszyk', 'ulubione', 'promocje', 'pizza'];
 
 function Nav(props) {
     let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
@@ -70,10 +70,10 @@ function Nav(props) {
                         {navItems}
                     </nav>
                     <Switch>
-                        <Route path="/main" component={Main} />
-                        <Route exact path="/basket" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
-                        <Route path="/sale" component={Sale} />
-                        <Route path="/favorits" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
+                        <Route path="/Strona glówna" component={Main} />
+                        <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
+                        <Route path="/promocje" component={Sale} />
+                        <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route path="/pizza" component={Pizza} />
                     </Switch>
                 </Router>

@@ -4,5 +4,9 @@
     align-items: center;
     .favoritProduct{
         width: 100%;
+        border-bottom: 1px solid #ebebeb;
+        &:last-child{
+            border: none;
+        }
     }
 }

@@ -6,7 +6,7 @@ import Footer from './Components/Footer';
 import Navigation from './Components/Navigation';
 import Context from './Context';
 import { useState, useEffect } from 'react';
-
+import ModalWindow from './pages/ModalWindow/ModalWindow';
 
 function App() {
 
@@ -113,8 +113,8 @@ function App() {
     < Context.Provider value={[addPrice, changeTotalPrice]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  { /* countProducts={countProducts} */}
       <Navigation products={totalPrice} delProduct={delProductFromBasket} />
-
       <Footer />
+      <ModalWindow/>
     </Context.Provider>
   );
 }

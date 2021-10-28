@@ -1,3 +1,4 @@
+import '../Fonts.scss';
 import './Style/Main.scss';
 import React, { useState, useEffect } from 'react';
 
@@ -63,7 +64,7 @@ function Main() {
 
                         </div>
                         <div className="contact">
-                            <a href="tel:+48 22 209 00 00">+48 22 209 00 00</a>
+                            <a href="tel:+48 22 209 00 00"><span className="icon icon__phone"></span> +48 22 209 00 00</a>
                         </div>
                     </div>
                 </div>
