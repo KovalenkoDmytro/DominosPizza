@@ -53,8 +53,9 @@ function Pizza() {
             </div>
             <p className='product__logdescription'>{elem.logdescription}</p>
             <button className='outline' onClick={() => {
-                addPrice[0](elem.name, elem.img, elem.price, elem.logdescription, elem.sorte);
+                addPrice[0](elem.name, elem.img, elem.price, elem.logdescription, elem.sorte, 1);
                 alert('produkt zostal dodany do koszyka')
+              
             }}>+add to basket</button>
         </div>)
     });

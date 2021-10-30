@@ -51,22 +51,38 @@ function App() {
     } else return
   }
 
-
-  function addPrice(name, url, price, description, sort) {
+//add product to basket
+  function addPrice(name, url, price, description, sort,count) {
     let product = {
       name,
       url,
       price,
       description,
       sort,
+      count,
     }
-    setTotalPrice([...totalPrice, product])
-    // setCountProducts(totalPrice.length)
+    
+    
+
+
+
+    totalPrice.forEach((element,index) => {
+      if(element.name === product.name){
+        totalPrice[index]=element;     
+        totalPrice.splice(index, 1);
+        product.count +=element.count
+       
+      }
+    });
+   
+      setTotalPrice([...totalPrice, product])
   }
 
   function delProductFromBasket(delProduct) {
-    let newProducts = totalPrice.filter(elem => elem.name !== delProduct);
+    console.log(totalPrice);
+    let newProducts = totalPrice.filter(elem => elem.name.toUpperCase() !== delProduct.toUpperCase());
     setTotalPrice(newProducts)
+
   }
 
 
