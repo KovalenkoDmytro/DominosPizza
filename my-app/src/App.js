@@ -85,13 +85,13 @@ function App() {
 
   }
 
-
+  // sum price
   function returnTotalprice(totalPrice) {
     let count = 0
     totalPrice.forEach(element => {
-      count += element.price
+      count +=  (element.count * element.price)
     });
-    return (count.toFixed(2))
+    return count.toFixed(2)
   }
 
 

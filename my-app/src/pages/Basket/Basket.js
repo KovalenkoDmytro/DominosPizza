@@ -37,8 +37,8 @@ function Basket(props) {
                             {elem.sort === "Vege" ? <img className="tagIcon" src={Vege} alt='Vege' width='25px' height='25px' /> : ""}
                             <div className="tagIcon">{elem.sort}</div>
                         </div>
-                        <span className="product_conuter">{elem.count}</span>
-                        <span className="product__price">{elem.price*elem.count + "zł"}</span>
+                        <span className="product_conuter">{elem.count} szt</span>
+                        <span className="product__price">{(elem.price*elem.count).toFixed(2) + "zł"}</span>
 
                         <button className="del outline" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
