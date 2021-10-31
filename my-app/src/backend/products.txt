@@ -1,0 +1,100 @@
+[{
+        "id": 1,
+        "name": "Margherita",
+        "logdescription": "sos pomidorowy, mozzarella",
+        "favorits": false,
+        "price": 21.90,
+        "sorte": "Vege",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_margherita_839291_792x0.webp"
+    },
+    {
+        "id": 2,
+        "name": "Farmhouse",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, szynka, pieczarki, cebula",
+        "price": 36.90,
+        "sorte": "",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_farmhouse_794618_792x0.webp"
+    },
+    {
+        "id": 3,
+        "name": "Pepperoni",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, podwójna mozzarella, podwójna kiełbasa pepperoni",
+        "price": 36.90,
+        "sorte": "Bestseller",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_pepperoni_865727_792x0.webp"
+    },
+    {
+        "id": 4,
+        "name": "Vesuvio",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, podwójna mozzarella, szynka",
+        "price": 36.90,
+        "sorte": "New",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_vesuvio_794448.webp"
+    },
+    {
+        "id": 5,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 6,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 7,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 8,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 9,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 10,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 11,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    }
+]
