@@ -42,9 +42,7 @@ function Basket(props) {
 
                         <button className="del outline" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
-                            
-                        }}>x
-                        </button>
+                        }}>x</button>
                     </li>)
             )
         }

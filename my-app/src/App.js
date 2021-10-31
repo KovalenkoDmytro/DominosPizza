@@ -13,8 +13,6 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
 
-  // let [countProducts, setCountProducts] = useState(0);
-
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -23,12 +21,6 @@ function App() {
       const products = localStorage.getItem("products") || [];
       setTotalPrice(JSON.parse(products))
     }
-
-
-    // setCountProducts(
-    //   JSON.parse(localStorage.getItem("products")).length
-    // )
-
   }, [])
 
 
@@ -42,8 +34,6 @@ function App() {
   }, [totalPrice])
 
 
-  // useEffect(() => {
-  // }, [countProducts])
 
   function crossOfPrice() {
     if (salePrice.length > 0) {
@@ -77,12 +67,10 @@ function App() {
    
       setTotalPrice([...totalPrice, product])
   }
-
+  // del product from basket 
   function delProductFromBasket(delProduct) {
-    console.log(totalPrice);
     let newProducts = totalPrice.filter(elem => elem.name.toUpperCase() !== delProduct.toUpperCase());
     setTotalPrice(newProducts)
-
   }
 
   // sum price
@@ -100,8 +88,8 @@ function App() {
     let count = 0
     let countPizzas = 0
     totalPrice.forEach(element => {
-      count += element.price;
-      countPizzas += 1;
+      count += element.price * element.count;
+      countPizzas += element.count;
     });
 
     let newPrice = count - (count / 100) * saleValue;

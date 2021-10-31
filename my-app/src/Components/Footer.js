@@ -19,7 +19,7 @@ function Footer() {
             <footer>
                 <div className="footer__links --first">
                     <div className="wrapper__navigation">
-                        <div className="logo"><img class="logo" src="https://www.dominospizza.pl/getmedia/79f93de9-efbb-4c66-b3e6-191159e89dd0/dominos_logo.svg" alt="dominospizza" height='33' width='150'/></div>
+                        <div className="logo"><img className="logo" src="https://www.dominospizza.pl/getmedia/79f93de9-efbb-4c66-b3e6-191159e89dd0/dominos_logo.svg" alt="dominospizza" height='33' width='150'/></div>
                         <div className="footer__navigation"></div>
                     </div>
                     <ul className="socialMedia">

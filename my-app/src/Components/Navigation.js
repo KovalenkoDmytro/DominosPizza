@@ -52,7 +52,7 @@ function Nav(props) {
         localStorage.setItem("productsFavorits", JSON.stringify(favorits))
     }, [favorits])
 
-
+    //del product from favorits 
     function delProduct(delProduct) {
         let newProducts = favorits.filter(elem => elem.name !== delProduct);
         setFavorits(newProducts)

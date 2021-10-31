@@ -42,5 +42,59 @@
         "price": 39.90,
         "sorte": "Hot",
         "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 6,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 7,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 8,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 9,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 10,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+    },
+    {
+        "id": 11,
+        "name": "Diavola (American Hot)",
+        "favorits": false,
+        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "price": 39.90,
+        "sorte": "Hot",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
     }
 ]
