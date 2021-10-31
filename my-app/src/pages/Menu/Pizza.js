@@ -172,7 +172,6 @@ function Pizza() {
                                     paginate(number);
                                     console.log(e.target);
 
-
                                 }}>{number}</button>
                             </li>
                         ))
