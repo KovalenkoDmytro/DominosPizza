@@ -28,6 +28,8 @@ function Pizza() {
     const btnNext = React.createRef();
     const btnPrev = React.createRef();
 
+    const btnsPag = React.createRef();
+
     useEffect(() => {
         if(currentPage === 1){
             btnPrev.current.setAttribute('disabled', 'disabled');
@@ -39,7 +41,7 @@ function Pizza() {
         }else{btnNext.current.removeAttribute('disabled')} 
     }, [currentPage])
 
-
+    
 
     useEffect(() => {
         const getProducts = async () => {
@@ -135,7 +137,7 @@ function Pizza() {
                     }
                 </div>
                 <div className="pagination__bottom">
-                    <div className="pagination">
+                    <div className="pagination" ref={btnsPag}>
 
                         {   
                             pageNumbers.map((number, index) => (
