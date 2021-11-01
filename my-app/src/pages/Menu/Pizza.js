@@ -17,30 +17,38 @@ import Vege from '../../fonts/icons/vegan.svg';
 
 
 function Pizza() {
-
-
-    let addPrice = useContext(Context);
-    let addFavorit = useContext(ContextFavorit);
-
+    const addPrice = useContext(Context);
+    const addFavorit = useContext(ContextFavorit);
 
     const [products, setProducts] = useState([]);
-    // const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(3);
+    const [lastPage, setLastPage] = useState();
+
+    const btnNext = React.createRef();
+    const btnPrev = React.createRef();
+
+    useEffect(() => {
+        if(currentPage === 1){
+            btnPrev.current.setAttribute('disabled', 'disabled');
+        }else{btnPrev.current.removeAttribute('disabled')} 
+       
+
+        if(currentPage === 6){
+            btnNext.current.setAttribute('disabled', 'disabled');
+        }else{btnNext.current.removeAttribute('disabled')} 
+    }, [currentPage])
 
 
 
     useEffect(() => {
         const getProducts = async () => {
-            // setLoading(true);
-            // const respons = await axios.get('https://restcountries.com/v3.1/all');
-            // const respons = await axios.get('http://localhost/back/back.php')
-
-            const respons = await fetch("http://localhost/back/back.php")
+           
+            await fetch("http://localhost/back/back.php")
                 .then(data => data.json())
                 .then(resp => {
                     setProducts(resp);
-                    // setLoading(false);
+            
                 }
                 );
         }
@@ -53,62 +61,25 @@ function Pizza() {
     const currentProduct = products.slice(firstProductIndex, lastProductIndex)
 
 
-    // let card = pizza.map(function (elem) {
-    //     return (
-    //         <div className="card" key={elem.id} data-id={elem.id}>
-    //             <div className="addToFavorit" onClick={(e) => {
-    //                 let productFavorit = {
-    //                     name: e.target.parentElement.nextElementSibling.nextElementSibling.firstChild.innerText,
-    //                     img: e.target.parentElement.nextSibling.src,
-    //                     description: e.target.parentElement.parentElement.children[4].innerText,
-    //                     price: e.target.parentElement.nextElementSibling.nextElementSibling.lastChild.innerText,
-    //                     classActive: true,
-    //                     id: e.target.closest('.card').attributes['data-id'].value,
-    //                 }
-    //                 addFavorit(productFavorit)
-    //                 e.target.parentElement.classList.toggle('Active');
-    //                 alert('produkt zostal dodany do ulubionych')
-    //             }}>
-    //                 <img className="heart" src={heart} alt={heart} />
-    //                 <img className="heartHover" src={heartHover} alt={heartHover} />
-    //             </div>
-    //             <img className='product__icon' alt={elem.name} src={elem.img} width="396" height="396" />
-    //             <div className="product__title__wrapper">
-    //                 <span className='product__title'>{elem.name}</span>
-    //                 <span className='product__price'>{elem.price + ' zł'}</span>
-    //             </div>
-    //             <div className="infoTag">
-    //                 {elem.sorte === "Bestseller" ? <img className="tagIcon" src={Bestseller} alt='Bestseller' width='25px' height='25px' /> : ""}
-    //                 {elem.sorte === "New" ? <img className="tagIcon" src={New} alt='New' width='25px' height='25px' /> : ""}
-    //                 {elem.sorte === "Hot" ? <img className="tagIcon" src={Hot} alt='Hot' width='25px' height='25px' /> : ""}
-    //                 {elem.sorte === "Vege" ? <img className="tagIcon" src={Vege} alt='Vege' width='25px' height='25px' /> : ""}
-    //                 <div className="tagIcon">{elem.sorte}</div>
-    //             </div>
-    //             <p className='product__logdescription'>{elem.logdescription}</p>
-    //             <button className='outline' onClick={() => {
-    //                 addPrice[0](elem.name, elem.img, elem.price, elem.logdescription, elem.sorte, 1);
-    //                 alert('produkt zostal dodany do koszyka')
 
-    //             }}>+add to basket</button>
-    //         </div>
-    //     )
-    // });
-
-
-    // create paginationButtoms 
     const pageNumbers = []
    
-
-
-    for (let index = 1; index <= Math.ceil(products.length / productsPerPage); index++) {
-        pageNumbers.push(index)
+    function getPages(){
+        for (let index = 1; index <= Math.ceil(products.length / productsPerPage); index++) {
+            pageNumbers.push(index)
+           
+        }
+    
     }
+    getPages()
+    
+  
 
     const paginate = pageNumber => setCurrentPage(pageNumber)
-    const nextPage = () => { setCurrentPage(currentPage => Math.min(currentPage + 1, pageNumbers.length))  }
+    const nextPage = () => { setCurrentPage(currentPage => Math.min(currentPage + 1, pageNumbers.length)) }
     const prevPage = () => { setCurrentPage(currentPage => Math.max(currentPage - 1, 1)) }
 
-
+ 
 
     return (
         <>
@@ -118,7 +89,7 @@ function Pizza() {
                     <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/menuBanners/mobile/600x240-pizza1.jpg" alt="pizza" width="1200" height="300" />
                     <h1>Pizza</h1>
                 </div>
-                {/* <div className="cards">{pizza.length>=10 ? console.log('www') :card}</div> */}
+              
 
                 <div className="cards">
                     {currentProduct.map(function (elem) {
@@ -163,23 +134,62 @@ function Pizza() {
                     })
                     }
                 </div>
+                <div className="pagination__bottom">
+                    <div className="pagination">
 
-                <ul className="pagination">
-                    {
-                        pageNumbers.map(number => (
-                            <li className="pagination_item" key={number}>
-                                <button onClick={(e) => {
-                                    paginate(number);
-                                    console.log(e.target);
+                        {   
+                            pageNumbers.map((number, index) => (
+                                <button className="inactive" key={number}
+                                    onClick={(e) => {
 
-                                }}>{number}</button>
-                            </li>
-                        ))
-                    }
+                                      
 
-                </ul>
-                <button onClick={() => { prevPage() }}>prev</button>
-                <button onClick={() => { nextPage() }}>next</button>
+                                        paginate(number);
+                                        Array.from(e.target.parentElement.children).forEach(element => {
+                                            if (element.classList.contains('active')) {
+                                                element.classList.remove('active');
+                                                element.classList.add('inactive');
+                                            }                                       
+                                        });
+                                        e.target.classList.remove('inactive');
+                                        e.target.classList.add('active');
+
+                                    }}>
+                                    {number}</button>
+                            ))
+
+                        }
+                    </div>
+                    <div className="paginaion_buttons">
+
+
+                        <button ref={btnPrev} onClick={(e) => {
+                            prevPage();
+                            Array.from(e.target.parentElement.previousElementSibling.children).forEach(element => {
+                                if (element.classList.contains('active')) {
+                                    element.classList.remove('active');
+                                    element.classList.add('inactive');
+                                }    
+                            });
+                            e.target.parentElement.previousElementSibling.children[currentPage-2].classList.add('active')
+                        }}>prev</button>
+                        <button ref={btnNext} onClick={(e) => {
+                            nextPage();
+                            Array.from(e.target.parentElement.previousElementSibling.children).forEach(element => {
+                                if (element.classList.contains('active')) {
+                                    element.classList.remove('active');
+                                    element.classList.add('inactive');
+                                }    
+                            });
+                            e.target.parentElement.previousElementSibling.children[currentPage].classList.add('active')
+                        }
+
+                        }>next</button>
+                    </div>
+
+                </div>
+
+
 
 
             </div>

@@ -110,8 +110,23 @@
 
         }
     }
-    .pagination{
+    .pagination__bottom{
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+        .pagination{
+            display: flex;
+            justify-content: center;
+            .active{
+                border: 1px solid red;
+            }
+        }
+        .paginaion_buttons{
+            display: flex;
+            column-gap: 2rem;
+        }
     }
+    
 }
