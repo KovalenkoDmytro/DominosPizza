@@ -1,5 +1,5 @@
 import React from 'react';
-// import pizza from '../../data/pizza.json'
+import pizza from '../../data/pizza.json'
 import '../Style/Pizza.scss'
 
 import heart from '../../fonts/icons/heart.svg';
@@ -23,7 +23,7 @@ function Pizza() {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(3);
-    const [lastPage, setLastPage] = useState();
+    const [lastPage, setLastPage] = useState(0);
 
     const btnNext = React.createRef();
     const btnPrev = React.createRef();
@@ -31,30 +31,30 @@ function Pizza() {
     const btnsPag = React.createRef();
 
     useEffect(() => {
-        if(currentPage === 1){
+        if (currentPage === 1) {
             btnPrev.current.setAttribute('disabled', 'disabled');
-        }else{btnPrev.current.removeAttribute('disabled')} 
-       
+        } else { btnPrev.current.removeAttribute('disabled') }
 
-        if(currentPage === 6){
+
+        if (currentPage === lastPage) {
             btnNext.current.setAttribute('disabled', 'disabled');
-        }else{btnNext.current.removeAttribute('disabled')} 
+        } else { btnNext.current.removeAttribute('disabled') }
     }, [currentPage])
-
-    
 
     useEffect(() => {
         const getProducts = async () => {
-           
-            await fetch("http://localhost/back/back.php")
-                .then(data => data.json())
-                .then(resp => {
-                    setProducts(resp);
-            
-                }
-                );
+
+            // await fetch("http://localhost/back/back.php")
+            //     .then(data => data.json())
+            //     .then(resp => {
+            //         setProducts(resp);
+
+            //     }
+            //     );
+            setProducts(pizza);
         }
         getProducts()
+
     }, [])
 
 
@@ -65,34 +65,35 @@ function Pizza() {
 
 
     const pageNumbers = []
-   
-    function getPages(){
+
+    function getPages() {
         for (let index = 1; index <= Math.ceil(products.length / productsPerPage); index++) {
             pageNumbers.push(index)
-           
+
         }
-    
+
     }
     getPages()
-    
-  
 
     const paginate = pageNumber => setCurrentPage(pageNumber)
-    const nextPage = () => { setCurrentPage(currentPage => Math.min(currentPage + 1, pageNumbers.length)) }
-    const prevPage = () => { setCurrentPage(currentPage => Math.max(currentPage - 1, 1)) }
+    const nextPage = () => {
+        setCurrentPage(currentPage => Math.min(currentPage + 1, pageNumbers.length));
+        setLastPage(pageNumbers.length)
+    }
+    const prevPage = () => {
+        setCurrentPage(currentPage => Math.max(currentPage - 1, 1));
+        setLastPage(pageNumbers.length)
+    }
 
- 
+
 
     return (
         <>
-
             <div className="pizza__page">
                 <div className="banner">
                     <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/menuBanners/mobile/600x240-pizza1.jpg" alt="pizza" width="1200" height="300" />
                     <h1>Pizza</h1>
                 </div>
-              
-
                 <div className="cards">
                     {currentProduct.map(function (elem) {
                         return (
@@ -137,21 +138,22 @@ function Pizza() {
                     }
                 </div>
                 <div className="pagination__bottom">
-                    <div className="pagination" ref={btnsPag}>
 
-                        {   
+                    <div className="pagination" ref={btnsPag}>
+                        {
+
                             pageNumbers.map((number, index) => (
                                 <button className="inactive" key={number}
                                     onClick={(e) => {
 
-                                      
+
 
                                         paginate(number);
                                         Array.from(e.target.parentElement.children).forEach(element => {
                                             if (element.classList.contains('active')) {
                                                 element.classList.remove('active');
                                                 element.classList.add('inactive');
-                                            }                                       
+                                            }
                                         });
                                         e.target.classList.remove('inactive');
                                         e.target.classList.add('active');
@@ -171,9 +173,11 @@ function Pizza() {
                                 if (element.classList.contains('active')) {
                                     element.classList.remove('active');
                                     element.classList.add('inactive');
-                                }    
+                                }
                             });
-                            e.target.parentElement.previousElementSibling.children[currentPage-2].classList.add('active')
+                            console.log(e.target.parentElement.previousElementSibling.children);
+                            console.log(currentPage);
+                            e.target.parentElement.previousElementSibling.children[currentPage - 2].classList.add('active')
                         }}>prev</button>
                         <button ref={btnNext} onClick={(e) => {
                             nextPage();
@@ -181,7 +185,7 @@ function Pizza() {
                                 if (element.classList.contains('active')) {
                                     element.classList.remove('active');
                                     element.classList.add('inactive');
-                                }    
+                                }
                             });
                             e.target.parentElement.previousElementSibling.children[currentPage].classList.add('active')
                         }

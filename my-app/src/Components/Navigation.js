@@ -70,6 +70,7 @@ function Nav(props) {
                         {navItems}
                     </nav>
                     <Switch>
+                         <Route exact path="/" component={Main} />
                         <Route path="/Strona glówna" component={Main} />
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/promocje" component={Sale} />
