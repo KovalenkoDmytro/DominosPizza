@@ -56,7 +56,10 @@ function Pizza() {
         getProducts()
 
     }, [])
-
+   
+    // useEffect(() => {
+    //     console.log(document.querySelectorAll('.pagination'))
+    // },[])
 
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;
@@ -146,8 +149,6 @@ function Pizza() {
                                 <button className="inactive" key={number}
                                     onClick={(e) => {
 
-
-
                                         paginate(number);
                                         Array.from(e.target.parentElement.children).forEach(element => {
                                             if (element.classList.contains('active')) {
@@ -164,9 +165,8 @@ function Pizza() {
 
                         }
                     </div>
+                   
                     <div className="paginaion_buttons">
-
-
                         <button ref={btnPrev} onClick={(e) => {
                             prevPage();
                             Array.from(e.target.parentElement.previousElementSibling.children).forEach(element => {
@@ -175,8 +175,6 @@ function Pizza() {
                                     element.classList.add('inactive');
                                 }
                             });
-                            console.log(e.target.parentElement.previousElementSibling.children);
-                            console.log(currentPage);
                             e.target.parentElement.previousElementSibling.children[currentPage - 2].classList.add('active')
                         }}>prev</button>
                         <button ref={btnNext} onClick={(e) => {
@@ -194,10 +192,6 @@ function Pizza() {
                     </div>
 
                 </div>
-
-
-
-
             </div>
 
         </>
