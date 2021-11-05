@@ -57,9 +57,6 @@ function Pizza() {
 
     }, [])
    
-    // useEffect(() => {
-    //     console.log(document.querySelectorAll('.pagination'))
-    // },[])
 
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;

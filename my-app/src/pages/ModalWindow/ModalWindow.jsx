@@ -1,4 +1,6 @@
-function ModalWindow(params) {
+import'./ModalWindow.scss' ;
+
+function ModalWindow(props) {
 
     function deliveryFirstWindow(params) {
         return (
@@ -56,11 +58,20 @@ function ModalWindow(params) {
         )
     }
 
+   
+
     return (
         <>
             <div className="modal-window">
-                <div className="window_top"> <span>Zamów online</span> <button>X</button> </div>
-
+                <div className="window_top"> 
+                    <span>Zamów online</span> 
+                    <button onClick={(e)=>{
+                        props.setModalWindow();
+                        e.target.parentElement.parentElement.classList.toggle('active')
+                    }} >X</button> 
+                </div>
+                { props.modalWindows.delivery?deliveryFirstWindow():null}
+                { props.modalWindows.takeaway?takeaway():null}
             </div>
         </>
     )

@@ -2,7 +2,7 @@ import '../Fonts.scss';
 import './Style/Main.scss';
 import React, { useState, useEffect } from 'react';
 
-function Main() {
+function Main(props) {
     const [lableValidatin, setDataValidation] = useState('')
     const [inputValidatin, setInputValidation] = useState(false)
     const [checkValidatin, setCheckValidation] = useState(false)
@@ -38,6 +38,7 @@ function Main() {
         setCheckValidation(e.target.checked);
     }
 
+    
 
     return (
         <>
@@ -54,12 +55,16 @@ function Main() {
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="" />
                                 <span>Gotowe już w 30 minut</span>
-                                <button className="solid">Zamów z dostawą</button>
+                                <button className="solid" onClick={()=>{
+                                    props.setModalWindow("delivery")
+                                }}>Zamów z dostawą</button>
                             </div>
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="" />
                                 <span>Gotowe już w 15 minut</span>
-                                <button className="solid"> Zamów z odbiorem</button>
+                                <button className="solid" onClick={()=>{
+                                    props.setModalWindow("takeaway")
+                                }}> Zamów z odbiorem</button>
                             </div>
 
                         </div>
@@ -74,16 +79,9 @@ function Main() {
                         <h2 className="newsletter__title">Odbierz rabat -50% na drugą pizzę </h2>
                         <p className="newsletter__subtittle">Zapisz się do naszego newslettera i otrzymuj najlepsze promocje</p>
 
-
-
-
-
                         <form action="">
-                            {/* <div className="email" onChange={ inputValidate} > */}
                             <input type="email" name="email" id="email" placeholder="enter you e-mail" onChange={inputValidate} />
                             <label htmlFor="email">{lableValidatin}</label>
-                            {/* </div> */}
-
                             <div className="privatPolitic">
                                 <input type="checkbox" name="" id="" onChange={validateCheck} />
                                 <p>Wyrażam zgodę na kontaktowanie się ze mną, w tym na przesyłanie informacji handlowych i marketingowych o Pizza Domino’s od DP Polska S.A. z siedzibą w Warszawie za pośrednictwem środków komunikacji elektronicznej (e-mail), jak również wyrażam zgodę na przetwarzanie w tym celu danych osobowych (adresu e-mail) przez DP Polska S.A. z siedzibą w Warszawie. Podstawą prawną przetwarzania danych jest art. 6 ust. 1 lit. a) RODO. Przysługuje mi prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem.</p>

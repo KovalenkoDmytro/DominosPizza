@@ -12,7 +12,8 @@ function App() {
 
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
-
+  let [showModalWindow, setShowModalWindowDelivery] = useState(false);
+  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,});
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -27,13 +28,22 @@ function App() {
   useEffect(() => {
     crossOfPrice();
   }, [salePrice])
+  
+  
+  useEffect(() => {
+    if(showModalWindow){
+      document.querySelector('.modal-window').classList.add('active');
+    }
+  }, [showModalWindow])
 
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(totalPrice))
   }, [totalPrice])
 
-
+  useEffect(() => {
+   
+  }, [modalWindows])
 
   function crossOfPrice() {
     if (salePrice.length > 0) {
@@ -82,7 +92,6 @@ function App() {
     return count.toFixed(2)
   }
 
-
   // add sale-price and check coupon
   function changeTotalPrice(saleValue, Pizzas, article) {
     let count = 0
@@ -112,13 +121,37 @@ function App() {
     } else (alert(`żeby zrealizować kupon należy dodać do koszyka jeszcie ${Pizzas - countPizzas} pizzy`))
   }
 
+//show DIALOG window DELIVERY
+  function setshowModalWindow(windowItem){
+    setShowModalWindowDelivery(!showModalWindow)
+    if(windowItem==="takeaway"){
+      setmodalWindows(
+        {takeaway: true,
+          delivery: false,
+        }
+      )
+    }else if(windowItem==="delivery"){
+      setmodalWindows(
+        {takeaway: false,
+          delivery: true,
+        }
+      )
+    }else(
+      setmodalWindows(
+        {takeaway: false,
+          delivery: false,
+        }
+      )
+    )
+ 
+  }
 
   return (
     < Context.Provider value={[addPrice, changeTotalPrice]} >
-      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  { /* countProducts={countProducts} */}
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} />
+      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} />
       <Footer />
-      <ModalWindow/>
+      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows}/>
     </Context.Provider>
   );
 }

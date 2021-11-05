@@ -4,12 +4,11 @@ import Main from '../pages/Main';
 import Basket from "../pages/Basket/Basket";
 import Sale from "../pages/Sale/Sale";
 import Favorits from "../pages/Favorits/Favorits";
-
 import Pizza from "../pages/Menu/Pizza";
+
 import './Styles/Navigation.scss';
 import { useState, useEffect } from "react";
 import { ContextFavorit } from "../Context";
-
 
 let navArray = ['Strona glówna', 'koszyk', 'ulubione', 'promocje', 'pizza'];
 
@@ -17,7 +16,7 @@ function Nav(props) {
     let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
     let products = props.products;
     let funDelProduct = props.delProduct;
-
+    let funShowModalWindow = props.setModalWindow;
 
     let [favorits, setFavorits] = useState([]);
 
@@ -70,8 +69,8 @@ function Nav(props) {
                         {navItems}
                     </nav>
                     <Switch>
-                         <Route exact path="/" component={Main} />
-                        <Route path="/Strona glówna" component={Main} />
+                         <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
+                        <Route path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/promocje" component={Sale} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
