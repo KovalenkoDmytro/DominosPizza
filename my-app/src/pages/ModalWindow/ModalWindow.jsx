@@ -4,16 +4,16 @@ function ModalWindow(props) {
 
     function deliveryFirstWindow(params) {
         return (
-            <form>
+            <form className="deliveryFirstWindow">
                 <label htmlFor="city">Miasto</label>
-                <input type="text" id="city" />
+                <input className="input_solid" type="text" id="city" />
                 <label htmlFor="street">Ulica</label>
-                <input type="text" id="street" />
+                <input className="input_solid" type="text" id="street" />
                 <label htmlFor="">Numer domu</label>
-                <input type="text" id="build" />
+                <input className="input_solid" type="text" id="build" />
                 <label htmlFor="apartment">Numer mieszkania</label>
-                <input type="text" id="apartment" />
-                <button>Dalej</button>
+                <input className="input_solid" type="text" id="apartment" />
+                <button className="solid">Dalej</button>
                 {/* собираем в обект данніе и передаем в следуюющее окно  */}
             </form>
         )
@@ -65,7 +65,7 @@ function ModalWindow(props) {
             <div className="modal-window">
                 <div className="window_top"> 
                     <span>Zamów online</span> 
-                    <button onClick={(e)=>{
+                    <button className="solid" onClick={(e)=>{
                         props.setModalWindow();
                         e.target.parentElement.parentElement.classList.toggle('active')
                     }} >X</button> 

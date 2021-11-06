@@ -1,15 +1,32 @@
 .modal-window{
     width: 50vw;
-    height: 50vh;
-    background-color: green;
+    background-color: #ffffff;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
     opacity: 0;
-    
+    padding: 2rem;
     transition: all .5s;
+    border: 2px solid;
+    border-radius: 1rem;
+    .window_top{
+      font-size: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span{
+         display: block;
+         margin: 0 auto;
+      }
+    }
+    .deliveryFirstWindow{
+      display: flex;
+      flex-direction: column;
+   }
 }
 .active{
     display: block;

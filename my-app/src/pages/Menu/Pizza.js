@@ -98,21 +98,20 @@ function Pizza() {
                     {currentProduct.map(function (elem) {
                         return (
                             <div className="card" key={elem.id} data-id={elem.id}>
-                                <div className="addToFavorit" onClick={(e) => {
+                                <div className="addToFavorit icon icon__heart" onClick={(e) => {
                                     let productFavorit = {
-                                        name: e.target.parentElement.nextElementSibling.nextElementSibling.firstChild.innerText,
-                                        img: e.target.parentElement.nextSibling.src,
-                                        description: e.target.parentElement.parentElement.children[4].innerText,
-                                        price: e.target.parentElement.nextElementSibling.nextElementSibling.lastChild.innerText,
+                                        name: e.target.parentElement.querySelector('.product__title__wrapper .product__title').textContent,
+                                        img: e.target.parentElement.querySelector('img.product__icon').currentSrc,
+                                        description: e.target.parentElement.querySelector('.product__logdescription').textContent,
+                                        price: e.target.parentElement.querySelector('.product__title__wrapper .product__price').textContent,
                                         classActive: true,
-                                        id: e.target.closest('.card').attributes['data-id'].value,
+                                        id: e.target.parentElement.getAttribute('data-id'),
                                     }
                                     addFavorit(productFavorit)
-                                    e.target.parentElement.classList.toggle('Active');
                                     alert('produkt zostal dodany do ulubionych')
                                 }}>
-                                    <img className="heart" src={heart} alt={heart} />
-                                    <img className="heartHover" src={heartHover} alt={heartHover} />
+
+                                
                                 </div>
                                 <img className='product__icon' alt={elem.name} src={elem.img} width="396" height="396" />
                                 <div className="product__title__wrapper">
@@ -143,7 +142,7 @@ function Pizza() {
                         {
 
                             pageNumbers.map((number, index) => (
-                                <button className="inactive" key={number}
+                                <button className="inactive solid" key={number}
                                     onClick={(e) => {
 
                                         paginate(number);
@@ -164,7 +163,7 @@ function Pizza() {
                     </div>
                    
                     <div className="paginaion_buttons">
-                        <button ref={btnPrev} onClick={(e) => {
+                        <button className="solid" ref={btnPrev} onClick={(e) => {
                             prevPage();
                             Array.from(e.target.parentElement.previousElementSibling.children).forEach(element => {
                                 if (element.classList.contains('active')) {
@@ -174,7 +173,7 @@ function Pizza() {
                             });
                             e.target.parentElement.previousElementSibling.children[currentPage - 2].classList.add('active')
                         }}>prev</button>
-                        <button ref={btnNext} onClick={(e) => {
+                        <button className="solid" ref={btnNext} onClick={(e) => {
                             nextPage();
                             Array.from(e.target.parentElement.previousElementSibling.children).forEach(element => {
                                 if (element.classList.contains('active')) {

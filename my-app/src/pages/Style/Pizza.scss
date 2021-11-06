@@ -119,8 +119,12 @@
         .pagination{
             display: flex;
             justify-content: center;
+            button{
+               margin: 0 .25rem;
+            }
             .active{
-                border: 1px solid red;
+               // border: 1px solid red;
+               background-color: #006491;
             }
         }
         .paginaion_buttons{
