@@ -74,7 +74,12 @@ function Nav(props) {
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/promocje" component={Sale} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
-                        <Route path="/pizza" component={Pizza} />
+                       
+                       
+                        <Route path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
+                       
+                       
+                        {/*<Route path="/pizza" component={Pizza}  favoritProduct={favorits}/>*/}
                     </Switch>
                 </Router>
             </ContextFavorit.Provider>

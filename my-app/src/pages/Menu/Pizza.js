@@ -14,7 +14,7 @@ import Vege from '../../fonts/icons/vegan.svg';
 // import axios from 'axios';
 
 
-function Pizza() {
+function Pizza(props) {
     const addPrice = useContext(Context);
     const addFavorit = useContext(ContextFavorit);
 
@@ -82,8 +82,8 @@ function Pizza() {
         setCurrentPage(currentPage => Math.max(currentPage - 1, 1));
         setLastPage(pageNumbers.length)
     }
-
-
+// add favorits product
+    console.log(props);
 
     return (
         <>
