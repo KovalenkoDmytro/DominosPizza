@@ -68,25 +68,6 @@ function Pizza(props) {
     ,[currentPage])
 
 
-    useEffect(() => {
-       console.log("lof");
-      //Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
-      //  let idProduct = element.dataset.id;
-      //   props.favoritProduct.forEach(elem => {
-      //     if(idProduct===elem.id){
-      //        element.firstChild.classList.add('active');
-      //     }
-      //   });
-      //})
-    
-      console.log(props.favoritProduct);
-
-      props.favoritProduct.forEach(elem => {console.log(elem)});
-
-   }
-
-    
-      ,[])
 
 
     const lastProductIndex = currentPage * productsPerPage;
@@ -141,8 +122,8 @@ function Pizza(props) {
                                         id: e.target.parentElement.getAttribute('data-id'),
                                     }
                                     addFavorit(productFavorit);
-                                    e.target.classList.add('active');
-                                    alert('produkt zostal dodany do ulubionych')
+                                    e.target.classList.toggle('active');
+                        
                                 }}>
 
                                 
@@ -165,6 +146,8 @@ function Pizza(props) {
                                     alert('produkt zostal dodany do koszyka')
 
                                 }}>+add to basket</button>
+
+                           
                             </div>
                         )
                     })
@@ -223,7 +206,15 @@ function Pizza(props) {
 
                 </div>
             </div>
-
+           { setTimeout(()=>{
+                Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
+                    let idProduct = element.dataset.id;
+                     props.favoritProduct.forEach(elem => {
+                       if(idProduct===elem.id){
+                          element.firstChild.classList.add('active');
+                       }
+                     });
+                  })},100) }            
         </>
     )
 }
