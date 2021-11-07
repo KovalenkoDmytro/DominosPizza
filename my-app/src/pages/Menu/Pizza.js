@@ -55,6 +55,39 @@ function Pizza(props) {
 
     }, [])
    
+    useEffect(() => {
+    Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
+      let idProduct = element.dataset.id;
+       props.favoritProduct.forEach(elem => {
+         if(idProduct===elem.id){
+            element.firstChild.classList.add('active');
+         }
+       });
+    })
+   }
+    ,[currentPage])
+
+
+    useEffect(() => {
+       console.log("lof");
+      //Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
+      //  let idProduct = element.dataset.id;
+      //   props.favoritProduct.forEach(elem => {
+      //     if(idProduct===elem.id){
+      //        element.firstChild.classList.add('active');
+      //     }
+      //   });
+      //})
+    
+      console.log(props.favoritProduct);
+
+      props.favoritProduct.forEach(elem => {console.log(elem)});
+
+   }
+
+    
+      ,[])
+
 
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;
@@ -83,7 +116,9 @@ function Pizza(props) {
         setLastPage(pageNumbers.length)
     }
 // add favorits product
-    console.log(props);
+    
+
+ 
 
     return (
         <>
