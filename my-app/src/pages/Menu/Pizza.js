@@ -2,8 +2,6 @@ import React from 'react';
 import pizza from '../../data/pizza.json'
 import '../Style/Pizza.scss'
 
-import heart from '../../fonts/icons/heart.svg';
-import heartHover from '../../fonts/icons/heart_hover.svg';
 
 import Context from '../../Context';
 import { ContextFavorit } from '../../Context';
@@ -107,7 +105,8 @@ function Pizza() {
                                         classActive: true,
                                         id: e.target.parentElement.getAttribute('data-id'),
                                     }
-                                    addFavorit(productFavorit)
+                                    addFavorit(productFavorit);
+                                    e.target.classList.add('active');
                                     alert('produkt zostal dodany do ulubionych')
                                 }}>
 

@@ -48,26 +48,17 @@
             position: relative;
             
             margin-bottom: 5rem;
+            .icon__heart:hover, .icon__heart.active{
+               &::before{
+                  content: '\E80C';
+                  color: #dd082b;
+               }
+            }
+            
             .addToFavorit{
                 position: absolute;
                 right: 0;
                 top: 0;
-                &.Active{
-                    img.heartHover{
-                        display: block;
-                    }
-                    .heart{
-                        display: none;
-                    } 
-                }
-                &:hover{
-                    .heart{
-                        display: none;
-                    }
-                    .heartHover{
-                        display: block;
-                    }  
-                }
                 img{
                     height: 2.5rem;
                     width: 2.5rem;
