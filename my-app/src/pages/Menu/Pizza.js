@@ -74,18 +74,6 @@ function Pizza(props) {
     const currentProduct = products.slice(firstProductIndex, lastProductIndex)
 
 
-
-    const pageNumbers = []
-
-    function getPages() {
-        for (let index = 1; index <= Math.ceil(products.length / productsPerPage); index++) {
-            pageNumbers.push(index)
-
-        }
-
-    }
-    getPages()
-
     const paginate = pageNumber => setCurrentPage(pageNumber)
     const nextPage = () => {
         setCurrentPage(currentPage => Math.min(currentPage + 1, pageNumbers.length));
@@ -98,7 +86,18 @@ function Pizza(props) {
 // add favorits product
     
 
+useEffect(() => {
+    document.querySelector('.pagination__bottom .pagination').children[0].classList.add('active');
 
+},[])
+
+let pageNumbers = [1]
+
+
+    for (let index = 2; index <= Math.ceil(products.length / productsPerPage); index++) {
+        pageNumbers.push(index)
+
+    }
 
     return (
         <>
@@ -155,9 +154,8 @@ function Pizza(props) {
                 <div className="pagination__bottom">
 
                     <div className="pagination" ref={btnsPag}>
-                        {
 
-                            pageNumbers.map((number, index) => (
+                        {pageNumbers.map((number, index) => (
                                 <button className="inactive solid" key={number}
                                     onClick={(e) => {
 
