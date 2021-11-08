@@ -20,7 +20,7 @@ function Pizza(props) {
 
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage, setProductsPerPage] = useState(3);
+    const [productsPerPage, setProductsPerPage] = useState(2);
     const [lastPage, setLastPage] = useState(0);
 
     const btnNext = React.createRef();
@@ -37,6 +37,7 @@ function Pizza(props) {
         if (currentPage === lastPage) {
             btnNext.current.setAttribute('disabled', 'disabled');
         } else { btnNext.current.removeAttribute('disabled') }
+
     }, [currentPage])
 
     useEffect(() => {
@@ -52,7 +53,7 @@ function Pizza(props) {
             setProducts(pizza);
         }
         getProducts()
-
+   
     }, [])
    
     useEffect(() => {
@@ -64,12 +65,10 @@ function Pizza(props) {
          }
        });
     })
-   }
-    ,[currentPage])
+   
+   },[currentPage])
 
-
-
-
+  
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;
     const currentProduct = products.slice(firstProductIndex, lastProductIndex)
@@ -99,7 +98,7 @@ function Pizza(props) {
 // add favorits product
     
 
- 
+
 
     return (
         <>
@@ -209,12 +208,14 @@ function Pizza(props) {
            { setTimeout(()=>{
                 Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
                     let idProduct = element.dataset.id;
-                     props.favoritProduct.forEach(elem => {
+                    props.favoritProduct.forEach(elem => {
                        if(idProduct===elem.id){
                           element.firstChild.classList.add('active');
                        }
-                     });
-                  })},100) }            
+                    });
+                });
+            },100) }
+                     
         </>
     )
 }
