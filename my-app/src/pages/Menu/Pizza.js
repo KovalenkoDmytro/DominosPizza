@@ -20,7 +20,7 @@ function Pizza(props) {
 
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage, setProductsPerPage] = useState(2);
+    const [productsPerPage, setProductsPerPage] = useState(9);
     const [lastPage, setLastPage] = useState(0);
 
     const btnNext = React.createRef();
@@ -98,6 +98,8 @@ let pageNumbers = [1]
         pageNumbers.push(index)
 
     }
+
+ 
 
     return (
         <>

@@ -13,7 +13,7 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
-  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,});
+  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false});
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -123,23 +123,34 @@ function App() {
 
 //show DIALOG window DELIVERY
   function setshowModalWindow(windowItem){
-    setShowModalWindowDelivery(!showModalWindow)
+    setShowModalWindowDelivery(true)
     if(windowItem==="takeaway"){
       setmodalWindows(
         {takeaway: true,
           delivery: false,
+          deliverySecondWindow: false
         }
       )
     }else if(windowItem==="delivery"){
       setmodalWindows(
         {takeaway: false,
           delivery: true,
+          deliverySecondWindow: false
         }
       )
-    }else(
+    }else if(windowItem==="deliverySecondWindow"){
       setmodalWindows(
         {takeaway: false,
           delivery: false,
+          deliverySecondWindow: true
+        }
+      )
+    }
+    else(
+      setmodalWindows(
+        {takeaway: false,
+          delivery: false,
+          deliverySecondWindow: false
         }
       )
     )
@@ -151,7 +162,7 @@ function App() {
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  
       <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} />
       <Footer />
-      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows}/>
+      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery}/>
     </Context.Provider>
   );
 }
