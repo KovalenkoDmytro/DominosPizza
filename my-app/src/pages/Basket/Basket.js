@@ -54,8 +54,10 @@ function Basket(props) {
             <div className="basket_page">
                 <h1 className="big_lable">Koszyk</h1>
                 {showContent()}
+               <p> {JSON.stringify(props.products)}</p>
+               {props.products.length > 0? <button>Podtwierdzam</button> : null}
             </div>
         </>
     )
 }
-export default Basket;
+export default Basket;  

@@ -1,5 +1,6 @@
 import'./ModalWindow.scss' ;
 import React, { useState} from 'react';
+import { Link} from 'react-router-dom';
 
 
 
@@ -301,16 +302,15 @@ function ModalWindow(props) {
                     <option value="lokal3">lokal3</option>
                     <option value="lokal4">lokal4</option>
                 </select>
-                <button onClick={(e)=>{
-                        e.target.closest('.modal-window').classList.toggle('active');
-                        props.setModalWindow();
-                        props.setshowModalWindowDelivery(false);
-                    }
-                }>Potwierdzić</button>
-                <button onClick={()=>{
-                    console.log(selectStore.current.value)
-                    props.setStore(selectStore.current.value)
-                }}></button>
+                <Link to="/pizza">
+                    <button onClick={(e)=>{
+                            e.target.closest('.modal-window').classList.toggle('active');
+                            props.setModalWindow();
+                            props.setshowModalWindowDelivery(false);
+                            props.setStore(selectStore.current.value);
+                        }
+                    }>Potwierdzić</button>
+                </Link>
             </>
 
         )
@@ -333,7 +333,8 @@ function ModalWindow(props) {
                 { props.modalWindows.takeaway?takeaway():null}
                 { props.modalWindows.deliverySecondWindow?deliverySecondWindow():null}
 
-
+                
+                
                
             </div>
            

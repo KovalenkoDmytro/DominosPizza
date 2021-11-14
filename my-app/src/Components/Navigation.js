@@ -64,7 +64,7 @@ function Nav(props) {
     return (
         <>
             <ContextFavorit.Provider value={addFavorit}>
-                <Router>
+               
                     <nav className="navigation">
                         {navItems}
                     </nav>
@@ -73,15 +73,10 @@ function Nav(props) {
                         <Route path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/promocje" component={Sale} />
-                        <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
-                       
-                       
-                        <Route path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                       
-                       
-                        {/*<Route path="/pizza" component={Pizza}  favoritProduct={favorits}/>*/}
+                        <Route  path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
+                        <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
                     </Switch>
-                </Router>
+            
             </ContextFavorit.Provider>
         </>
     )
