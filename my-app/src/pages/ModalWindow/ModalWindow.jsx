@@ -1,5 +1,5 @@
 import'./ModalWindow.scss' ;
-import { useState } from 'react';
+import React, { useState} from 'react';
 
 
 
@@ -11,13 +11,15 @@ function ModalWindow(props) {
             buld: false,
             apart: true,
         }
-        )
+        );
     const [adress, setAdress] = useState({
         city: '',
         street: '',
         buldNumb: '',
         apart: '',
-    })
+    });
+
+    const selectStore = React.createRef();
 
     function deliveryFirstWindow() {
         return (
@@ -206,19 +208,14 @@ function ModalWindow(props) {
                 }>Dalej</button>
             </form>
         )
-    }
+    };
 
     function deliverySecondWindow() {
 
         function getDeliveryTime(){
-            // const deliveryTime = new Date(new Date().setMinutes(new Date().getMinutes()+10));
-            
-            
-           
             let nowTime = new Date()
             nowTime.setMinutes(nowTime.getMinutes()+20)
 
-            
             let hours = nowTime.getHours()
             let minutes = nowTime.getMinutes()
             if (minutes < 10){
@@ -289,15 +286,33 @@ function ModalWindow(props) {
                 </div>
             </>
         )
-    }
+    };
+
+    
+
 
     function takeaway(params) {
         return(
-            <>
-                <select name="citys" id="citys">
-                    <option value="">lokal1</option>
+            <>  
+                <span >Wybierz najbliższy lokal Dominos:</span>
+                <select name="citys" id="citys" ref={selectStore}>
+                    <option value="lokal1">lokal1</option>
+                    <option value="lokal2">lokal2</option>
+                    <option value="lokal3">lokal3</option>
+                    <option value="lokal4">lokal4</option>
                 </select>
+                <button onClick={(e)=>{
+                        e.target.closest('.modal-window').classList.toggle('active');
+                        props.setModalWindow();
+                        props.setshowModalWindowDelivery(false);
+                    }
+                }>Potwierdzić</button>
+                <button onClick={()=>{
+                    console.log(selectStore.current.value)
+                    props.setStore(selectStore.current.value)
+                }}></button>
             </>
+
         )
     }
 
@@ -309,11 +324,10 @@ function ModalWindow(props) {
                 <div className="window_top"> 
                     <span>Zamów online</span> 
                     <button className="solid" onClick={(e)=>{
-                        
                         e.target.closest('.modal-window').classList.toggle('active')
                         props.setModalWindow();
                         props.setshowModalWindowDelivery(false);
-                    }} >X</button> 
+                    }}>X</button> 
                 </div>
                 { props.modalWindows.delivery?deliveryFirstWindow():null}
                 { props.modalWindows.takeaway?takeaway():null}

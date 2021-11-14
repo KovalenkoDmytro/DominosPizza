@@ -14,6 +14,7 @@ function App() {
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
   let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false});
+  let [choosedStore, setStore] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -22,34 +23,34 @@ function App() {
       const products = localStorage.getItem("products") || [];
       setTotalPrice(JSON.parse(products))
     }
-  }, [])
-
+  }, []);
 
   useEffect(() => {
     crossOfPrice();
-  }, [salePrice])
-  
+  }, [salePrice]);
   
   useEffect(() => {
     if(showModalWindow){
       document.querySelector('.modal-window').classList.add('active');
     }
-  }, [showModalWindow])
-
+  }, [showModalWindow]);
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(totalPrice))
-  }, [totalPrice])
+  }, [totalPrice]);
 
   useEffect(() => {
    
-  }, [modalWindows])
+  }, [modalWindows]);
+
+  useEffect(()=>{
+  },[choosedStore]);
 
   function crossOfPrice() {
     if (salePrice.length > 0) {
       document.querySelector('.total').classList.add('__cossOff');
     } else return
-  }
+  };
 
 //add product to basket
   function addPrice(name, url, price, description, sort,count) {
@@ -76,12 +77,12 @@ function App() {
     });
    
       setTotalPrice([...totalPrice, product])
-  }
+  };
   // del product from basket 
   function delProductFromBasket(delProduct) {
     let newProducts = totalPrice.filter(elem => elem.name.toUpperCase() !== delProduct.toUpperCase());
     setTotalPrice(newProducts)
-  }
+  };
 
   // sum price
   function returnTotalprice(totalPrice) {
@@ -90,7 +91,7 @@ function App() {
       count +=  (element.count * element.price)
     });
     return count.toFixed(2)
-  }
+  };
 
   // add sale-price and check coupon
   function changeTotalPrice(saleValue, Pizzas, article) {
@@ -119,7 +120,7 @@ function App() {
         });
       } else { setSalePrice([SaleCoupon]) }
     } else (alert(`żeby zrealizować kupon należy dodać do koszyka jeszcie ${Pizzas - countPizzas} pizzy`))
-  }
+  };
 
 //show DIALOG window DELIVERY
   function setshowModalWindow(windowItem){
@@ -155,14 +156,14 @@ function App() {
       )
     )
  
-  }
+  };
 
   return (
     < Context.Provider value={[addPrice, changeTotalPrice]} >
-      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} />  
+      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore}/>  
       <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} />
       <Footer />
-      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery}/>
+      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore}/>
     </Context.Provider>
   );
 }
