@@ -53,14 +53,14 @@ function Main(props) {
                         <h2 className="item__title"> Masz ochotę na pizzę?</h2>
                         <div className="item__content_wrapper">
                             <div className="item__content">
-                                <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="" />
+                                <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Gotowe już w 30 minut</span>
                                 <button className="solid" onClick={()=>{
                                     props.setModalWindow("delivery")
                                 }}>Zamów z dostawą</button>
                             </div>
                             <div className="item__content">
-                                <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="" />
+                                <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Gotowe już w 15 minut</span>
                                 <button className="solid" onClick={()=>{
                                     props.setModalWindow("takeaway")

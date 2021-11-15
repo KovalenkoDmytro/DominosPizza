@@ -4,6 +4,7 @@ import Hot from '../../fonts/icons/chili-pepper.svg';
 import Vege from '../../fonts/icons/vegan.svg';
 import './Basket.scss';
 import iconBasketEmpty from './emptyBasket.jpg'
+import { Link } from 'react-router-dom';
 
 function Basket(props) {
 
@@ -55,7 +56,7 @@ function Basket(props) {
                 <h1 className="big_lable">Koszyk</h1>
                 {showContent()}
                <p> {JSON.stringify(props.products)}</p>
-               {props.products.length > 0? <button>Podtwierdzam</button> : null}
+               {props.products.length > 0? <Link to="/orderPage"><button>Podtwierdzam</button></Link>  : null}
             </div>
         </>
     )

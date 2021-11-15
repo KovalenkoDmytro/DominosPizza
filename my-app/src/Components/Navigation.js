@@ -5,6 +5,8 @@ import Basket from "../pages/Basket/Basket";
 import Sale from "../pages/Sale/Sale";
 import Favorits from "../pages/Favorits/Favorits";
 import Pizza from "../pages/Menu/Pizza";
+import OrderPage from "../pages/OrderPage/OrderPage";
+
 
 import './Styles/Navigation.scss';
 import { useState, useEffect } from "react";
@@ -75,6 +77,7 @@ function Nav(props) {
                         <Route path="/promocje" component={Sale} />
                         <Route  path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
+                        <Route path="/orderPage" render={(props) => <OrderPage products={products}  {...props} />} />
                     </Switch>
             
             </ContextFavorit.Provider>

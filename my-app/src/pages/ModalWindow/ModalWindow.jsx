@@ -332,14 +332,7 @@ function ModalWindow(props) {
                 { props.modalWindows.delivery?deliveryFirstWindow():null}
                 { props.modalWindows.takeaway?takeaway():null}
                 { props.modalWindows.deliverySecondWindow?deliverySecondWindow():null}
-
-                
-                
-               
             </div>
-           
-    
-            
         </>
     )
 
