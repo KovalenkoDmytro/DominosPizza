@@ -1,0 +1,59 @@
+ .order_page {
+     .order_page_top {
+         position: relative;
+
+         .takeInform {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             width: calc(65%);
+             background: #fff;
+             border-radius: .8rem;
+
+             .takeInform_top {
+                 display: flex;
+                 justify-content: space-around;
+                 margin: 2rem 0;
+                 box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.15);
+                 padding-bottom: 2rem;
+
+                 span {
+                     font-size: 1.6rem;
+                     line-height: 1.9rem;
+                     display: block;
+                     cursor: pointer;
+                     transition: all .5s;
+
+                     &:hover {
+                         color: #dd082b;
+                     }
+                 }
+             }
+
+             .takeInform_content {
+                 display: flex;
+                 justify-content: space-around;
+                 padding: 0 2rem;
+
+                 .content_item {
+                     display: flex;
+                     flex-direction: column;
+
+                     img {
+                         max-width: 20rem;
+                     }
+
+                     span {
+                         font-size: 1.6rem;
+                         line-height: 1.9rem;
+                         font-weight: 700;
+                         color: #192b38;
+                         margin: 1rem 0;
+                         text-align: center;
+                     }
+                 }
+             }
+         }
+     }
+ }
