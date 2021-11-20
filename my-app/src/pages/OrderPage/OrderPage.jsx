@@ -52,18 +52,17 @@ function OrderPage(props) {
 
                     </div>
                     <div className="recapitulation">
-                        <span>Podsumowanie</span>
+                        <span className="recap_title">Podsumowanie</span>
                         <ul className="listProducts">
                             {productsOrdered.map((currentValue, index) =>
                                 <li key={index} className='choosedProduct'>
-                                    <span> {currentValue.name}</span>
-                                    <span>{currentValue.description}</span>
+                                    <span className="product_name"> {currentValue.name}</span>
+                                    <span className="product_descrip">{currentValue.description}</span>
+                                    <span className="product_price">{currentValue.price}</span>
                                 </li>)
                             }
                         </ul>
-                        <div className="total">
-
-                        </div>
+                        <div className="total">{props.totalPrice}</div>
                     </div>
                 </div>
 

@@ -56,4 +56,24 @@
              }
          }
      }
+
+     .takeContent {
+         background-color: rgba(244, 239, 232, 0.4);
+         max-width: 31.2rem;
+         padding: 2rem 2.4rem 2.7rem;
+         border-radius: 0.8rem;
+
+         .recapitulation {
+             .recap_title {
+                 display: block;
+                 font-size: 1.8rem;
+                 line-height: 2.2rem;
+                 text-transform: capitalize;
+                 padding-bottom: 1rem;
+
+             }
+         }
+
+
+     }
  }

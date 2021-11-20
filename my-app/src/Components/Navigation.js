@@ -19,8 +19,8 @@ function Nav(props) {
     let products = props.products;
     let funDelProduct = props.delProduct;
     let funShowModalWindow = props.setModalWindow;
-
     let [favorits, setFavorits] = useState([]);
+    let totalPriceInBasket = props.totalPrice;
 
     function addFavorit(product) {
         let flag = true
@@ -58,11 +58,9 @@ function Nav(props) {
         let newProducts = favorits.filter(elem => elem.name !== delProduct);
         setFavorits(newProducts)
     }
-
-
-
-
-
+    
+ 
+    
     return (
         <>
             <ContextFavorit.Provider value={addFavorit}>
@@ -71,13 +69,13 @@ function Nav(props) {
                         {navItems}
                     </nav>
                     <Switch>
-                         <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
+                        <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
                         <Route path="/promocje" component={Sale} />
-                        <Route  path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
+                        <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                        <Route path="/orderPage" render={(props) => <OrderPage products={products}  {...props} />} />
+                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  {...props} />} />
                     </Switch>
             
             </ContextFavorit.Provider>
