@@ -21,6 +21,7 @@ function Nav(props) {
     let funShowModalWindow = props.setModalWindow;
     let [favorits, setFavorits] = useState([]);
     let totalPriceInBasket = props.totalPrice;
+    let salePrice =props.salePrice
 
     function addFavorit(product) {
         let flag = true
@@ -75,7 +76,7 @@ function Nav(props) {
                         <Route path="/promocje" component={Sale} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  {...props} />} />
+                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} {...props} />} />
                     </Switch>
             
             </ContextFavorit.Provider>

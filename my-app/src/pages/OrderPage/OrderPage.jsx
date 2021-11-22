@@ -1,8 +1,24 @@
-import "./OrderPage.scss"
+import "./OrderPage.scss";
+import { useState, useEffect } from "react";
 
 function OrderPage(props) {
 
     let productsOrdered = props.products;
+    let [discountprice, setDiscountprice] = useState();
+    let [delivery, setDelivery] = useState(false)
+
+
+    useEffect(() => {
+        if (props.salePrice.length > 0) {
+            setDiscountprice(props.salePrice[0].price.toFixed(2));
+            document.querySelector('.total_price').classList.add('underline')
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(delivery);
+    }, [delivery])
+
 
     //get time
     function getTime(min) {
@@ -29,8 +45,12 @@ function OrderPage(props) {
                     <img className="background" src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/cartconfiguration/bg_1200x471.jpg" alt="dominos" />
                     <div className="takeInform">
                         <div className="takeInform_top">
-                            <span>Dostawa</span>
-                            <span>Odbiór osobisty</span>
+                            <span onClick={() => {
+                                setDelivery(true)
+                            }}>Dostawa</span>
+                            <span onClick={() => {
+                                setDelivery(false)
+                            }}>Odbiór osobisty</span>
                         </div>
                         <div className="takeInform_content">
                             <div className="content_item">
@@ -56,17 +76,29 @@ function OrderPage(props) {
                         <ul className="listProducts">
                             {productsOrdered.map((currentValue, index) =>
                                 <li key={index} className='choosedProduct'>
-                                    <span className="product_name"> {currentValue.name}</span>
-                                    <span className="product_descrip">{currentValue.description}</span>
-                                    <span className="product_price">{currentValue.price}</span>
+                                    <div className="aboutProduct">
+                                        <span className="product_name"> {currentValue.name}</span>
+                                        <span className="product_descrip">{currentValue.description}</span>
+                                    </div>
+                                    <span className="product_price">{currentValue.price} zł</span>
                                 </li>)
                             }
                         </ul>
-                        <div className="total">{props.totalPrice}</div>
+                        <div className="total">
+                            <span>suma</span>
+                            <span className="total_price">{props.totalPrice} zł</span>
+                        </div>
+                        {props.salePrice.length > 0 ?
+                            <div className="salePrice">
+                                <span className="discount">Zniżka {props.salePrice[0].coupon}</span>
+                                <span className="discountPrice">ze zniżką {discountprice} zł</span>
+                            </div>
+                            : null}
+
+
                     </div>
                 </div>
 
-                <p>Twoje zamowienie to</p>
             </div>
         </>
     )
