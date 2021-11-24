@@ -15,6 +15,8 @@ function App() {
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
   let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false});
   let [choosedStore, setStore] = useState('');
+  let [productsCounterInBasket, setProductsCounter] = useState(0);
+ 
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -52,6 +54,22 @@ function App() {
     } else return
   };
 
+//add products to count in basket 
+  function cheackAndAddToCount(count){
+    if(sessionStorage.getItem('productsCounterInBasket')==null){
+      sessionStorage.setItem('productsCounterInBasket', count);
+      setProductsCounter(count);
+    }else{
+      let countInBasket = Number(sessionStorage.getItem('productsCounterInBasket'));
+      sessionStorage.setItem('productsCounterInBasket', countInBasket + count)  
+      setProductsCounter(countInBasket + count);
+    } 
+  }
+
+//remove from counterProducts in basket
+  function removeCounterProducts(count){
+
+  }
 //add product to basket
   function addPrice(name, url, price, description, sort,count) {
     let product = {
@@ -62,10 +80,6 @@ function App() {
       sort,
       count,
     }
-    
-    
-
-
 
     totalPrice.forEach((element,index) => {
       if(element.name === product.name){
@@ -159,9 +173,9 @@ function App() {
   };
 
   return (
-    < Context.Provider value={[addPrice, changeTotalPrice]} >
+    < Context.Provider value={[addPrice, changeTotalPrice, cheackAndAddToCount]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore}/>  
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice}/>
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket}/>
       <Footer />
       <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore}/>
     </Context.Provider>

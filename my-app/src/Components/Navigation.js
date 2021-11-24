@@ -12,16 +12,17 @@ import './Styles/Navigation.scss';
 import { useState, useEffect } from "react";
 import { ContextFavorit } from "../Context";
 
-let navArray = ['Strona glówna', 'koszyk', 'ulubione', 'promocje', 'pizza'];
+// let navArray = ['Strona glówna', 'koszyk', 'ulubione', 'promocje', 'pizza'];
 
 function Nav(props) {
-    let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
+    // let navItems = navArray.map(elem => <li className="nav --item" key={elem}><Link to={elem}>{elem}</Link></li>)
     let products = props.products;
     let funDelProduct = props.delProduct;
     let funShowModalWindow = props.setModalWindow;
     let [favorits, setFavorits] = useState([]);
     let totalPriceInBasket = props.totalPrice;
     let salePrice =props.salePrice
+
 
     function addFavorit(product) {
         let flag = true
@@ -37,22 +38,24 @@ function Nav(props) {
             setFavorits([...favorits, product])
 
         } else return
+        
+    
+      
     }
 
     useEffect(() => {
-
         if (localStorage.getItem("productsFavorits") == null) {
             localStorage.setItem("productsFavorits", '')
         } else {
             const products = localStorage.getItem("productsFavorits") || [];
             setFavorits(JSON.parse(products))
         }
-
     }, [])
 
     useEffect(() => {
         localStorage.setItem("productsFavorits", JSON.stringify(favorits))
     }, [favorits])
+
 
     //del product from favorits 
     function delProduct(delProduct) {
@@ -61,13 +64,22 @@ function Nav(props) {
     }
     
  
+   
     
     return (
         <>
             <ContextFavorit.Provider value={addFavorit}>
                
                     <nav className="navigation">
-                        {navItems}
+                        {/* {navItems} */}
+                        <li className="nav --item" key={'Strona glówna'}><Link to={'Strona glówna'}>{'Strona glówna'}</Link></li>
+                        <li className="nav --item basket" key={'koszyk'}><Link to={'koszyk'}>{'koszyk'}</Link></li>
+                        <li className="nav --item favorites" key={'ulubione'}>
+                            <Link to={'ulubione'}>{'ulubione'}</Link>
+                        
+                        </li>
+                        <li className="nav --item" key={'promocje'}><Link to={'promocje'}>{'promocje'}</Link></li>
+                        <li className="nav --item" key={'pizza'}><Link to={'pizza'}>{'pizza'}</Link></li>
                     </nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />

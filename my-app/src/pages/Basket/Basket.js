@@ -56,7 +56,7 @@ function Basket(props) {
                 <h1 className="big_lable">Koszyk</h1>
                 {showContent()}
                <p> {JSON.stringify(props.products)}</p>
-               {props.products.length > 0? <Link to="/orderPage"><button>Podtwierdzam</button></Link>  : null}
+               {props.products.length > 0? <Link to="/orderPage"><button className="solid">Podtwierdzam</button></Link>  : null}
             </div>
         </>
     )

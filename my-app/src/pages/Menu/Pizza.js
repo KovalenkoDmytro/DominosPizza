@@ -18,6 +18,7 @@ function Pizza(props) {
     const addPrice = useContext(Context);
     const addFavorit = useContext(ContextFavorit);
 
+
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(9);
@@ -25,7 +26,6 @@ function Pizza(props) {
 
     const btnNext = React.createRef();
     const btnPrev = React.createRef();
-
     const btnsPag = React.createRef();
 
     useEffect(() => {
@@ -144,7 +144,7 @@ let pageNumbers = [1]
                                 <button className='outline' onClick={() => {
                                     addPrice[0](elem.name, elem.img, elem.price, elem.logdescription, elem.sorte, 1);
                                     alert('produkt zostal dodany do koszyka')
-
+                                    addPrice[2](1)
                                 }}>+add to basket</button>
 
                            

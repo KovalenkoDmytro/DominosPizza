@@ -98,7 +98,30 @@ function OrderPage(props) {
 
                     </div>
                 </div>
-
+                <div className="orderChoose">
+                    <div className="formTitle">Płatność</div>
+                    <form action="">
+                        <select name="pay" id="pay">
+                            <option value="Gotówka">Gotówka</option>
+                            <option value="Karta (przy odbiorze)">Karta (przy odbiorze) </option>
+                            <option value="Online">Online</option>
+                        </select>
+                        <label htmlFor="phone">Telefon*</label>
+                        <input type="tel" name="phone" id="phone" required/>
+                        <label htmlFor="email">Email*</label>
+                        <input type="email" name="email" id="email" required/>
+                        <div className="person">
+                            <label htmlFor="persone">Imię</label>
+                            <input type="text" name="persone" id="persone" required/>
+                        </div>
+                        <p>Administratorem Twoich danych osobowych jest DP Polska S.A. z siedzibą w Warszawie, ul. Dąbrowieckiej 30.</p>
+                        <div className="privatePolitic">
+                          <input type="checkbox" name="privatePolitic" id="privatePolitic" required/>  
+                          <span>Akceptuję <a href="https://www.dominospizza.pl/getmedia/0846bb39-0f3f-4a8b-a858-831deb55035e/Regulamin_WWW_Dominos_Pizza.pdf" target="_blank">regulamin</a> serwisu Domino's Pizza </span>
+                        </div>  
+                        <button className="solid">Zamawiam z obowiązkiem zapłaty</button>    
+                    </form>
+                </div>                
             </div>
         </>
     )
