@@ -38,11 +38,16 @@ function Basket(props) {
                             {elem.sort === "Vege" ? <img className="tagIcon" src={Vege} alt='Vege' width='25px' height='25px' /> : ""}
                             <div className="tagIcon">{elem.sort}</div>
                         </div>
-                        <span className="product_conuter">{elem.count} szt</span>
+                        <div className="product_conuter">
+                            <span className="counter">{elem.count}</span>
+                            <span>zł</span> 
+                        </div>
                         <span className="product__price">{(elem.price*elem.count).toFixed(2) + "zł"}</span>
 
                         <button className="del outline" onClick={(e) => {
-                            props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
+                            let countProduct = Number(e.target.parentElement.querySelector('.product_conuter .counter').textContent);
+                            let productName = e.target.parentElement.querySelector('.product__wrapper .product__name').innerText;
+                            props.delProduct(productName, countProduct);
                         }}>x</button>
                     </li>)
             )
@@ -55,7 +60,7 @@ function Basket(props) {
             <div className="basket_page">
                 <h1 className="big_lable">Koszyk</h1>
                 {showContent()}
-               <p> {JSON.stringify(props.products)}</p>
+            
                {props.products.length > 0? <Link to="/orderPage"><button className="solid">Podtwierdzam</button></Link>  : null}
             </div>
         </>

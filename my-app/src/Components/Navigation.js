@@ -21,8 +21,28 @@ function Nav(props) {
     let funShowModalWindow = props.setModalWindow;
     let [favorits, setFavorits] = useState([]);
     let totalPriceInBasket = props.totalPrice;
-    let salePrice =props.salePrice
+    let salePrice =props.salePrice;
+    let [favoritsCount, setFavoritsCount] = useState(0);
 
+    //add favoritsCount to localstorage
+    function addFavoritToLS(){
+        if(localStorage.getItem('productsCounterInFavorit')==null){
+            localStorage.setItem('productsCounterInFavorit', 1);
+          }else{
+            let countInBasket = Number(localStorage.getItem('productsCounterInFavorit'));
+            localStorage.setItem('productsCounterInFavorit', countInBasket + 1)  
+          } 
+    }
+   
+    //remove favoritsCount to localstorage
+    function removeFavoritToLS(){
+        if(localStorage.getItem('productsCounterInFavorit')==null){
+            return
+          }else{
+            let countInBasket = Number(localStorage.getItem('productsCounterInFavorit'));
+            localStorage.setItem('productsCounterInFavorit', countInBasket - 1)  
+          } 
+    }
 
     function addFavorit(product) {
         let flag = true
@@ -30,12 +50,16 @@ function Nav(props) {
             if (product.name === element.name) {
                 flag = false;
                 let newProducts = favorits.filter(elem => elem.name !== product.name);
-                setFavorits(newProducts)
+                setFavorits(newProducts);
+                setFavoritsCount(favoritsCount - 1);
+                removeFavoritToLS();
             }
         });
 
         if (flag) {
-            setFavorits([...favorits, product])
+            setFavorits([...favorits, product]);
+            setFavoritsCount(favoritsCount + 1);
+            addFavoritToLS();
 
         } else return
         
@@ -51,16 +75,24 @@ function Nav(props) {
             setFavorits(JSON.parse(products))
         }
     }, [])
+    useEffect(() => {
+    }, [favoritsCount])
 
     useEffect(() => {
         localStorage.setItem("productsFavorits", JSON.stringify(favorits))
     }, [favorits])
-
+    
+    
+    useEffect(() => {
+        setFavoritsCount(Number(localStorage.getItem('productsCounterInFavorit')))
+    }, [])
 
     //del product from favorits 
     function delProduct(delProduct) {
         let newProducts = favorits.filter(elem => elem.name !== delProduct);
-        setFavorits(newProducts)
+        setFavorits(newProducts);
+        removeFavoritToLS();
+        setFavoritsCount(favoritsCount-1)
     }
     
  
@@ -73,10 +105,13 @@ function Nav(props) {
                     <nav className="navigation">
                         {/* {navItems} */}
                         <li className="nav --item" key={'Strona glówna'}><Link to={'Strona glówna'}>{'Strona glówna'}</Link></li>
-                        <li className="nav --item basket" key={'koszyk'}><Link to={'koszyk'}>{'koszyk'}</Link></li>
+                        <li className="nav --item basket" key={'koszyk'}>
+                            <Link to={'koszyk'}>{'koszyk'}</Link>
+                            {props.productsCounterInBasket>0?<span className="bage_counterBasket">{props.productsCounterInBasket}</span>: null}
+                        </li>
                         <li className="nav --item favorites" key={'ulubione'}>
                             <Link to={'ulubione'}>{'ulubione'}</Link>
-                        
+                            {favoritsCount>0?<span className="bage_counter">{favoritsCount}</span>: null}
                         </li>
                         <li className="nav --item" key={'promocje'}><Link to={'promocje'}>{'promocje'}</Link></li>
                         <li className="nav --item" key={'pizza'}><Link to={'pizza'}>{'pizza'}</Link></li>

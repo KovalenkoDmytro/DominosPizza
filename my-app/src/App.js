@@ -48,6 +48,14 @@ function App() {
   useEffect(()=>{
   },[choosedStore]);
 
+  useEffect(()=>{
+    console.log(productsCounterInBasket);
+  },[productsCounterInBasket]);
+  
+  useEffect(()=>{
+    setProductsCounter(Number(localStorage.getItem('productsCounterInBasket')))
+  },[]);
+
   function crossOfPrice() {
     if (salePrice.length > 0) {
       document.querySelector('.total').classList.add('__cossOff');
@@ -56,20 +64,29 @@ function App() {
 
 //add products to count in basket 
   function cheackAndAddToCount(count){
-    if(sessionStorage.getItem('productsCounterInBasket')==null){
-      sessionStorage.setItem('productsCounterInBasket', count);
+    if(localStorage.getItem('productsCounterInBasket')==null){
+      localStorage.setItem('productsCounterInBasket', count);
       setProductsCounter(count);
     }else{
-      let countInBasket = Number(sessionStorage.getItem('productsCounterInBasket'));
-      sessionStorage.setItem('productsCounterInBasket', countInBasket + count)  
+      let countInBasket = Number(localStorage.getItem('productsCounterInBasket'));
+      localStorage.setItem('productsCounterInBasket', countInBasket + count)  
       setProductsCounter(countInBasket + count);
     } 
   }
 
-//remove from counterProducts in basket
-  function removeCounterProducts(count){
+ //remove products from count in basket 
+ function removeProductfromBasketCounter(productCount = 1 ){
 
-  }
+  if(localStorage.getItem('productsCounterInBasket')==null){
+    return
+  }else{
+    let countInBasket = Number(localStorage.getItem('productsCounterInBasket'));
+    localStorage.setItem('productsCounterInBasket', countInBasket - productCount);
+    setProductsCounter(productsCounterInBasket - productCount)  
+  } 
+} 
+
+
 //add product to basket
   function addPrice(name, url, price, description, sort,count) {
     let product = {
@@ -93,9 +110,10 @@ function App() {
       setTotalPrice([...totalPrice, product])
   };
   // del product from basket 
-  function delProductFromBasket(delProduct) {
+  function delProductFromBasket(delProduct, productCount) {
     let newProducts = totalPrice.filter(elem => elem.name.toUpperCase() !== delProduct.toUpperCase());
     setTotalPrice(newProducts)
+    removeProductfromBasketCounter(productCount)
   };
 
   // sum price
