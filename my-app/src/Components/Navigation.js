@@ -107,7 +107,7 @@ function Nav(props) {
                         <li className="nav --item" key={'Strona glówna'}><Link to={'Strona glówna'}>{'Strona glówna'}</Link></li>
                         <li className="nav --item basket" key={'koszyk'}>
                             <Link to={'koszyk'}>{'koszyk'}</Link>
-                            {props.productsCounterInBasket>0?<span className="bage_counterBasket">{props.productsCounterInBasket}</span>: null}
+                            {props.productsCounterInBasket>0?<span className="bage_counter">{props.productsCounterInBasket}</span>: null}
                         </li>
                         <li className="nav --item favorites" key={'ulubione'}>
                             <Link to={'ulubione'}>{'ulubione'}</Link>

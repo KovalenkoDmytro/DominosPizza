@@ -24,6 +24,11 @@ header {
         width: 20%;
     }
     .basket {
+        text-align: center;
+        font-weight: 700;
+        .salePrice{
+            color: #dd082b;
+        }
         .total.__cossOff {
             text-decoration: line-through;
         }

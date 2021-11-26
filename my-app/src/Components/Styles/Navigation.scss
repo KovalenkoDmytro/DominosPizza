@@ -8,11 +8,16 @@ nav {
         margin: 1rem .5rem ;
         border: 3px solid transparent;
         transition: all .5s;
-      
+        border: 3px solid #ffffff;
+        background-color: #dd082b;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
+        position: relative;
+        
         a {
             font-size: 1.6rem;
             text-transform: capitalize;
             font-weight: 500;
+            color: white;
         }
         &:first-child{
            
@@ -22,14 +27,7 @@ nav {
             margin-left: 2rem;
             
         }
-        &:hover{
-            border: 3px solid #ffffff;
-            background-color: #dd082b;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
-            a{
-                color: white;
-            }
-        }
+
     }
 
 }
