@@ -1,6 +1,7 @@
 import '../Fonts.scss';
 import './Style/Main.scss';
 import React, { useState, useEffect } from 'react';
+import Slider from "react-slick";
 
 function Main(props) {
     const [lableValidatin, setDataValidation] = useState('')
@@ -38,16 +39,51 @@ function Main(props) {
         setCheckValidation(e.target.checked);
     }
 
-    
+
+    // slick slider
+    const settings = {
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
+        nextArrow: <span class="slick-next slick-arrow"></span>,
+        prevArrow: <span class="slick-prev slick-arrow"></span>
+    };
+
+
+
 
     return (
         <>
             <div className="layout">
                 <div className="containerFirst___item">
-                    <div className="--content__item --first">
-                        <div>promocja</div>
-                        <h2>2 pizze w cenie 1</h2>
-                        <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/small%20banners/desktop/1200x1130domin-page_1.jpg" alt="back to school" />
+                    <div className="--content__item --first ">
+                        <Slider className='slider' {...settings}>
+                            <div className="slider__item">
+                                <div>promocja</div>
+                                <h2>2 pizze w cenie 1</h2>
+                                <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/small%20banners/desktop/1200x1130domin-page_1.jpg" alt="back to school" />
+                            </div>
+
+                            <div className="slider__item">
+                                <div>promocja</div>
+                                <h2>2 pizze w cenie 1</h2>
+                                <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/mainBanners/desktop/1200x1130_dominos-promo-3dominos-main.webp" />
+                            </div>
+                            <div className="slider__item">
+                                <div>promocja</div>
+                                <h2>2 pizze w cenie 1</h2>
+                                <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/mainBanners/desktop/1200x1130_dominos-promo-2dominos-main.webp" />
+                            </div>
+                            <div className="slider__item">
+                                <div>promocja</div>
+                                <h2>2 pizze w cenie 1</h2>
+                                <img src="https://www.dominospizza.pl/DominosPizza/media/Images/modules/mainBanners/desktop/1200x1130_dominos-napojdominos-main.webp" />
+                            </div>
+                        </Slider>
                     </div>
                     <div className="--content__item --second">
                         <h2 className="item__title"> Masz ochotę na pizzę?</h2>
@@ -55,14 +91,14 @@ function Main(props) {
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Gotowe już w 30 minut</span>
-                                <button className="solid" onClick={()=>{
+                                <button className="solid" onClick={() => {
                                     props.setModalWindow("delivery")
                                 }}>Zamów z dostawą</button>
                             </div>
                             <div className="item__content">
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Gotowe już w 15 minut</span>
-                                <button className="solid" onClick={()=>{
+                                <button className="solid" onClick={() => {
                                     props.setModalWindow("takeaway")
                                 }}> Zamów z odbiorem</button>
                             </div>
@@ -91,6 +127,8 @@ function Main(props) {
                     </div>
                 </div>
             </div>
+
+
         </>
     )
 }

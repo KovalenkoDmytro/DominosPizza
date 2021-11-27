@@ -24,7 +24,7 @@ function Favorits(props) {
                             <span className="product__description">{elem.description}</span>
                         </div>
                         <span className="product__price">{elem.price}</span>
-                        <button className="del outline" onClick={(e) => {
+                        <button className="del solid" onClick={(e) => {
                             props.delProduct(e.target.parentElement.children[1].firstChild.innerText)
                         }}>
                             x</button>

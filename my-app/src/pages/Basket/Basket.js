@@ -44,7 +44,7 @@ function Basket(props) {
                         </div>
                         <span className="product__price">{(elem.price*elem.count).toFixed(2) + "zł"}</span>
 
-                        <button className="del outline" onClick={(e) => {
+                        <button className="del solid" onClick={(e) => {
                             let countProduct = Number(e.target.parentElement.querySelector('.product_conuter .counter').textContent);
                             let productName = e.target.parentElement.querySelector('.product__wrapper .product__name').innerText;
                             props.delProduct(productName, countProduct);

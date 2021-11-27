@@ -14,7 +14,7 @@
 
     .--content__item.--first {
         width: 50%;
-        @include flex();
+        // @include flex();
         flex-wrap: wrap;
         position: relative;
         cursor: pointer;
@@ -29,38 +29,84 @@
             color: #fff;
             text-align: center;
             width: 100%;
-
+            text-shadow: 0 2px 35px rgba(0,0,0,0.5),0 2px 34px rgba(0,0,0,0.5),0 2px 3px rgba(0,0,0,0.5);
         }
 
-        &>div {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #dd082b;
-            padding: 0.5rem 2.2rem 0.6rem 2.1rem;
-            font-size: 1.6rem;
-            line-height: 1.9rem;
-            font-weight: 700;
-            color: #fff;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-            border-radius: 4px;
+        .slick-slider {
+            position: relative;
+            min-width: 0;
+
+            .slick-list {
+                overflow: hidden;
+
+                .slick-track {
+                    display: flex;
+                }
+            }
+
+            .slider__item {
+                position: relative;
+
+                &>div {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #dd082b;
+                    padding: 0.5rem 2.2rem 0.6rem 2.1rem;
+                    font-size: 1.6rem;
+                    line-height: 1.9rem;
+                    font-weight: 700;
+                    color: #fff;
+                    text-align: center;
+                    text-transform: uppercase;
+                    margin-bottom: 1rem;
+                    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+                    border-radius: 4px;
+                }
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    height: 100%;
+                    width: 100%;
+                    background-color: #0000003a;
+                }
+            }
+
+            .slick-dots {
+                display: flex !important;
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                gap: .7rem;
+                li {
+                    
+                    &.slick-active {
+                        button {
+                            background: rgb(255, 255, 255);
+                        }
+
+                    }
+
+                    button {
+                        height: 1.2rem;
+                        width: 1.2rem;
+                        font-size: 0;
+                        border-radius: 50%;
+                        background: transparent;
+                        border: 2px solid #fff;
+                    }
+                }
+            }
         }
 
-        &:before {
-            position: absolute;
-            content: "";
-            height: 100%;
-            width: 100%;
-            background-color: #0000003a;
-        }
+
 
         img {
             max-width: 100%;
-
+            display: block;
         }
 
         .item__title {
@@ -141,41 +187,45 @@
         position: absolute;
         @include flex();
         flex-direction: column;
-        &__title{
+
+        &__title {
             font-size: 2.7rem;
             line-height: 3.2rem;
-        }    
-        &__subtittle{
+        }
+
+        &__subtittle {
             font-size: 1.6rem;
             line-height: 1.9rem;
-            font-weight: 500; 
+            font-weight: 500;
             max-width: 40rem;
             text-align: center;
             margin-top: 0;
         }
+
         form {
             @include flex();
             justify-content: center;
             flex-wrap: wrap;
             position: relative;
             width: 20%;
-            label[for="email"]{
+
+            label[for="email"] {
                 color: red;
             }
-         
 
-                input {
-                    margin: 0 auto;
-                    font-size: 1.4rem;
-                    line-height: 1.7rem;
-                    color: #192b38;
-                    padding: 16px 20px 15px 20px;
-                    margin-top: 8px;
-                    border: 2px solid #f4efe8;
-                    border-radius: 0.8rem;
-                    width: 100%;
-                }
-          
+
+            input {
+                margin: 0 auto;
+                font-size: 1.4rem;
+                line-height: 1.7rem;
+                color: #192b38;
+                padding: 16px 20px 15px 20px;
+                margin-top: 8px;
+                border: 2px solid #f4efe8;
+                border-radius: 0.8rem;
+                width: 100%;
+            }
+
 
             .privatPolitic {
                 width: 100%;
@@ -203,6 +253,6 @@
     }
 }
 
-.warning{
+.warning {
     color: #ff002b;
 }

@@ -35,7 +35,7 @@ button {
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
         background-color: #dd082b;
         transition: all 0.3s;
-
+        text-transform: uppercase;
         &:hover {
             background-color: #81071c;
         }
@@ -114,4 +114,47 @@ h1 {
     text-align: center;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
     font-weight: 700;
+}
+
+.slick-slider {
+    .slick-arrow {
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        font-size: 3rem;
+    }
+
+    .slick-next {
+        right: 4rem;
+
+        &::before {
+            content: '\E814';
+            font-family: 'fontello';
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+    }
+
+    .slick-prev {
+        left: 4rem;
+
+        &::before {
+            content: '\E816';
+            font-family: 'fontello';
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+    }
+    .slick-dots{
+        button{
+            padding: 0;
+            border-radius: unset;
+        }
+    }
 }
