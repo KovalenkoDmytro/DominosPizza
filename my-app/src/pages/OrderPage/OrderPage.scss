@@ -14,9 +14,9 @@
              .takeInform_top {
                  display: flex;
                  justify-content: space-around;
-                 margin: 2rem 0;
+                 position: relative;
                  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.15);
-                 padding-bottom: 2rem;
+                 z-index: 2;
 
                  span {
                      font-size: 1.6rem;
@@ -24,9 +24,13 @@
                      display: block;
                      cursor: pointer;
                      transition: all .5s;
+                     padding: 2rem 0;
+                     border-bottom: 2px solid transparent;
 
+                     &.active,
                      &:hover {
                          color: #dd082b;
+                         border-bottom: 2px solid #dd082b;
                      }
                  }
              }
@@ -39,9 +43,14 @@
                  .content_item {
                      display: flex;
                      flex-direction: column;
-
+                    cursor: pointer;
                      img {
                          max-width: 20rem;
+                         filter: grayscale(100%);
+                         transition: all .5s;
+                         &.active{
+                             filter: unset;
+                         }
                      }
 
                      span {
@@ -142,5 +151,11 @@
          }
 
 
+     }
+     .orderChoose{
+         form{
+             display: flex;
+             flex-direction: column;
+         }
      }
  }
