@@ -4,21 +4,21 @@ import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 
 function Main(props) {
-    const [lableValidatin, setDataValidation] = useState('')
-    const [inputValidatin, setInputValidation] = useState(false)
-    const [checkValidatin, setCheckValidation] = useState(false)
+    const [lableValidation, setDataValidation] = useState('')
+    const [inputValidation, setInputValidation] = useState(false)
+    const [checkValidation, setCheckValidation] = useState(false)
 
     useEffect(() => {
-    }, [lableValidatin])
+    }, [lableValidation])
     useEffect(() => {
-    }, [checkValidatin])
+    }, [checkValidation])
 
 
     function checkValidateForm(e) {
         e.preventDefault()
 
-        if (!inputValidatin) setDataValidation("Invalid email address")
-        else if (!checkValidatin) setDataValidation("you gotta accept privat politic")
+        if (!inputValidation) setDataValidation("Invalid email address")
+        else if (!checkValidation) setDataValidation("you gotta accept privat politic")
         else {
             setDataValidation("")
             alert('Form has been validat')
@@ -117,7 +117,7 @@ function Main(props) {
 
                         <form action="">
                             <input type="email" name="email" id="email" placeholder="enter you e-mail" onChange={inputValidate} />
-                            <label htmlFor="email">{lableValidatin}</label>
+                            <label htmlFor="email">{lableValidation}</label>
                             <div className="privatPolitic">
                                 <input type="checkbox" name="" id="" onChange={validateCheck} />
                                 <p>Wyrażam zgodę na kontaktowanie się ze mną, w tym na przesyłanie informacji handlowych i marketingowych o Pizza Domino’s od DP Polska S.A. z siedzibą w Warszawie za pośrednictwem środków komunikacji elektronicznej (e-mail), jak również wyrażam zgodę na przetwarzanie w tym celu danych osobowych (adresu e-mail) przez DP Polska S.A. z siedzibą w Warszawie. Podstawą prawną przetwarzania danych jest art. 6 ust. 1 lit. a) RODO. Przysługuje mi prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem.</p>

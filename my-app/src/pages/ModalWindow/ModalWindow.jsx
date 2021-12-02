@@ -302,7 +302,7 @@ function ModalWindow(props) {
                     <option value="lokal3">lokal3</option>
                     <option value="lokal4">lokal4</option>
                 </select>
-                <Link to="/pizza">
+                {/* <Link to="/pizza"> */}
                     <button onClick={(e)=>{
                             e.target.closest('.modal-window').classList.toggle('active');
                             props.setModalWindow();
@@ -310,7 +310,7 @@ function ModalWindow(props) {
                             props.setStore(selectStore.current.value);
                         }
                     }>Potwierdzić</button>
-                </Link>
+                {/* </Link> */}
             </>
 
         )

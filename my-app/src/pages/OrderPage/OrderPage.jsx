@@ -1,11 +1,20 @@
 import "./OrderPage.scss";
 import { useState, useEffect } from "react";
-
+import { Link } from 'react-router-dom';
 function OrderPage(props) {
 
     let productsOrdered = props.products;
     let [discountprice, setDiscountprice] = useState();
-    let [delivery, setDelivery] = useState(false)
+    let [delivery, setDelivery] = useState(false);
+    let [formValidation, setValidation] = useState(
+        {
+            phone: false,
+            email: false,
+            customerName: false,
+            privatPolitic: false,
+        }
+    );
+    let [allValid, setAllValid]=useState(false);
 
 
     useEffect(() => {
@@ -13,6 +22,7 @@ function OrderPage(props) {
             setDiscountprice(props.salePrice[0].price.toFixed(2));
             document.querySelector('.total_price').classList.add('underline')
         }
+
     }, []);
 
     useEffect(() => {
@@ -50,6 +60,24 @@ function OrderPage(props) {
     };
 
 
+    // cheack validationForm 
+    function cheackValidate(){
+        let flag = true;
+        for (const key in formValidation) {
+            if(!formValidation[key]){
+                flag = false;
+            }      
+        }
+        if(!flag){
+            alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
+            setAllValid(false)
+        }else{
+            setAllValid(true)
+        }
+    }
+  
+
+
     return (
         <>
             <div className="order_page">
@@ -58,20 +86,20 @@ function OrderPage(props) {
                     <div className="takeInform">
                         <div className="takeInform_top">
                             <span className="delivery" onClick={() => {
-                                setDelivery(true)
+                                setDelivery(true);
                             }}>Dostawa</span>
                             <span className="takeAway" onClick={() => {
-                                setDelivery(false)
+                                setDelivery(false);
                             }}>Odbiór osobisty</span>
                         </div>
                         <div className="takeInform_content" >
-                            <div className="content_item"onClick={() => {setDelivery(true)}} >
+                            <div className="content_item" onClick={() => { setDelivery(true) }} >
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Przybliżony czas dostawy:</span>
                                 <span className="item_time">{getTime(25)}</span>
                             </div>
 
-                            <div className="content_item" onClick={() => {setDelivery(false)}}>
+                            <div className="content_item" onClick={() => { setDelivery(false) }}>
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Przybliżony czas odbioru:</span>
                                 <span className="item_time">{getTime(15)}</span>
@@ -79,60 +107,118 @@ function OrderPage(props) {
                         </div>
                     </div>
                 </div>
-                <div className="takeContent">
-                    <div className="content_item">
-
-                    </div>
-                    <div className="recapitulation">
-                        <span className="recap_title">Podsumowanie</span>
-                        <ul className="listProducts">
-                            {productsOrdered.map((currentValue, index) =>
-                                <li key={index} className='choosedProduct'>
-                                    <div className="aboutProduct">
-                                        <span className="product_name"> {currentValue.name}</span>
-                                        <span className="product_descrip">{currentValue.description}</span>
-                                    </div>
-                                    <span className="product_price">{currentValue.price} zł</span>
-                                </li>)
-                            }
-                        </ul>
-                        <div className="total">
-                            <span>suma</span>
-                            <span className="total_price">{props.totalPrice} zł</span>
-                        </div>
-                        {props.salePrice.length > 0 ?
-                            <div className="salePrice">
-                                <span className="discount">Zniżka {props.salePrice[0].coupon}</span>
-                                <span className="discountPrice">ze zniżką {discountprice} zł</span>
+                <div className="content">
+                    <div className="orderChoose">
+                        <form action="">
+                            <div>
+                                <label htmlFor="pay">Płatność</label>
+                                <select className="selects" name="pay" id="pay">
+                                    <option value="cash">Gotówka</option>
+                                    <option value="card">Karta (przy odbiorze) </option>
+                                    <option value="online">Online</option>
+                                </select>
                             </div>
-                            : null}
-
-
+                            <div>
+                                <label htmlFor="phone">Telefon*</label>
+                                <input className="inputs" type="tel" name="phone" id="phone" onChange={(e) => {
+                                    let label = e.target.previousElementSibling;
+                                    let regulaExpression = /^[0-9]+$/;
+                                    if ((regulaExpression.test(e.target.value)) && (e.target.value.length >0) ) {
+                                        setValidation({...formValidation, phone: true});
+                                        label.classList.remove('required')
+                                    }else{
+                                        label.classList.add('required');
+                                        setValidation({...formValidation, phone: false});
+                                    }
+                                }}/>
+                            </div>
+                            <div>
+                                <label htmlFor="email">Email*</label>
+                                <input className="inputs" type="email" name="email" id="email" onChange={(e)=>{
+                                    let label = e.target.previousElementSibling;
+                                    let regulaExpression  = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                                    if ((regulaExpression.test(e.target.value)) && (e.target.value.length >5)){
+                                        setValidation({...formValidation, email: true});
+                                        label.classList.remove('required')
+                                    }else{
+                                        label.classList.add('required');
+                                        setValidation({...formValidation, email: false});
+                                    }
+                                }} />
+                            </div>
+                            <div className="person">
+                                <label htmlFor="persone">Imię odbiorcy*</label>
+                                <input className="inputs" type="text" name="persone" id="persone" onChange={(e)=>{
+                                    let label = e.target.previousElementSibling;
+                                    let regulaExpression = /[a-zA-Z]+$/;
+                                    if ((regulaExpression.test(e.target.value)) && (e.target.value.length >2)){
+                                        setValidation({...formValidation, customerName: true});
+                                        label.classList.remove('required')
+                                    }else{
+                                        label.classList.add('required');
+                                        setValidation({...formValidation, customerName: false});
+                                    }
+                                }} />
+                            </div>
+                            <div>
+                                <p>Administratorem Twoich danych osobowych jest DP Polska S.A. z siedzibą w Warszawie, ul. Dąbrowieckiej 30.</p>
+                                <div className="privatePolitic">
+                                    <input type="checkbox" name="privatePolitic" id="privatePolitic" onChange={(e)=>{
+                                        if(e.target.checked){
+                                            setValidation({...formValidation, privatPolitic: true});
+                                            e.target.nextElementSibling.classList.remove('required')
+                                        }else{
+                                            setValidation({...formValidation, privatPolitic: false});
+                                            e.target.nextElementSibling.classList.add('required')
+                                        }
+                                    }} />
+                                    <span>Akceptuję <a href="https://www.dominospizza.pl/getmedia/0846bb39-0f3f-4a8b-a858-831deb55035e/Regulamin_WWW_Dominos_Pizza.pdf" target="_blank">regulamin</a> serwisu Domino's Pizza </span>
+                                </div>
+                            </div>
+                            <button className="solid" onClick={(e) => {
+                                e.preventDefault();
+                                cheackValidate();
+                                console.log(allValid);
+                                if(delivery === true&& allValid===true){
+                                    props.setModalWindow("delivery") 
+                                } else if(allValid===true){
+                                    props.setModalWindow("takeaway") 
+                                }
+                            }
+                            }>Zamawiam z obowiązkiem zapłaty {props.totalPrice} zł</button>
+                        </form>
                     </div>
-                </div>
-                <div className="orderChoose">
-                    <div className="formTitle">Płatność</div>
-                    <form action="">
-                        <select className="selects" name="pay" id="pay">
-                            <option value="cash">Gotówka</option>
-                            <option value="card">Karta (przy odbiorze) </option>
-                            <option value="online">Online</option>
-                        </select>
-                        <label htmlFor="phone">Telefon*</label>
-                        <input className="inputs" type="tel" name="phone" id="phone" required />
-                        <label htmlFor="email">Email*</label>
-                        <input className="inputs" type="email" name="email" id="email" required />
-                        <div className="person">
-                            <label htmlFor="persone">Imię</label>
-                            <input className="inputs" type="text" name="persone" id="persone" required />
+                    <div className="takeContent">
+                        <div className="content_item">
+
                         </div>
-                        <p>Administratorem Twoich danych osobowych jest DP Polska S.A. z siedzibą w Warszawie, ul. Dąbrowieckiej 30.</p>
-                        <div className="privatePolitic">
-                            <input type="checkbox" name="privatePolitic" id="privatePolitic" required />
-                            <span>Akceptuję <a href="https://www.dominospizza.pl/getmedia/0846bb39-0f3f-4a8b-a858-831deb55035e/Regulamin_WWW_Dominos_Pizza.pdf" target="_blank">regulamin</a> serwisu Domino's Pizza </span>
+                        <div className="recapitulation">
+                            <span className="recap_title">Podsumowanie</span>
+                            <ul className="listProducts">
+                                {productsOrdered.map((currentValue, index) =>
+                                    <li key={index} className='choosedProduct'>
+                                        <div className="aboutProduct">
+                                            <span className="product_name"> {currentValue.name}</span>
+                                            <span className="product_descrip">{currentValue.description}</span>
+                                        </div>
+                                        <span className="product_price">{currentValue.price} zł</span>
+                                    </li>)
+                                }
+                            </ul>
+                            <div className="total">
+                                <span>suma</span>
+                                <span className="total_price">{props.totalPrice} zł</span>
+                            </div>
+                            {props.salePrice.length > 0 ?
+                                <div className="salePrice">
+                                    <span className="discount">Zniżka {props.salePrice[0].coupon}</span>
+                                    <span className="discountPrice">ze zniżką {discountprice} zł</span>
+                                </div>
+                                : null}
+
+
                         </div>
-                        <button className="solid">Zamawiam z obowiązkiem zapłaty</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>
