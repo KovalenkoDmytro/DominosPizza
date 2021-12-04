@@ -5,6 +5,9 @@ import { Link} from 'react-router-dom';
 
 
 function ModalWindow(props) {
+
+    let choosedPremises=props.getStoreTakeAway;
+
     const [formValidate, setFormValidate] = useState(
         {
             city: false,
@@ -20,7 +23,6 @@ function ModalWindow(props) {
         apart: '',
     });
 
-    const selectStore = React.createRef();
 
     function deliveryFirstWindow() {
         return (
@@ -289,37 +291,59 @@ function ModalWindow(props) {
         )
     };
 
-    
-
-
     function takeaway(params) {
         return(
             <>  
                 <span >Wybierz najbliższy lokal Dominos:</span>
-                <select name="citys" id="citys" ref={selectStore}>
+                <select name="citys" id="citys"  onChange={(e)=>{
+                    props.setStore(e.target.value);
+                }}>
                     <option value="lokal1">lokal1</option>
                     <option value="lokal2">lokal2</option>
                     <option value="lokal3">lokal3</option>
                     <option value="lokal4">lokal4</option>
                 </select>
-                {/* <Link to="/pizza"> */}
+                <Link to="/pizza">
                     <button onClick={(e)=>{
                             e.target.closest('.modal-window').classList.toggle('active');
                             props.setModalWindow();
                             props.setshowModalWindowDelivery(false);
-                            props.setStore(selectStore.current.value);
                         }
                     }>Potwierdzić</button>
-                {/* </Link> */}
+                </Link>
             </>
 
         )
     }
 
+    function chooseLokal(){
+        return(
+            <>
+            <span>Tój lokal odbioru to: {choosedPremises}</span>
+            <span>Zapraszamy po odbioru za  _____time___</span>
+            <span >Zmienić lokal odbioru:</span>
+                <select name="citys" id="citys"  onChange={(e)=>{
+                    props.setStore(e.target.value);
+                }}>
+                    <option value="lokal1">lokal1</option>
+                    <option value="lokal2">lokal2</option>
+                    <option value="lokal3">lokal3</option>
+                    <option value="lokal4">lokal4</option>
+                </select>
+             <div>zmienić czas odbioru</div>   
+                    <button onClick={(e)=>{
+                            e.target.closest('.modal-window').classList.toggle('active');
+                            props.setModalWindow();
+                            props.setshowModalWindowDelivery(false);
+                           
+                        }
+                    }>Potwierdzam</button>
+            </>
+        )
+    }
    
    
     return (
-        <>
             <div className="modal-window">
                 <div className="window_top"> 
                     <span>Zamów online</span> 
@@ -332,8 +356,9 @@ function ModalWindow(props) {
                 { props.modalWindows.delivery?deliveryFirstWindow():null}
                 { props.modalWindows.takeaway?takeaway():null}
                 { props.modalWindows.deliverySecondWindow?deliverySecondWindow():null}
+                { props.modalWindows.chooseLokal?chooseLokal():null}
             </div>
-        </>
+
     )
 
 

@@ -49,8 +49,8 @@ function Main(props) {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
-        nextArrow: <span class="slick-next slick-arrow"></span>,
-        prevArrow: <span class="slick-prev slick-arrow"></span>
+        nextArrow: <span className="slick-next slick-arrow"></span>,
+        prevArrow: <span className="slick-prev slick-arrow"></span>
     };
 
 

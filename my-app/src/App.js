@@ -13,7 +13,7 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
-  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false});
+  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false, chooseLokal: false,});
   let [choosedStore, setStore] = useState('');
   let [productsCounterInBasket, setProductsCounter] = useState(0);
  
@@ -161,21 +161,32 @@ function App() {
       setmodalWindows(
         {takeaway: true,
           delivery: false,
-          deliverySecondWindow: false
+          deliverySecondWindow: false,
+          chooseLokal: false,
         }
       )
     }else if(windowItem==="delivery"){
       setmodalWindows(
         {takeaway: false,
           delivery: true,
-          deliverySecondWindow: false
+          deliverySecondWindow: false,
+          chooseLokal: false,
         }
       )
     }else if(windowItem==="deliverySecondWindow"){
       setmodalWindows(
         {takeaway: false,
           delivery: false,
-          deliverySecondWindow: true
+          deliverySecondWindow: true,
+          chooseLokal: false,
+        }
+      )
+    }else if(windowItem==="choose lokal"){
+      setmodalWindows(
+        {takeaway: false,
+          delivery: false,
+          deliverySecondWindow:false,
+          chooseLokal: true,
         }
       )
     }
@@ -183,7 +194,8 @@ function App() {
       setmodalWindows(
         {takeaway: false,
           delivery: false,
-          deliverySecondWindow: false
+          deliverySecondWindow: false,
+          chooseLokal: false,
         }
       )
     )
@@ -193,9 +205,9 @@ function App() {
   return (
     < Context.Provider value={[addPrice, changeTotalPrice, cheackAndAddToCount]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore}/>  
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket}/>
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore}/>
       <Footer />
-      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore}/>
+      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore}/>
     </Context.Provider>
   );
 }

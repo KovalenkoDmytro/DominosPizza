@@ -19,6 +19,7 @@ function Nav(props) {
     let products = props.products;
     let funDelProduct = props.delProduct;
     let funShowModalWindow = props.setModalWindow;
+    let getStoreTakeAway= props.getStoreTakeAway;
     let [favorits, setFavorits] = useState([]);
     let totalPriceInBasket = props.totalPrice;
     let salePrice =props.salePrice;
@@ -123,7 +124,7 @@ function Nav(props) {
                         <Route path="/promocje" component={Sale} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} {...props} />} />
+                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} {...props} />} />
                     </Switch>
             
             </ContextFavorit.Provider>
