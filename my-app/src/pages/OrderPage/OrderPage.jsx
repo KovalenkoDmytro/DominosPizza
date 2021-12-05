@@ -1,6 +1,5 @@
 import "./OrderPage.scss";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 function OrderPage(props) {
 
     let productsOrdered = props.products;

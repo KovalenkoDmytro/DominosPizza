@@ -213,23 +213,25 @@ function ModalWindow(props) {
         )
     };
 
+    function getDeliveryTime(time){
+        let nowTime = new Date()
+        nowTime.setMinutes(nowTime.getMinutes()+time)
+
+        let hours = nowTime.getHours()
+        let minutes = nowTime.getMinutes()
+        if (minutes < 10){
+            minutes = `0${nowTime.getMinutes()}`
+        }
+        if (hours < 10){
+            hours = `0${nowTime.getHours()}`
+        }
+
+        return  `${hours}:${minutes}`
+    };
+
     function deliverySecondWindow() {
 
-        function getDeliveryTime(){
-            let nowTime = new Date()
-            nowTime.setMinutes(nowTime.getMinutes()+20)
-
-            let hours = nowTime.getHours()
-            let minutes = nowTime.getMinutes()
-            if (minutes < 10){
-                minutes = `0${nowTime.getMinutes()}`
-            }
-            if (hours < 10){
-                hours = `0${nowTime.getHours()}`
-            }
-
-            return  `${hours}:${minutes}`
-        };
+        
 
         return (
             <>
@@ -256,7 +258,7 @@ function ModalWindow(props) {
                         <span>Przybliżony czas dostawy:</span>
                         <div>
                             <img src="" alt="" />
-                            <span>{getDeliveryTime()}</span>
+                            <span>{getDeliveryTime(30)}</span>
                         </div>
                     </div>
                     <button onClick={(e)=>{
@@ -320,7 +322,7 @@ function ModalWindow(props) {
         return(
             <>
             <span>Tój lokal odbioru to: {choosedPremises}</span>
-            <span>Zapraszamy po odbioru za  _____time___</span>
+            <span>Zapraszamy po odbioru o {getDeliveryTime(15)}</span>
             <span >Zmienić lokal odbioru:</span>
                 <select name="citys" id="citys"  onChange={(e)=>{
                     props.setStore(e.target.value);
@@ -330,7 +332,10 @@ function ModalWindow(props) {
                     <option value="lokal3">lokal3</option>
                     <option value="lokal4">lokal4</option>
                 </select>
-             <div>zmienić czas odbioru</div>   
+             <div><span>zmienić czas odbioru</span>
+                 <div className="timePicker"></div>
+                 
+                 </div>   
                     <button onClick={(e)=>{
                             e.target.closest('.modal-window').classList.toggle('active');
                             props.setModalWindow();

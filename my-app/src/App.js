@@ -7,6 +7,8 @@ import Navigation from './Components/Navigation';
 import Context from './Context';
 import { useState, useEffect } from 'react';
 import ModalWindow from './pages/ModalWindow/ModalWindow';
+import TimePicker from './pages/TimePicker/TimePicker';
+
 
 function App() {
 
@@ -16,7 +18,7 @@ function App() {
   let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false, chooseLokal: false,});
   let [choosedStore, setStore] = useState('');
   let [productsCounterInBasket, setProductsCounter] = useState(0);
- 
+  let [collectTime, setCollectTime] = useState(0);
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -208,6 +210,7 @@ function App() {
       <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore}/>
       <Footer />
       <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore}/>
+      <TimePicker setCollectTime={setCollectTime}/>
     </Context.Provider>
   );
 }
