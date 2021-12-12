@@ -18,7 +18,13 @@ function App() {
   let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false, chooseLokal: false,});
   let [choosedStore, setStore] = useState('');
   let [productsCounterInBasket, setProductsCounter] = useState(0);
-  let [collectTime, setCollectTime] = useState(0);
+  let [collectTime, setCollectTime] = useState({
+    hours : null,
+    minutes : null,
+  });
+  let [showModalcollectTime, setShowModalcollectTime] = useState(true);
+
+ 
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -39,6 +45,7 @@ function App() {
     }
   }, [showModalWindow]);
 
+  
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(totalPrice))
   }, [totalPrice]);
@@ -209,8 +216,8 @@ function App() {
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore}/>  
       <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore}/>
       <Footer />
-      <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore}/>
-      <TimePicker setCollectTime={setCollectTime}/>
+      {showModalWindow? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}/>:null}
+      {showModalcollectTime?  <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}/>: null}
     </Context.Provider>
   );
 }

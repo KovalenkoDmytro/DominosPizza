@@ -1,12 +1,12 @@
-import'./ModalWindow.scss' ;
-import React, { useState} from 'react';
-import { Link} from 'react-router-dom';
+import './ModalWindow.scss';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
 function ModalWindow(props) {
 
-    let choosedPremises=props.getStoreTakeAway;
+    let choosedPremises = props.getStoreTakeAway;
 
     const [formValidate, setFormValidate] = useState(
         {
@@ -15,7 +15,7 @@ function ModalWindow(props) {
             buld: false,
             apart: true,
         }
-        );
+    );
     const [adress, setAdress] = useState({
         city: '',
         street: '',
@@ -28,19 +28,19 @@ function ModalWindow(props) {
         return (
             <form className="deliveryFirstWindow" >
                 <label htmlFor="city">Miasto*</label>
-                <input className="input_solid" type="text" name="city" onChange={(e)=>{
+                <input className="input_solid" type="text" name="city" onChange={(e) => {
                     let customerAdress
-                     let label = e.target.previousElementSibling;
-                     let regulaExpression = /^[a-zA-Z]+$/
-                     if(regulaExpression.test(e.target.value)){
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[a-zA-Z]+$/
+                    if (regulaExpression.test(e.target.value)) {
                         customerAdress = e.target.value;
                         let newObj = {
                             city: customerAdress,
                             street: adress.street,
                             buldNumb: adress.buldNumb,
                             apart: adress.apart,
-                        } 
-                        setAdress(newObj)    
+                        }
+                        setAdress(newObj)
 
                         let newObjValid = {
                             city: true,
@@ -51,13 +51,13 @@ function ModalWindow(props) {
                         setFormValidate(newObjValid)
 
 
-                        if(label.classList.contains('warning')){
+                        if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
-                            label.textContent= 'Miasto*';
+                            label.textContent = 'Miasto*';
                         };
-                     }
-                     else{
-                        label.textContent= 'linijka moze zawierac tylko znaki alfabetyczne';
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne';
                         label.classList.add('warning');
                         let newObjValid = {
                             city: false,
@@ -66,26 +66,26 @@ function ModalWindow(props) {
                             apart: formValidate.apart,
                         }
                         setFormValidate(newObjValid)
-                    
+
                     }
-                    }
-                }/>
+                }
+                } />
                 <label htmlFor="street">Ulica*</label>
-                <input className="input_solid" type="text" name="street" onChange={(e)=>{
-                     let customerStreet;
-                     let label = e.target.previousElementSibling;
-                     let regulaExpression = /^[a-zA-Z]+$/;
-                     if(regulaExpression.test(e.target.value)){
+                <input className="input_solid" type="text" name="street" onChange={(e) => {
+                    let customerStreet;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[a-zA-Z]+$/;
+                    if (regulaExpression.test(e.target.value)) {
                         customerStreet = e.target.value;
                         let newObj = {
                             city: adress.city,
                             street: customerStreet,
                             buldNumb: adress.buldNumb,
                             apart: adress.apart,
-                        } 
-                        setAdress(newObj)  
-                        
-                        
+                        }
+                        setAdress(newObj)
+
+
                         let newObjValid = {
                             city: formValidate.city,
                             street: true,
@@ -95,13 +95,13 @@ function ModalWindow(props) {
                         setFormValidate(newObjValid)
 
 
-                        if(label.classList.contains('warning')){
+                        if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
-                            label.textContent= 'Ulica*';
+                            label.textContent = 'Ulica*';
                         };
-                     }
-                     else{
-                        label.textContent= 'linijka moze zawierac tylko znaki alfabetyczne lub ';
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne lub ';
                         label.classList.add('warning');
                         let newObjValid = {
                             city: formValidate.city,
@@ -111,22 +111,22 @@ function ModalWindow(props) {
                         }
                         setFormValidate(newObjValid)
                     }
-                    }
-                }/>
+                }
+                } />
                 <label htmlFor="">Numer domu*</label>
-                <input className="input_solid" type="text" name="build" onChange={(e)=>{
-                     let customerBuild;
-                     let label = e.target.previousElementSibling;
-                    let regulaExpression =/^[0-9]+$/;
-                    if(regulaExpression.test(e.target.value)){
+                <input className="input_solid" type="text" name="build" onChange={(e) => {
+                    let customerBuild;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[0-9]+$/;
+                    if (regulaExpression.test(e.target.value)) {
                         customerBuild = e.target.value;
                         let newObj = {
                             city: adress.city,
                             street: adress.street,
                             buldNumb: customerBuild,
                             apart: adress.apart,
-                        } 
-                        setAdress(newObj) 
+                        }
+                        setAdress(newObj)
 
                         let newObjValid = {
                             city: formValidate.city,
@@ -136,13 +136,13 @@ function ModalWindow(props) {
                         }
                         setFormValidate(newObjValid)
 
-                        if(label.classList.contains('warning')){
+                        if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
-                            label.textContent= 'Numer domu*';
+                            label.textContent = 'Numer domu*';
                         };
-                     }
-                     else{
-                        label.textContent= 'linijka moze zawierac tylko liczby';
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko liczby';
                         label.classList.add('warning');
                         let newObjValid = {
                             city: formValidate.city,
@@ -151,15 +151,15 @@ function ModalWindow(props) {
                             apart: formValidate.apart,
                         }
                         setFormValidate(newObjValid)
-                        }
                     }
-                }/>
+                }
+                } />
                 <label htmlFor="apartment">Numer mieszkania</label>
-                <input className="input_solid" type="text" name="apartment" onChange={(e)=>{
-                     let customerAparts;
-                     let label = e.target.previousElementSibling;
-                     let regulaExpression = /^\w{1,3}$/;
-                        if(regulaExpression.test(e.target.value)){
+                <input className="input_solid" type="text" name="apartment" onChange={(e) => {
+                    let customerAparts;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^\w{1,3}$/;
+                    if (regulaExpression.test(e.target.value)) {
                         customerAparts = e.target.value;
                         let newObj = {
                             city: adress.city,
@@ -167,7 +167,7 @@ function ModalWindow(props) {
                             buldNumb: adress.buldNumb,
                             apart: customerAparts,
                         };
-                        setAdress(newObj); 
+                        setAdress(newObj);
                         let newObjValid = {
                             city: formValidate.city,
                             street: formValidate.street,
@@ -176,13 +176,13 @@ function ModalWindow(props) {
                         };
                         setFormValidate(newObjValid);
 
-                        if(label.classList.contains('warning')){
+                        if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
-                            label.textContent='Numer mieszkania';
+                            label.textContent = 'Numer mieszkania';
                         };
-                     }
-                     else{
-                        label.textContent= 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
                         label.classList.add('warning');
                         let newObjValid = {
                             city: formValidate.city,
@@ -191,47 +191,47 @@ function ModalWindow(props) {
                             apart: false,
                         };
                         setFormValidate(newObjValid);
-                    
-                    }
-                    }
-                }/> 
-                <button className="solid" onClick={(e)=>{
-                        e.preventDefault();
 
-                        function checkItem(item) {
-                            return item === true ;
-                          } 
-                        if(Object.values(formValidate).every(checkItem)){
-                            props.setModalWindow("deliverySecondWindow");
-                        }else{
-                            alert('należy wypelnić wszyskie pola wedlug poleceń')
-                        }
-                      
                     }
+                }
+                } />
+                <button className="solid" onClick={(e) => {
+                    e.preventDefault();
+
+                    function checkItem(item) {
+                        return item === true;
+                    }
+                    if (Object.values(formValidate).every(checkItem)) {
+                        props.setModalWindow("deliverySecondWindow");
+                    } else {
+                        alert('należy wypelnić wszyskie pola wedlug poleceń')
+                    }
+
+                }
                 }>Dalej</button>
             </form>
         )
     };
 
-    function getDeliveryTime(time){
+    function getDeliveryTime(time) {
         let nowTime = new Date()
-        nowTime.setMinutes(nowTime.getMinutes()+time)
+        nowTime.setMinutes(nowTime.getMinutes() + time)
 
         let hours = nowTime.getHours()
         let minutes = nowTime.getMinutes()
-        if (minutes < 10){
+        if (minutes < 10) {
             minutes = `0${nowTime.getMinutes()}`
         }
-        if (hours < 10){
+        if (hours < 10) {
             hours = `0${nowTime.getHours()}`
         }
 
-        return  `${hours}:${minutes}`
+        return `${hours}:${minutes}`
     };
 
     function deliverySecondWindow() {
 
-        
+
 
         return (
             <>
@@ -241,7 +241,7 @@ function ModalWindow(props) {
                     <p className='street'>
                         <span>{adress.street}</span>
                         <span>{adress.buldNumb}</span>
-                       {adress.apart.length>0?<span>/{adress.apart}</span>:null}
+                        {adress.apart.length > 0 ? <span>/{adress.apart}</span> : null}
                     </p>
                 </div>
                 <div className="window_content">
@@ -261,7 +261,7 @@ function ModalWindow(props) {
                             <span>{getDeliveryTime(30)}</span>
                         </div>
                     </div>
-                    <button onClick={(e)=>{
+                    <button onClick={(e) => {
 
                         // const url = 'url backend';
                         // const data = adress;
@@ -283,21 +283,21 @@ function ModalWindow(props) {
                         e.target.closest('.modal-window').classList.toggle('active')
                         props.setModalWindow();
                         props.setshowModalWindowDelivery(false);
-                        
+
 
                     }}>Zamów z dostawą</button>
-                    <button onClick={()=>{props.setModalWindow("delivery")}}>Wróć</button>
-                  
+                    <button onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
+
                 </div>
             </>
         )
     };
 
     function takeaway(params) {
-        return(
-            <>  
+        return (
+            <>
                 <span >Wybierz najbliższy lokal Dominos:</span>
-                <select name="citys" id="citys"  onChange={(e)=>{
+                <select name="citys" id="citys" onChange={(e) => {
                     props.setStore(e.target.value);
                 }}>
                     <option value="lokal1">lokal1</option>
@@ -306,11 +306,11 @@ function ModalWindow(props) {
                     <option value="lokal4">lokal4</option>
                 </select>
                 <Link to="/pizza">
-                    <button onClick={(e)=>{
-                            e.target.closest('.modal-window').classList.toggle('active');
-                            props.setModalWindow();
-                            props.setshowModalWindowDelivery(false);
-                        }
+                    <button onClick={(e) => {
+                        e.target.closest('.modal-window').classList.toggle('active');
+                        props.setModalWindow();
+                        props.setshowModalWindowDelivery(false);
+                    }
                     }>Potwierdzić</button>
                 </Link>
             </>
@@ -318,51 +318,60 @@ function ModalWindow(props) {
         )
     }
 
-    function chooseLokal(){
-        return(
-            <>
-            <span>Tój lokal odbioru to: {choosedPremises}</span>
-            <span>Zapraszamy po odbioru o {getDeliveryTime(15)}</span>
-            <span >Zmienić lokal odbioru:</span>
-                <select name="citys" id="citys"  onChange={(e)=>{
-                    props.setStore(e.target.value);
-                }}>
-                    <option value="lokal1">lokal1</option>
-                    <option value="lokal2">lokal2</option>
-                    <option value="lokal3">lokal3</option>
-                    <option value="lokal4">lokal4</option>
-                </select>
-             <div><span>zmienić czas odbioru</span>
-                 <div className="timePicker"></div>
-                 
-                 </div>   
-                    <button onClick={(e)=>{
-                            e.target.closest('.modal-window').classList.toggle('active');
-                            props.setModalWindow();
-                            props.setshowModalWindowDelivery(false);
-                           
-                        }
-                    }>Potwierdzam</button>
-            </>
+    function chooseLokal() {
+        return (
+
+            <div className="chooseLokal">
+                <span>Tój lokal odbioru to: {choosedPremises}</span>
+                <button onClick={(e)=>{
+                    props.setShowModalcollectTime(true);
+                }}>Zmienic czas odbioru</button>
+                <span>Zapraszamy po odbioru o godzinie {props.collectTime.hours}: {props.collectTime.minutes}</span>
+                <div className="changeLocal">
+                    <span >Zmienić lokal odbioru:</span>
+                    <select name="citys" id="citys" onChange={(e) => {
+                        props.setStore(e.target.value);
+                    }}>
+                        <option value="lokal1">lokal1</option>
+                        <option value="lokal2">lokal2</option>
+                        <option value="lokal3">lokal3</option>
+                        <option value="lokal4">lokal4</option>
+                    </select>
+                </div>
+
+                <div><span>zmienić czas odbioru</span>
+                    <div className="timePicker"></div>
+
+                </div>
+                <button className='solid' onClick={(e) => {
+                    e.target.closest('.modal-window').classList.toggle('active');
+                    props.setModalWindow();
+                    props.setshowModalWindowDelivery(false);
+                    alert(`dziękujemy za złożone zamówienie`)
+                }
+                }>Potwierdzam</button>
+
+            </div>
+
         )
     }
-   
-   
+
+
     return (
-            <div className="modal-window">
-                <div className="window_top"> 
-                    <span>Zamów online</span> 
-                    <button className="solid" onClick={(e)=>{
-                        e.target.closest('.modal-window').classList.toggle('active')
-                        props.setModalWindow();
-                        props.setshowModalWindowDelivery(false);
-                    }}>X</button> 
-                </div>
-                { props.modalWindows.delivery?deliveryFirstWindow():null}
-                { props.modalWindows.takeaway?takeaway():null}
-                { props.modalWindows.deliverySecondWindow?deliverySecondWindow():null}
-                { props.modalWindows.chooseLokal?chooseLokal():null}
+        <div className="modal-window">
+            <div className="window_top">
+                <span>Zamów online</span>
+                <button className="solid" onClick={(e) => {
+                    e.target.closest('.modal-window').classList.toggle('active')
+                    props.setModalWindow();
+                    props.setshowModalWindowDelivery(false);
+                }}>X</button>
             </div>
+            {props.modalWindows.delivery ? deliveryFirstWindow() : null}
+            {props.modalWindows.takeaway ? takeaway() : null}
+            {props.modalWindows.deliverySecondWindow ? deliverySecondWindow() : null}
+            {props.modalWindows.chooseLokal ? chooseLokal() : null}
+        </div>
 
     )
 
