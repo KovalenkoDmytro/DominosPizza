@@ -22,7 +22,7 @@ function App() {
     hours : null,
     minutes : null,
   });
-  let [showModalcollectTime, setShowModalcollectTime] = useState(true);
+  let [showModalcollectTime, setShowModalcollectTime] = useState(false);
 
  
 

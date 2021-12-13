@@ -70,10 +70,8 @@ function OrderPage(props) {
     const showModalWindow = () => {
         if (delivery) {
             props.setModalWindow("delivery")
-        } else if (newModalWindow) {
+        } else{
             props.setModalWindow("choose lokal")
-        } else {
-            props.setModalWindow("takeaway")
         }
     }
 
