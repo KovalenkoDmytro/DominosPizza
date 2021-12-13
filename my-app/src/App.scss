@@ -39,6 +39,10 @@ button {
         &:hover {
             background-color: #81071c;
         }
+        &.window__close{
+            position: absolute;
+            right: 2rem;
+        }
     }
 
 

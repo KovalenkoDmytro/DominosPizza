@@ -28,6 +28,9 @@
     .deliveryFirstWindow{
       display: flex;
       flex-direction: column;
+      .solid{
+         margin: 2rem auto 0;
+      }
    }
    .chooseLokal{
       display: flex;
@@ -43,6 +46,22 @@
          .solid{
             margin: 0 auto;
          }
+      }
+   }
+   .takeAway{
+     
+      label{
+         font-size: 1.7rem;
+         display: inline-block;
+         margin-bottom: 2rem;
+      }
+      select{
+         width: max-content;
+         display: inline-block;
+         margin-left: 2rem;
+      }
+      .solid{
+         margin: 0 auto;
       }
    }
 }

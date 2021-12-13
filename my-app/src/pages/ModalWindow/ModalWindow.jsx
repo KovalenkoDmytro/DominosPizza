@@ -286,7 +286,7 @@ function ModalWindow(props) {
 
 
                     }}>Zamów z dostawą</button>
-                    <button onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
+                    <button className='solid' onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
 
                 </div>
             </>
@@ -295,8 +295,8 @@ function ModalWindow(props) {
 
     function takeaway(params) {
         return (
-            <>
-                <span >Wybierz najbliższy lokal Dominos:</span>
+            <div className="takeAway">
+                <label htmlFor="citys">Wybierz najbliższy lokal Dominos:</label>
                 <select name="citys" id="citys" onChange={(e) => {
                     props.setStore(e.target.value);
                 }}>
@@ -306,14 +306,14 @@ function ModalWindow(props) {
                     <option value="lokal4">lokal4</option>
                 </select>
                 <Link to="/pizza">
-                    <button onClick={(e) => {
+                    <button className='solid' onClick={(e) => {
                         e.target.closest('.modal-window').classList.toggle('active');
                         props.setModalWindow();
                         props.setshowModalWindowDelivery(false);
                     }
                     }>Potwierdzić</button>
                 </Link>
-            </>
+            </div>
 
         )
     }
@@ -323,7 +323,7 @@ function ModalWindow(props) {
 
             <div className="chooseLokal">
                 <span>Tój lokal odbioru to: {choosedPremises}</span>
-                <button onClick={(e)=>{
+                <button onClick={(e) => {
                     props.setShowModalcollectTime(true);
                 }}>Zmienic czas odbioru</button>
                 <span>Zapraszamy po odbioru o godzinie {props.collectTime.hours}: {props.collectTime.minutes}</span>
@@ -360,8 +360,9 @@ function ModalWindow(props) {
     return (
         <div className="modal-window">
             <div className="window_top">
+
                 <span>Zamów online</span>
-                <button className="solid" onClick={(e) => {
+                <button className="solid window__close" onClick={(e) => {
                     e.target.closest('.modal-window').classList.toggle('active')
                     props.setModalWindow();
                     props.setshowModalWindowDelivery(false);
@@ -371,6 +372,7 @@ function ModalWindow(props) {
             {props.modalWindows.takeaway ? takeaway() : null}
             {props.modalWindows.deliverySecondWindow ? deliverySecondWindow() : null}
             {props.modalWindows.chooseLokal ? chooseLokal() : null}
+
         </div>
 
     )
