@@ -14,7 +14,12 @@ function OrderPage(props) {
             privatPolitic: false,
         }
     );
-
+    useEffect(() => {
+        if (props.getStoreTakeAway.length > 0) {
+            setDelivery(false);
+            setNewModalWindow(true)
+        }
+    }, []);
 
     useEffect(() => {
         if (props.salePrice.length > 0) {
@@ -40,37 +45,17 @@ function OrderPage(props) {
 
     }, [delivery])
 
-    useEffect(() => {
-        if (props.getStoreTakeAway.length > 0) {
-            setDelivery(false);
-            setNewModalWindow(true)
-        }
-        
-    }, []);
+   
 
     useEffect(() => {
     }, [newModalWindow]);
-    //get time
-    function getTime(min) {
-        let nowTime = new Date()
-        nowTime.setMinutes(nowTime.getMinutes() + min)
 
-        let hours = nowTime.getHours()
-        let minutes = nowTime.getMinutes()
-        if (minutes < 10) {
-            minutes = `0${nowTime.getMinutes()}`
-        }
-        if (hours < 10) {
-            hours = `0${nowTime.getHours()}`
-        }
-
-        return `${hours}:${minutes}`
-    };
     // showModalWindow
     const showModalWindow = () => {
         if (delivery) {
             props.setModalWindow("delivery")
-        } else{
+        }
+        else{
             props.setModalWindow("choose lokal")
         }
     }
@@ -114,7 +99,7 @@ function OrderPage(props) {
                             }} >
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Przybliżony czas dostawy:</span>
-                                <span className="item_time">{getTime(25)}</span>
+                                <span className="item_time">{props.collectTime[1].delivery.hours}:{props.collectTime[1].delivery.minutes}</span>
                             </div>
 
                             <div className="content_item" onClick={() => {
@@ -123,7 +108,10 @@ function OrderPage(props) {
                             }}>
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Przybliżony czas odbioru:</span>
-                                <span className="item_time">{getTime(15)}</span>
+                                <button onClick={()=>{
+                                    props.setShowModalcollectTime(true)
+                                }}>Zmienic czas odbioru</button>
+                                <span className="item_time">{props.collectTime[0].takeaway.hours}:{props.collectTime[0].takeaway.minutes}</span>
                             </div>
                         </div>
                     </div>

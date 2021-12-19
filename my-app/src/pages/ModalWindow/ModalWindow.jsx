@@ -23,7 +23,6 @@ function ModalWindow(props) {
         apart: '',
     });
 
-
     function deliveryFirstWindow() {
         return (
             <form className="deliveryFirstWindow" >
@@ -213,22 +212,6 @@ function ModalWindow(props) {
         )
     };
 
-    function getDeliveryTime(time) {
-        let nowTime = new Date()
-        nowTime.setMinutes(nowTime.getMinutes() + time)
-
-        let hours = nowTime.getHours()
-        let minutes = nowTime.getMinutes()
-        if (minutes < 10) {
-            minutes = `0${nowTime.getMinutes()}`
-        }
-        if (hours < 10) {
-            hours = `0${nowTime.getHours()}`
-        }
-
-        return `${hours}:${minutes}`
-    };
-
     function deliverySecondWindow() {
 
 
@@ -258,10 +241,30 @@ function ModalWindow(props) {
                         <span>Przybliżony czas dostawy:</span>
                         <div>
                             <img src="" alt="" />
-                            <span>{getDeliveryTime(30)}</span>
+                            <span>{props.collectTime[1].delivery.hours} : {props.collectTime[1].delivery.minutes} </span>
                         </div>
+             
+                            <button onClick={(e) => {
+                                props.setShowModalcollectTime(true);
+
+                                // props.setCollectTime([
+                                //     {
+                                //         takeaway: {
+                                //           hours: hoursInput.current.value,
+                                //           minutes: minutesInput.current.value,
+                                //         }
+                                //       }
+                                //       , {
+                                //         delivery: {
+                                //           hours: new Date().getHours(),
+                                //           minutes: new Date().getMinutes(),
+                                //         }
+                                //       }
+                                // ])
+                            }}>Zmienić czas dostawy</button>
+                       
                     </div>
-                    <button onClick={(e) => {
+                    <Link to="/pizza"><button onClick={(e) => {
 
                         // const url = 'url backend';
                         // const data = adress;
@@ -285,7 +288,7 @@ function ModalWindow(props) {
                         props.setshowModalWindowDelivery(false);
 
 
-                    }}>Zamów z dostawą</button>
+                    }}>Zamów z dostawą</button></Link>
                     <button className='solid' onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
 
                 </div>
@@ -318,17 +321,14 @@ function ModalWindow(props) {
         )
     }
 
+
     function chooseLokal() {
         return (
 
             <div className="chooseLokal">
-                <span>Tój lokal odbioru to: {choosedPremises}</span>
-                <button onClick={(e) => {
-                    props.setShowModalcollectTime(true);
-                }}>Zmienic czas odbioru</button>
-                <span>Zapraszamy po odbioru o godzinie {props.collectTime.hours}: {props.collectTime.minutes}</span>
+                <span>{choosedPremises ? `Tój lokal odbioru to:${choosedPremises}` : 'lokal odbioru nie jest wybrany'} </span>
                 <div className="changeLocal">
-                    <span >Zmienić lokal odbioru:</span>
+                    <span >{choosedPremises ? 'Zmienić lokal odbioru' : 'proszę wybrać lokal'}:</span>
                     <select name="citys" id="citys" onChange={(e) => {
                         props.setStore(e.target.value);
                     }}>
@@ -338,11 +338,10 @@ function ModalWindow(props) {
                         <option value="lokal4">lokal4</option>
                     </select>
                 </div>
-
-                <div><span>zmienić czas odbioru</span>
-                    <div className="timePicker"></div>
-
-                </div>
+                <button onClick={(e) => {
+                    props.setShowModalcollectTime(true);
+                }}>Zmienic czas odbioru</button>
+                <span>Zapraszamy po odbioru o godzinie {props.collectTime[0].takeaway.hours}: {props.collectTime[0].takeaway.minutes}</span>
                 <button className='solid' onClick={(e) => {
                     e.target.closest('.modal-window').classList.toggle('active');
                     props.setModalWindow();
@@ -360,7 +359,6 @@ function ModalWindow(props) {
     return (
         <div className="modal-window">
             <div className="window_top">
-
                 <span>Zamów online</span>
                 <button className="solid window__close" onClick={(e) => {
                     e.target.closest('.modal-window').classList.toggle('active')

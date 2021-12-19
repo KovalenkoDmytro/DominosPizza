@@ -15,16 +15,45 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
-  let [modalWindows, setmodalWindows] = useState({takeaway: false,delivery: false,deliverySecondWindow: false, chooseLokal: false,});
-  let [choosedStore, setStore] = useState('');
+  let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, });
+  let [choosedStore, setStore] = useState(false);
   let [productsCounterInBasket, setProductsCounter] = useState(0);
-  let [collectTime, setCollectTime] = useState({
-    hours : null,
-    minutes : null,
-  });
+
+  
+  let [collectTime, setCollectTime] = useState([
+    {
+      takeaway: {
+        hours: getTime(15, 'hours'),
+        minutes: getTime(15, 'minutes'),
+      }
+    }
+    , {
+      delivery: {
+        hours: getTime(30, 'hours'),
+        minutes: getTime(30, 'minutes'),
+      }
+    }
+
+
+  ]);
   let [showModalcollectTime, setShowModalcollectTime] = useState(false);
 
- 
+  function getTime(time, timeItem) {
+    let nowTime = new Date()
+    nowTime.setMinutes(nowTime.getMinutes() + time)
+
+    let hours = nowTime.getHours()
+    let minutes = nowTime.getMinutes()
+    if (minutes < 10) {
+      minutes = `0${nowTime.getMinutes()}`
+    }
+    if (hours < 10) {
+      hours = `0${nowTime.getHours()}`
+    }
+
+    if (timeItem === "hours") { return hours }
+    else { return minutes }
+  };
 
   useEffect(() => {
     if (localStorage.getItem("products") == null) {
@@ -38,32 +67,31 @@ function App() {
   useEffect(() => {
     crossOfPrice();
   }, [salePrice]);
-  
+
   useEffect(() => {
-    if(showModalWindow){
+    if (showModalWindow) {
       document.querySelector('.modal-window').classList.add('active');
     }
   }, [showModalWindow]);
 
-  
+
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(totalPrice))
   }, [totalPrice]);
 
   useEffect(() => {
-   
+
   }, [modalWindows]);
 
-  useEffect(()=>{
-  },[choosedStore]);
+  useEffect(() => {
+  }, [choosedStore]);
 
-  useEffect(()=>{
-    console.log(productsCounterInBasket);
-  },[productsCounterInBasket]);
-  
-  useEffect(()=>{
+  useEffect(() => {
+  }, [productsCounterInBasket]);
+
+  useEffect(() => {
     setProductsCounter(Number(localStorage.getItem('productsCounterInBasket')))
-  },[]);
+  }, []);
 
   function crossOfPrice() {
     if (salePrice.length > 0) {
@@ -71,33 +99,33 @@ function App() {
     } else return
   };
 
-//add products to count in basket 
-  function cheackAndAddToCount(count){
-    if(localStorage.getItem('productsCounterInBasket')==null){
+  //add products to count in basket 
+  function cheackAndAddToCount(count) {
+    if (localStorage.getItem('productsCounterInBasket') == null) {
       localStorage.setItem('productsCounterInBasket', count);
       setProductsCounter(count);
-    }else{
+    } else {
       let countInBasket = Number(localStorage.getItem('productsCounterInBasket'));
-      localStorage.setItem('productsCounterInBasket', countInBasket + count)  
+      localStorage.setItem('productsCounterInBasket', countInBasket + count)
       setProductsCounter(countInBasket + count);
-    } 
+    }
   }
 
- //remove products from count in basket 
- function removeProductfromBasketCounter(productCount = 1 ){
+  //remove products from count in basket 
+  function removeProductfromBasketCounter(productCount = 1) {
 
-  if(localStorage.getItem('productsCounterInBasket')==null){
-    return
-  }else{
-    let countInBasket = Number(localStorage.getItem('productsCounterInBasket'));
-    localStorage.setItem('productsCounterInBasket', countInBasket - productCount);
-    setProductsCounter(productsCounterInBasket - productCount)  
-  } 
-} 
+    if (localStorage.getItem('productsCounterInBasket') == null) {
+      return
+    } else {
+      let countInBasket = Number(localStorage.getItem('productsCounterInBasket'));
+      localStorage.setItem('productsCounterInBasket', countInBasket - productCount);
+      setProductsCounter(productsCounterInBasket - productCount)
+    }
+  }
 
 
-//add product to basket
-  function addPrice(name, url, price, description, sort,count) {
+  //add product to basket
+  function addPrice(name, url, price, description, sort, count) {
     let product = {
       name,
       url,
@@ -107,16 +135,16 @@ function App() {
       count,
     }
 
-    totalPrice.forEach((element,index) => {
-      if(element.name === product.name){
-        totalPrice[index]=element;     
+    totalPrice.forEach((element, index) => {
+      if (element.name === product.name) {
+        totalPrice[index] = element;
         totalPrice.splice(index, 1);
-        product.count +=element.count
-       
+        product.count += element.count
+
       }
     });
-   
-      setTotalPrice([...totalPrice, product])
+
+    setTotalPrice([...totalPrice, product])
   };
   // del product from basket 
   function delProductFromBasket(delProduct, productCount) {
@@ -129,7 +157,7 @@ function App() {
   function returnTotalprice(totalPrice) {
     let count = 0
     totalPrice.forEach(element => {
-      count +=  (element.count * element.price)
+      count += (element.count * element.price)
     });
     return count.toFixed(2)
   };
@@ -163,61 +191,68 @@ function App() {
     } else (alert(`żeby zrealizować kupon należy dodać do koszyka jeszcie ${Pizzas - countPizzas} pizzy`))
   };
 
-//show DIALOG window DELIVERY
-  function setshowModalWindow(windowItem){
+  //show DIALOG window DELIVERY
+  function setshowModalWindow(windowItem) {
     setShowModalWindowDelivery(true)
-    if(windowItem==="takeaway"){
+    if (windowItem === "takeaway") {
       setmodalWindows(
-        {takeaway: true,
+        {
+          takeaway: true,
           delivery: false,
           deliverySecondWindow: false,
           chooseLokal: false,
         }
       )
-    }else if(windowItem==="delivery"){
+    } else if (windowItem === "delivery") {
       setmodalWindows(
-        {takeaway: false,
+        {
+          takeaway: false,
           delivery: true,
           deliverySecondWindow: false,
           chooseLokal: false,
         }
       )
-    }else if(windowItem==="deliverySecondWindow"){
+    } else if (windowItem === "deliverySecondWindow") {
       setmodalWindows(
-        {takeaway: false,
+        {
+          takeaway: false,
           delivery: false,
           deliverySecondWindow: true,
           chooseLokal: false,
         }
       )
-    }else if(windowItem==="choose lokal"){
+    } else if (windowItem === "choose lokal") {
       setmodalWindows(
-        {takeaway: false,
+        {
+          takeaway: false,
           delivery: false,
-          deliverySecondWindow:false,
+          deliverySecondWindow: false,
           chooseLokal: true,
         }
       )
     }
-    else(
+    else (
       setmodalWindows(
-        {takeaway: false,
+        {
+          takeaway: false,
           delivery: false,
           deliverySecondWindow: false,
           chooseLokal: false,
         }
       )
     )
- 
+
   };
+
+ 
 
   return (
     < Context.Provider value={[addPrice, changeTotalPrice, cheackAndAddToCount]} >
-      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore}/>  
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)}  salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore}/>
+      <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore} />
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} />
       <Footer />
-      {showModalWindow? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}/>:null}
-      {showModalcollectTime?  <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}/>: null}
+      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  /> : null}
+      {showModalcollectTime ? <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}  /> : null}
     </Context.Provider>
   );
 }

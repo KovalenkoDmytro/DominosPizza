@@ -24,6 +24,10 @@ function Nav(props) {
     let totalPriceInBasket = props.totalPrice;
     let salePrice =props.salePrice;
     let [favoritsCount, setFavoritsCount] = useState(0);
+    let setShowModalcollectTime= props.setShowModalcollectTime;
+    let collectTime=props.collectTime;
+    
+
 
     //add favoritsCount to localstorage
     function addFavoritToLS(){
@@ -124,7 +128,7 @@ function Nav(props) {
                         <Route path="/promocje" component={Sale} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} {...props} />} />
+                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} {...props} />} />
                     </Switch>
             
             </ContextFavorit.Provider>
