@@ -18,6 +18,7 @@ function App() {
   let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, });
   let [choosedStore, setStore] = useState(false);
   let [productsCounterInBasket, setProductsCounter] = useState(0);
+  let [userData, setUserData] = useState({});
 
   
   let [collectTime, setCollectTime] = useState([
@@ -251,7 +252,7 @@ function App() {
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore} />
       <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} />
       <Footer />
-      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  /> : null}
+      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  setUserData={setUserData}/> : null}
       {showModalcollectTime ? <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}  /> : null}
     </Context.Provider>
   );

@@ -202,6 +202,9 @@ function ModalWindow(props) {
                     }
                     if (Object.values(formValidate).every(checkItem)) {
                         props.setModalWindow("deliverySecondWindow");
+                        props.setUserData(
+                            adress
+                        )
                     } else {
                         alert('należy wypelnić wszyskie pola wedlug poleceń')
                     }
