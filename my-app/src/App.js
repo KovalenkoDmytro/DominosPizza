@@ -19,7 +19,7 @@ function App() {
   let [choosedStore, setStore] = useState(false);
   let [productsCounterInBasket, setProductsCounter] = useState(0);
   let [userData, setUserData] = useState({});
-
+  let [choosedDelivery, setChoosedDelivery] = useState(false);
   
   let [collectTime, setCollectTime] = useState([
     {
@@ -89,6 +89,10 @@ function App() {
 
   useEffect(() => {
   }, [productsCounterInBasket]);
+  
+  useEffect(() => {
+  }, [userData]);
+  
 
   useEffect(() => {
     setProductsCounter(Number(localStorage.getItem('productsCounterInBasket')))
@@ -250,9 +254,9 @@ function App() {
   return (
     < Context.Provider value={[addPrice, changeTotalPrice, cheackAndAddToCount]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore} />
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} />
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData}/>
       <Footer />
-      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  setUserData={setUserData}/> : null}
+      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  setUserData={setUserData} setChoosedDelivery={setChoosedDelivery}/> : null}
       {showModalcollectTime ? <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}  /> : null}
     </Context.Provider>
   );

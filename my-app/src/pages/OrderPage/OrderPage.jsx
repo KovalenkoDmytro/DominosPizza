@@ -1,5 +1,6 @@
 import "./OrderPage.scss";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 function OrderPage(props) {
 
     let productsOrdered = props.products;
@@ -19,15 +20,17 @@ function OrderPage(props) {
             setDelivery(false);
             setNewModalWindow(true)
         }
-    }, []);
-
-    useEffect(() => {
         if (props.salePrice.length > 0) {
             setDiscountprice(props.salePrice[0].price.toFixed(2));
             document.querySelector('.total_price').classList.add('underline')
         }
+        if (props.choosedDelivery) {
+            setDelivery(true)
+        }
 
     }, []);
+
+
 
     useEffect(() => {
         if (delivery) {
@@ -45,7 +48,7 @@ function OrderPage(props) {
 
     }, [delivery])
 
-   
+
 
     useEffect(() => {
     }, [newModalWindow]);
@@ -55,7 +58,7 @@ function OrderPage(props) {
         if (delivery) {
             props.setModalWindow("delivery")
         }
-        else{
+        else {
             props.setModalWindow("choose lokal")
         }
     }
@@ -71,10 +74,40 @@ function OrderPage(props) {
         }
         if (!flag) {
             alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
-        } else {
+        } else if(flag && delivery && Object.keys(props.userData).length ==0){
+            alert("empty data adress ");
+        }else if(flag && !delivery ){
             showModalWindow();
+        }else if(flag && delivery && Object.keys(props.userData).length >0){
+            alert("zamowienie zostalo zlozone");
+            window.location.href = '/Strona glówna';
+            localStorage.removeItem('products');
+            localStorage.removeItem('productsCounterInBasket');
+        }
+        else {
+            console.log('error');
         }
     }
+
+
+    function showDeliveryAdress() {
+        return (
+            <div className="deliveryAdress">
+                <div className="city">
+                    miasto {props.userData.city}
+                </div>
+                <div className="street">
+                    ulica {props.userData.street}
+                </div>
+                <div className="buldNumb">
+                     budynek {props.userData.buldNumb}
+                </div>
+                {props.userData.apart.length>0 ?  <div className="apart">mieszkanie{props.userData.apart}</div>: null}
+               
+            </div>
+        )
+    }
+
 
     return (
         <>
@@ -108,7 +141,7 @@ function OrderPage(props) {
                             }}>
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Przybliżony czas odbioru:</span>
-                                <button onClick={()=>{
+                                <button onClick={() => {
                                     props.setShowModalcollectTime(true)
                                 }}>Zmienic czas odbioru</button>
                                 <span className="item_time">{props.collectTime[0].takeaway.hours}:{props.collectTime[0].takeaway.minutes}</span>
@@ -189,9 +222,11 @@ function OrderPage(props) {
 
                             <button className="solid" onClick={(e) => {
                                 e.preventDefault();
-                                cheackValidate()
+                                cheackValidate();
+                                
                             }
                             }>Zamawiam z obowiązkiem zapłaty {props.totalPrice} zł</button>
+ 
                         </form>
                     </div>
                     <div className="takeContent">
@@ -224,6 +259,9 @@ function OrderPage(props) {
 
 
                         </div>
+
+                        {Object.keys(props.userData).length>0 ? showDeliveryAdress() : null}
+                    
                     </div>
                 </div>
             </div>

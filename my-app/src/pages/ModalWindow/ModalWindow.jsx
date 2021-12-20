@@ -285,13 +285,12 @@ function ModalWindow(props) {
                         // } catch (error) {
                         // console.error('error:', error);
                         // }
-                        alert("Zamowienie zostalo zlozone. proszę czekać na zamówenie");
                         e.target.closest('.modal-window').classList.toggle('active')
                         props.setModalWindow();
                         props.setshowModalWindowDelivery(false);
+                        props.setChoosedDelivery(true);
 
-
-                    }}>Zamów z dostawą</button></Link>
+                    }}>Podtwierdzam</button></Link>
                     <button className='solid' onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
 
                 </div>
