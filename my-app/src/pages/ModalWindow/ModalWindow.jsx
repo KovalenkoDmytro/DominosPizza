@@ -305,7 +305,7 @@ function ModalWindow(props) {
                 <select name="citys" id="citys" onChange={(e) => {
                     props.setStore(e.target.value);
                 }}>
-                    <option value="lokal1">lokal1</option>
+                    <option value="lokal1" >lokal1</option>
                     <option value="lokal2">lokal2</option>
                     <option value="lokal3">lokal3</option>
                     <option value="lokal4">lokal4</option>
@@ -344,13 +344,14 @@ function ModalWindow(props) {
                     props.setShowModalcollectTime(true);
                 }}>Zmienic czas odbioru</button>
                 <span>Zapraszamy po odbioru o godzinie {props.collectTime[0].takeaway.hours}: {props.collectTime[0].takeaway.minutes}</span>
+                <Link to="/">
                 <button className='solid' onClick={(e) => {
                     e.target.closest('.modal-window').classList.toggle('active');
                     props.setModalWindow();
                     props.setshowModalWindowDelivery(false);
                     alert(`dziękujemy za złożone zamówienie`)
                 }
-                }>Potwierdzam</button>
+                }>Potwierdzam</button></Link>
 
             </div>
 
