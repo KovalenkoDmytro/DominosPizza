@@ -33,22 +33,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/
                     if (regulaExpression.test(e.target.value)) {
                         customerAdress = e.target.value;
-                        let newObj = {
-                            city: customerAdress,
-                            street: adress.street,
-                            buldNumb: adress.buldNumb,
-                            apart: adress.apart,
-                        }
-                        setAdress(newObj)
-
-                        let newObjValid = {
-                            city: true,
-                            street: formValidate.street,
-                            buld: formValidate.buld,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
-
+                        setAdress({ ...adress, city: customerAdress});
+                        setFormValidate({...formValidate,city: true});
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -58,13 +44,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne';
                         label.classList.add('warning');
-                        let newObjValid = {
-                            city: false,
-                            street: formValidate.street,
-                            buld: formValidate.buld,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
+                        setFormValidate({...formValidate,city: false});
 
                     }
                 }
@@ -76,23 +56,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerStreet = e.target.value;
-                        let newObj = {
-                            city: adress.city,
-                            street: customerStreet,
-                            buldNumb: adress.buldNumb,
-                            apart: adress.apart,
-                        }
-                        setAdress(newObj)
-
-
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: true,
-                            buld: formValidate.buld,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
-
+                        setAdress({ ...adress, street: customerStreet});
+                        setFormValidate({...formValidate,street: true});
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -102,13 +67,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne lub ';
                         label.classList.add('warning');
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: false,
-                            buld: formValidate.buld,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
+                        setFormValidate({...formValidate,street: false});
                     }
                 }
                 } />
@@ -119,22 +78,9 @@ function ModalWindow(props) {
                     let regulaExpression = /^[0-9]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerBuild = e.target.value;
-                        let newObj = {
-                            city: adress.city,
-                            street: adress.street,
-                            buldNumb: customerBuild,
-                            apart: adress.apart,
-                        }
-                        setAdress(newObj)
-
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: formValidate.street,
-                            buld: true,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
-
+                        setAdress({ ...adress, buldNumb: customerBuild});
+                        setFormValidate({...formValidate,buld: true});
+                        
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
                             label.textContent = 'Numer domu*';
@@ -143,13 +89,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby';
                         label.classList.add('warning');
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: formValidate.street,
-                            buld: false,
-                            apart: formValidate.apart,
-                        }
-                        setFormValidate(newObjValid)
+                        setFormValidate({...formValidate,buld: false});
                     }
                 }
                 } />
@@ -160,20 +100,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^\w{1,3}$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerAparts = e.target.value;
-                        let newObj = {
-                            city: adress.city,
-                            street: adress.street,
-                            buldNumb: adress.buldNumb,
-                            apart: customerAparts,
-                        };
-                        setAdress(newObj);
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: formValidate.street,
-                            buld: formValidate.buld,
-                            apart: true,
-                        };
-                        setFormValidate(newObjValid);
+                        setAdress({ ...adress, apart: customerAparts});
+                        setFormValidate({...formValidate,apart: true});
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -183,13 +111,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
                         label.classList.add('warning');
-                        let newObjValid = {
-                            city: formValidate.city,
-                            street: formValidate.street,
-                            buld: formValidate.buld,
-                            apart: false,
-                        };
-                        setFormValidate(newObjValid);
+                        setFormValidate({...formValidate,apart: false});
 
                     }
                 }
@@ -358,6 +280,121 @@ function ModalWindow(props) {
         )
     }
 
+    function addres() {
+        return (
+            <form className="deliveryFirstWindow" >
+                <label htmlFor="city">Miasto*</label>
+                <input className="input_solid" type="text" name="city" onChange={(e) => {
+                    let customerAdress
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[a-zA-Z]+$/
+                    if (regulaExpression.test(e.target.value)) {
+                        customerAdress = e.target.value;
+                        setAdress({ ...adress, city: customerAdress});
+                        setFormValidate({...formValidate,city: true});
+
+                        if (label.classList.contains('warning')) {
+                            label.classList.remove('warning');
+                            label.textContent = 'Miasto*';
+                        };
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne';
+                        label.classList.add('warning');
+                        setFormValidate({...formValidate,city: false});
+
+                    }
+                }
+                } />
+                <label htmlFor="street">Ulica*</label>
+                <input className="input_solid" type="text" name="street" onChange={(e) => {
+                    let customerStreet;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[a-zA-Z]+$/;
+                    if (regulaExpression.test(e.target.value)) {
+                        customerStreet = e.target.value;
+                        setAdress({ ...adress, street: customerStreet});
+                        setFormValidate({...formValidate,street: true});
+
+                        if (label.classList.contains('warning')) {
+                            label.classList.remove('warning');
+                            label.textContent = 'Ulica*';
+                        };
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne lub ';
+                        label.classList.add('warning');
+                        setFormValidate({...formValidate,street: false});
+                    }
+                }
+                } />
+                <label htmlFor="">Numer domu*</label>
+                <input className="input_solid" type="text" name="build" onChange={(e) => {
+                    let customerBuild;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^[0-9]+$/;
+                    if (regulaExpression.test(e.target.value)) {
+                        customerBuild = e.target.value;
+                        setAdress({ ...adress, buldNumb: customerBuild});
+                        setFormValidate({...formValidate,buld: true});
+                        
+                        if (label.classList.contains('warning')) {
+                            label.classList.remove('warning');
+                            label.textContent = 'Numer domu*';
+                        };
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko liczby';
+                        label.classList.add('warning');
+                        setFormValidate({...formValidate,buld: false});
+                    }
+                }
+                } />
+                <label htmlFor="apartment">Numer mieszkania</label>
+                <input className="input_solid" type="text" name="apartment" onChange={(e) => {
+                    let customerAparts;
+                    let label = e.target.previousElementSibling;
+                    let regulaExpression = /^\w{1,3}$/;
+                    if (regulaExpression.test(e.target.value)) {
+                        customerAparts = e.target.value;
+                        setAdress({ ...adress, apart: customerAparts});
+                        setFormValidate({...formValidate,apart: true});
+
+                        if (label.classList.contains('warning')) {
+                            label.classList.remove('warning');
+                            label.textContent = 'Numer mieszkania';
+                        };
+                    }
+                    else {
+                        label.textContent = 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
+                        label.classList.add('warning');
+                        setFormValidate({...formValidate,apart: false});
+
+                    }
+                }
+                } />
+               <Link to="/"> <button className="solid" onClick={(e) => {
+                    // e.preventDefault();
+
+                    function checkItem(item) {
+                        return item === true;
+                    }
+                    if (Object.values(formValidate).every(checkItem)) {
+                        props.setUserData(
+                            adress
+                        )
+                        alert('zamówenie zostalo zlożone, proszę czekać na dostawce') 
+                        props.setModalWindow();
+                        e.target.closest('.modal-window').classList.toggle('active');
+                    } else {
+                        alert('należy wypelnić wszyskie pola wedlug poleceń')
+                    }
+
+                }
+                }>Podtwierdzam</button></Link>
+            </form>
+        )
+    };
 
     return (
         <div className="modal-window">
@@ -373,6 +410,8 @@ function ModalWindow(props) {
             {props.modalWindows.takeaway ? takeaway() : null}
             {props.modalWindows.deliverySecondWindow ? deliverySecondWindow() : null}
             {props.modalWindows.chooseLokal ? chooseLokal() : null}
+            {props.modalWindows.addres ? addres() : null}
+
 
         </div>
 

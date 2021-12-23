@@ -15,7 +15,7 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
-  let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, });
+  let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, addres: false});
   let [choosedStore, setStore] = useState(false);
   let [productsCounterInBasket, setProductsCounter] = useState(0);
   let [userData, setUserData] = useState({});
@@ -206,6 +206,7 @@ function App() {
           delivery: false,
           deliverySecondWindow: false,
           chooseLokal: false,
+          addres: false,
         }
       )
     } else if (windowItem === "delivery") {
@@ -215,6 +216,7 @@ function App() {
           delivery: true,
           deliverySecondWindow: false,
           chooseLokal: false,
+          addres: false,
         }
       )
     } else if (windowItem === "deliverySecondWindow") {
@@ -224,6 +226,7 @@ function App() {
           delivery: false,
           deliverySecondWindow: true,
           chooseLokal: false,
+          addres: false,
         }
       )
     } else if (windowItem === "choose lokal") {
@@ -233,16 +236,27 @@ function App() {
           delivery: false,
           deliverySecondWindow: false,
           chooseLokal: true,
+          addres: false,
         }
       )
-    }
-    else (
+    }else if (windowItem === "adress") {
       setmodalWindows(
         {
           takeaway: false,
           delivery: false,
           deliverySecondWindow: false,
           chooseLokal: false,
+          addres: true,
+        }
+      )
+    }else (
+      setmodalWindows(
+        {
+          takeaway: false,
+          delivery: false,
+          deliverySecondWindow: false,
+          chooseLokal: false,
+          addres: false
         }
       )
     )

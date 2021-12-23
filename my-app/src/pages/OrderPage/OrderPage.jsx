@@ -76,6 +76,7 @@ function OrderPage(props) {
             alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
         } else if(flag && delivery && Object.keys(props.userData).length ==0){
             alert("empty data adress ");
+            props.setModalWindow("adress")
         }else if(flag && !delivery ){
             showModalWindow();
         }else if(flag && delivery && Object.keys(props.userData).length >0){
@@ -88,6 +89,9 @@ function OrderPage(props) {
             console.log('error');
         }
     }
+
+
+    
 
 
     function showDeliveryAdress() {
