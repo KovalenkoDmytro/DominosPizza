@@ -33,8 +33,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/
                     if (regulaExpression.test(e.target.value)) {
                         customerAdress = e.target.value;
-                        setAdress({ ...adress, city: customerAdress});
-                        setFormValidate({...formValidate,city: true});
+                        setAdress({ ...adress, city: customerAdress });
+                        setFormValidate({ ...formValidate, city: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -44,7 +44,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,city: false});
+                        setFormValidate({ ...formValidate, city: false });
 
                     }
                 }
@@ -56,8 +56,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerStreet = e.target.value;
-                        setAdress({ ...adress, street: customerStreet});
-                        setFormValidate({...formValidate,street: true});
+                        setAdress({ ...adress, street: customerStreet });
+                        setFormValidate({ ...formValidate, street: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -67,7 +67,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne lub ';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,street: false});
+                        setFormValidate({ ...formValidate, street: false });
                     }
                 }
                 } />
@@ -78,9 +78,9 @@ function ModalWindow(props) {
                     let regulaExpression = /^[0-9]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerBuild = e.target.value;
-                        setAdress({ ...adress, buldNumb: customerBuild});
-                        setFormValidate({...formValidate,buld: true});
-                        
+                        setAdress({ ...adress, buldNumb: customerBuild });
+                        setFormValidate({ ...formValidate, buld: true });
+
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
                             label.textContent = 'Numer domu*';
@@ -89,7 +89,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,buld: false});
+                        setFormValidate({ ...formValidate, buld: false });
                     }
                 }
                 } />
@@ -100,8 +100,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^\w{1,3}$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerAparts = e.target.value;
-                        setAdress({ ...adress, apart: customerAparts});
-                        setFormValidate({...formValidate,apart: true});
+                        setAdress({ ...adress, apart: customerAparts });
+                        setFormValidate({ ...formValidate, apart: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -111,7 +111,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,apart: false});
+                        setFormValidate({ ...formValidate, apart: false });
 
                     }
                 }
@@ -142,34 +142,23 @@ function ModalWindow(props) {
 
 
         return (
-            <>
+            <div className='deliverySecond'>
                 <div className="adress">
-                    <span>Twój adres dostawy:</span>
-                    <span className='city'>{adress.city}</span>
-                    <p className='street'>
-                        <span>{adress.street}</span>
-                        <span>{adress.buldNumb}</span>
-                        {adress.apart.length > 0 ? <span>/{adress.apart}</span> : null}
-                    </p>
+                    <div>Twój adres dostawy:</div>
+                    
+                    <ul className='delivery-adress'>
+                        <li><span>miasto:</span> <span className='adress_item'>{adress.city}</span></li>
+                        <li><span>ulica:</span><span className='adress_item'> {adress.street}</span></li>
+                        <li><span>budynek:</span><span className='adress_item'> {adress.buldNumb}</span></li>
+                        {adress.apart.length > 0 ? <li><span>mieszkanie</span>/<span className='adress_item'>{adress.apart}</span></li> : null}
+                    </ul>
                 </div>
                 <div className="window_content">
                     <div className="content_item">
-                        <span>Lokal, w którym przygotujemy zamówienie:</span>
-                        <div>
-                            <img src="" alt="" />
-                            <span>Dominos</span>
-                        </div>
-                        <span>City</span>
-                        <span>Street</span>
-                    </div>
-                    <div className="content_item">
-                        <span>Przybliżony czas dostawy:</span>
-                        <div>
-                            <img src="" alt="" />
-                            <span>{props.collectTime[1].delivery.hours} : {props.collectTime[1].delivery.minutes} </span>
-                        </div>
-             
-                            <button onClick={(e) => {
+                        <div className='deliveryTime'>Przybliżony czas dostawy:<span>{props.collectTime[1].delivery.hours} : {props.collectTime[1].delivery.minutes} </span>
+
+
+                            <button className="solid __blue" onClick={(e) => {
                                 props.setShowModalcollectTime(true);
 
                                 // props.setCollectTime([
@@ -187,36 +176,38 @@ function ModalWindow(props) {
                                 //       }
                                 // ])
                             }}>Zmienić czas dostawy</button>
-                       
+                        </div>
+
                     </div>
-                    <Link to="/pizza"><button onClick={(e) => {
+                    <div className="buttons">
+                        <Link to="/pizza"><button className="solid" onClick={(e) => {
 
-                        // const url = 'url backend';
-                        // const data = adress;
+                            // const url = 'url backend';
+                            // const data = adress;
 
-                        // try {
-                        // const response =  fetch(url, {
-                        //     method: 'POST', 
-                        //     body: JSON.stringify(data), 
-                        //     headers: {
-                        //     'Content-Type': 'application/json'
-                        //     }
-                        // });
-                        // // const json =  response.json();
-                        // // console.log('dane wyslano:', JSON.stringify(json));
-                        // } catch (error) {
-                        // console.error('error:', error);
-                        // }
-                        e.target.closest('.modal-window').classList.toggle('active')
-                        props.setModalWindow();
-                        props.setshowModalWindowDelivery(false);
-                        props.setChoosedDelivery(true);
+                            // try {
+                            // const response =  fetch(url, {
+                            //     method: 'POST', 
+                            //     body: JSON.stringify(data), 
+                            //     headers: {
+                            //     'Content-Type': 'application/json'
+                            //     }
+                            // });
+                            // // const json =  response.json();
+                            // // console.log('dane wyslano:', JSON.stringify(json));
+                            // } catch (error) {
+                            // console.error('error:', error);
+                            // }
+                            e.target.closest('.modal-window').classList.toggle('active')
+                            props.setModalWindow();
+                            props.setshowModalWindowDelivery(false);
+                            props.setChoosedDelivery(true);
 
-                    }}>Podtwierdzam</button></Link>
-                    <button className='solid' onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
-
+                        }}>Podtwierdzam</button></Link>
+                        <button className='solid' onClick={() => { props.setModalWindow("delivery") }}>Wróć</button>
+                    </div>
                 </div>
-            </>
+            </div>
         )
     };
 
@@ -262,18 +253,18 @@ function ModalWindow(props) {
                         <option value="lokal4">lokal4</option>
                     </select>
                 </div>
-                <button onClick={(e) => {
+                <button className="solid __blue" onClick={(e) => {
                     props.setShowModalcollectTime(true);
                 }}>Zmienic czas odbioru</button>
                 <span>Zapraszamy po odbioru o godzinie {props.collectTime[0].takeaway.hours}: {props.collectTime[0].takeaway.minutes}</span>
                 <Link to="/">
-                <button className='solid' onClick={(e) => {
-                    e.target.closest('.modal-window').classList.toggle('active');
-                    props.setModalWindow();
-                    props.setshowModalWindowDelivery(false);
-                    alert(`dziękujemy za złożone zamówienie`)
-                }
-                }>Potwierdzam</button></Link>
+                    <button className='solid' onClick={(e) => {
+                        e.target.closest('.modal-window').classList.toggle('active');
+                        props.setModalWindow();
+                        props.setshowModalWindowDelivery(false);
+                        alert(`dziękujemy za złożone zamówienie`)
+                    }
+                    }>Potwierdzam</button></Link>
 
             </div>
 
@@ -290,8 +281,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/
                     if (regulaExpression.test(e.target.value)) {
                         customerAdress = e.target.value;
-                        setAdress({ ...adress, city: customerAdress});
-                        setFormValidate({...formValidate,city: true});
+                        setAdress({ ...adress, city: customerAdress });
+                        setFormValidate({ ...formValidate, city: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -301,7 +292,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,city: false});
+                        setFormValidate({ ...formValidate, city: false });
 
                     }
                 }
@@ -313,8 +304,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^[a-zA-Z]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerStreet = e.target.value;
-                        setAdress({ ...adress, street: customerStreet});
-                        setFormValidate({...formValidate,street: true});
+                        setAdress({ ...adress, street: customerStreet });
+                        setFormValidate({ ...formValidate, street: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -324,7 +315,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko znaki alfabetyczne lub ';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,street: false});
+                        setFormValidate({ ...formValidate, street: false });
                     }
                 }
                 } />
@@ -335,9 +326,9 @@ function ModalWindow(props) {
                     let regulaExpression = /^[0-9]+$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerBuild = e.target.value;
-                        setAdress({ ...adress, buldNumb: customerBuild});
-                        setFormValidate({...formValidate,buld: true});
-                        
+                        setAdress({ ...adress, buldNumb: customerBuild });
+                        setFormValidate({ ...formValidate, buld: true });
+
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
                             label.textContent = 'Numer domu*';
@@ -346,7 +337,7 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,buld: false});
+                        setFormValidate({ ...formValidate, buld: false });
                     }
                 }
                 } />
@@ -357,8 +348,8 @@ function ModalWindow(props) {
                     let regulaExpression = /^\w{1,3}$/;
                     if (regulaExpression.test(e.target.value)) {
                         customerAparts = e.target.value;
-                        setAdress({ ...adress, apart: customerAparts});
-                        setFormValidate({...formValidate,apart: true});
+                        setAdress({ ...adress, apart: customerAparts });
+                        setFormValidate({ ...formValidate, apart: true });
 
                         if (label.classList.contains('warning')) {
                             label.classList.remove('warning');
@@ -368,12 +359,12 @@ function ModalWindow(props) {
                     else {
                         label.textContent = 'linijka moze zawierac tylko liczby/znaki alfabetyczne lub zostaw pustą';
                         label.classList.add('warning');
-                        setFormValidate({...formValidate,apart: false});
+                        setFormValidate({ ...formValidate, apart: false });
 
                     }
                 }
                 } />
-               <Link to="/"> <button className="solid" onClick={(e) => {
+                <Link to="/"> <button className="solid" onClick={(e) => {
                     // e.preventDefault();
 
                     function checkItem(item) {
@@ -383,7 +374,7 @@ function ModalWindow(props) {
                         props.setUserData(
                             adress
                         )
-                        alert('zamówenie zostalo zlożone, proszę czekać na dostawce') 
+                        alert('zamówenie zostalo zlożone, proszę czekać na dostawce')
                         props.setModalWindow();
                         e.target.closest('.modal-window').classList.toggle('active');
                     } else {

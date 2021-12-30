@@ -36,10 +36,21 @@ button {
         background-color: #dd082b;
         transition: all 0.3s;
         text-transform: uppercase;
+
         &:hover {
             background-color: #81071c;
         }
-        &.window__close{
+
+        &.__blue{
+            background-color: #006491;
+            border: none;
+            box-shadow: none;
+            &:hover{
+                box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.28);
+                background-color: #dd082b;
+            }
+        }
+        &.window__close {
             position: absolute;
             right: 2rem;
         }
@@ -155,39 +166,41 @@ h1 {
             position: absolute;
         }
     }
-    .slick-dots{
-        button{
+
+    .slick-dots {
+        button {
             padding: 0;
             border-radius: unset;
         }
     }
 }
-input.inputs{
+
+input.inputs {
     margin: 0 auto;
     margin-top: 0px;
-font-size: 1.4rem;
-line-height: 1.7rem;
-color: #192b38;
-padding: 16px 20px 15px 20px;
-margin-top: 8px;
-border: 2px solid #f4efe8;
-border-radius: 0.8rem;
-width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: #192b38;
+    padding: 16px 20px 15px 20px;
+    margin-top: 8px;
+    border: 2px solid #f4efe8;
+    border-radius: 0.8rem;
+    width: 100%;
 
 }
 
-.selects{
+.selects {
     width: 100%;
-height: 100%;
-text-align: left;
-line-height: 5rem;
-padding: 16px 20px 15px 20px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-position: relative;
--webkit-user-select: none;
-user-select: none;
-border: 2px solid #f4efe8;
-border-radius: .8rem;
+    height: 100%;
+    text-align: left;
+    line-height: 5rem;
+    padding: 16px 20px 15px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    border: 2px solid #f4efe8;
+    border-radius: .8rem;
 }

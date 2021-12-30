@@ -118,14 +118,17 @@ function Nav(props) {
                             <Link to={'ulubione'}>{'ulubione'}</Link>
                             {favoritsCount>0?<span className="bage_counter">{favoritsCount}</span>: null}
                         </li>
-                        <li className="nav --item" key={'promocje'}><Link to={'promocje'}>{'promocje'}</Link></li>
+                        <li className="nav --item" key={'promocje'}>
+                            <Link to={'promocje'}>{'promocje'}</Link>
+                            {props.couponsCount>0?<span className="bage_counter">{props.couponsCount}</span>: null} 
+                        </li>
                         <li className="nav --item" key={'pizza'}><Link to={'pizza'}>{'pizza'}</Link></li>
                     </nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
                         <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
-                        <Route path="/promocje" component={Sale} />
+                        <Route path="/promocje" component={(props) => <Sale  {...props} />} />
                         <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
                         <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData} {...props} />} />

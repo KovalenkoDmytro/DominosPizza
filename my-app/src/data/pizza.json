@@ -45,56 +45,56 @@
     },
     {
         "id": 6,
-        "name": "Diavola (American Hot)",
+        "name": "Hawajska",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
-        "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "logdescription": "sos pomidorowy, mozzarella, szynka, ananas",
+        "price": 36.90,
+        "sorte": "",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_hawajska.webp?width=396"
     },
     {
         "id": 7,
-        "name": "Diavola (American Hot)",
+        "name": "Carbonara",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
-        "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "logdescription": "sos kremowy, mozzarella, boczek,  pieczarki, cebula",
+        "price": 36.98,
+        "sorte": "",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_carbonara.webp?width=396"
     },
     {
         "id": 8,
-        "name": "Diavola (American Hot)",
+        "name": "Capricciosa",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "logdescription": "sos pomidorowy, mozzarella, szynka, pieczarki",
         "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "sorte": "New",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_capriciosa.webp?width=396"
     },
     {
         "id": 9,
-        "name": "Diavola (American Hot)",
+        "name": "Montanara",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "logdescription": "sos pomidorowy, mozzarella, ser góralski, boczek, cebula, żurawina",
         "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "sorte": "New",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_montanara.webp?width=396"
     },
     {
         "id": 10,
-        "name": "Diavola (American Hot)",
+        "name": "Quattro Cheese",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
-        "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "logdescription": "sos kremowy, sery: mozzarella, cheddar, ementaler, ser Lazur",
+        "price": 42.90,
+        "sorte": "Vege",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_quatro_cheese.webp?width=396"
     },
     {
         "id": 11,
-        "name": "Diavola (American Hot)",
+        "name": "Toscana (Italian)",
         "favorits": false,
-        "logdescription": "sos pomidorowy, mozzarella, kiełbasa pepperoni, cebula, papryczki jalapeno",
+        "logdescription": "sos pomidorowy, mozzarella, szynka dojrzewająca, rukola, oregano, ser Corregio",
         "price": 39.90,
-        "sorte": "Hot",
-        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/__webp/792x792_diavola_850247.webp"
+        "sorte": "",
+        "img": "https://www.dominospizza.pl/DominosPizza/media/Images/products/pizza/desktop/792x792_toscana.webp?width=396 "
     }
 ]

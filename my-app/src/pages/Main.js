@@ -119,7 +119,7 @@ function Main(props) {
                             <input type="email" name="email" id="email" placeholder="enter you e-mail" onChange={inputValidate} />
                             <label htmlFor="email">{lableValidation}</label>
                             <div className="privatPolitic">
-                                <input type="checkbox" name="" id="" onChange={validateCheck} />
+                                <input type="checkbox" name="privatPolitic" id="privatPolitic" onChange={validateCheck} />
                                 <p>Wyrażam zgodę na kontaktowanie się ze mną, w tym na przesyłanie informacji handlowych i marketingowych o Pizza Domino’s od DP Polska S.A. z siedzibą w Warszawie za pośrednictwem środków komunikacji elektronicznej (e-mail), jak również wyrażam zgodę na przetwarzanie w tym celu danych osobowych (adresu e-mail) przez DP Polska S.A. z siedzibą w Warszawie. Podstawą prawną przetwarzania danych jest art. 6 ust. 1 lit. a) RODO. Przysługuje mi prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem.</p>
                             </div>
                             <button className="solid" type="submit" onClick={checkValidateForm} >Odbierz rabat</button>

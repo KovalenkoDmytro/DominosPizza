@@ -91,6 +91,21 @@ useEffect(() => {
 
 },[])
 
+
+useEffect(() => {
+    const likes = setTimeout(()=>{
+        Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
+            let idProduct = element.dataset.id;
+            props.favoritProduct.forEach(elem => {
+               if(idProduct===elem.id){
+                  element.firstChild.classList.add('active');
+               }
+            });
+        });
+    },100) 
+    return () => clearTimeout(likes);
+  }, []);
+
 let pageNumbers = [1]
 
 
@@ -205,17 +220,7 @@ let pageNumbers = [1]
 
                 </div>
             </div>
-           { setTimeout(()=>{
-                Array.from(document.querySelectorAll('.cards .card')).forEach(element => {
-                    let idProduct = element.dataset.id;
-                    props.favoritProduct.forEach(elem => {
-                       if(idProduct===elem.id){
-                          element.firstChild.classList.add('active');
-                       }
-                    });
-                });
-            },100) }
-                     
+           
         </>
     )
 }

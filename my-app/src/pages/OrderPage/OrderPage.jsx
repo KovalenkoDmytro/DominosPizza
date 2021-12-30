@@ -75,7 +75,6 @@ function OrderPage(props) {
         if (!flag) {
             alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
         } else if(flag && delivery && Object.keys(props.userData).length ==0){
-            alert("empty data adress ");
             props.setModalWindow("adress")
         }else if(flag && !delivery ){
             showModalWindow();
@@ -136,6 +135,9 @@ function OrderPage(props) {
                             }} >
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Przybliżony czas dostawy:</span>
+                                <button className="solid __blue"  onClick={() => {
+                                    props.setShowModalcollectTime(true)
+                                }}>Zmienic czas dostawy</button>
                                 <span className="item_time">{props.collectTime[1].delivery.hours}:{props.collectTime[1].delivery.minutes}</span>
                             </div>
 
@@ -145,7 +147,7 @@ function OrderPage(props) {
                             }}>
                                 <img src="https://www.dominospizza.pl/getmedia/d6c4e4a2-f52a-45a1-b3bc-c7da00e4f58f/odbior_osobisty.gif.aspx" alt="takeAway" />
                                 <span>Przybliżony czas odbioru:</span>
-                                <button onClick={() => {
+                                <button className="solid __blue" onClick={() => {
                                     props.setShowModalcollectTime(true)
                                 }}>Zmienic czas odbioru</button>
                                 <span className="item_time">{props.collectTime[0].takeaway.hours}:{props.collectTime[0].takeaway.minutes}</span>
