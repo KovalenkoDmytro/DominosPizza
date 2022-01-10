@@ -8,18 +8,15 @@ import { Link } from 'react-router-dom';
 
 function Basket(props) {
 
-
     function showContent() {
         if (props.products.length === 0) {
             return (
-                <>  
-                    <div className="content_wrapper">
-                        <img src={iconBasketEmpty} alt="empty basket" />
-                        <h3>Twój koszyk jest pusty</h3>
-                        <p>Nic straconego! Na pewno znajdziesz coś smakowitego w naszym menu. Dodaj do koszyka produkty, na które masz ochotę i zamów je online - szybko i wygodnie.</p>
-                    </div>
-                    
-                </>
+                <div className="content_wrapper">
+                    <img src={iconBasketEmpty} alt="empty basket" />
+                    <h3>Twój koszyk jest pusty</h3>
+                    <p>Nic straconego! Na pewno znajdziesz coś smakowitego w naszym menu. Dodaj do koszyka produkty , na które masz ochotę i zamów je online - szybko i wygodnie.</p>
+                    <Link to="/pizza"><button className="solid">przejdź do zakupu </button></Link>
+                </div>
             )
         } else {
             return (
@@ -40,9 +37,9 @@ function Basket(props) {
                         </div>
                         <div className="product_conuter">
                             <span className="counter">{elem.count}</span>
-                            <span>zł</span> 
+                            <span>zł</span>
                         </div>
-                        <span className="product__price">{(elem.price*elem.count).toFixed(2) + "zł"}</span>
+                        <span className="product__price">{(elem.price * elem.count).toFixed(2) + "zł"}</span>
 
                         <button className="del solid" onClick={(e) => {
                             let countProduct = Number(e.target.parentElement.querySelector('.product_conuter .counter').textContent);
@@ -60,8 +57,7 @@ function Basket(props) {
             <div className="basket_page">
                 <h1 className="big_lable">Koszyk</h1>
                 {showContent()}
-            
-               {props.products.length > 0? <Link to="/orderPage"><button className="solid">Podtwierdzam</button></Link>  : null}
+                {props.products.length > 0 ? <Link to="/orderPage"><button className="solid">Podtwierdzam</button></Link> : null}
             </div>
         </>
     )

@@ -15,6 +15,12 @@ function OrderPage(props) {
             privatPolitic: false,
         }
     );
+    let [infoAboutCustomer, setInfoAboutCustomer] = useState(
+        {
+            paymant: "online",
+        }
+    ); 
+
     useEffect(() => {
         if (props.getStoreTakeAway.length > 0) {
             setDelivery(false);
@@ -29,8 +35,6 @@ function OrderPage(props) {
         }
 
     }, []);
-
-
 
     useEffect(() => {
         if (delivery) {
@@ -48,8 +52,6 @@ function OrderPage(props) {
 
     }, [delivery])
 
-
-
     useEffect(() => {
     }, [newModalWindow]);
 
@@ -63,7 +65,6 @@ function OrderPage(props) {
         }
     }
 
-
     // cheack validationForm 
     function cheackValidate() {
         let flag = true;
@@ -74,12 +75,14 @@ function OrderPage(props) {
         }
         if (!flag) {
             alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
-        } else if(flag && delivery && Object.keys(props.userData).length ==0){
+        } else if (flag && delivery && Object.keys(props.userData).length == 0) {
             props.setModalWindow("adress")
-        }else if(flag && !delivery ){
+       
+        } else if (flag && !delivery) {
             showModalWindow();
-        }else if(flag && delivery && Object.keys(props.userData).length >0){
+        } else if (flag && delivery && Object.keys(props.userData).length > 0) {
             alert("zamowienie zostalo zlozone");
+           // send data to server  props.sendDataToServer();
             window.location.href = '/Strona glówna';
             localStorage.removeItem('products');
             localStorage.removeItem('productsCounterInBasket');
@@ -89,28 +92,31 @@ function OrderPage(props) {
         }
     }
 
-
-    
-
-
     function showDeliveryAdress() {
         return (
             <div className="deliveryAdress">
-                <div className="city">
-                    miasto {props.userData.city}
-                </div>
-                <div className="street">
-                    ulica {props.userData.street}
-                </div>
-                <div className="buldNumb">
-                     budynek {props.userData.buldNumb}
-                </div>
-                {props.userData.apart.length>0 ?  <div className="apart">mieszkanie{props.userData.apart}</div>: null}
-               
+                <div className="city">miasto {props.userData.city}</div>
+                <div className="street">ulica {props.userData.street}</div>
+                <div className="buldNumb">budynek {props.userData.buldNumb}</div>
+                {props.userData.apart.length > 0 ? <div className="apart">mieszkanie{props.userData.apart}</div> : null}
             </div>
         )
     }
 
+
+    //--------------------------------
+    // datas to send to server
+
+    useEffect(() => {
+        
+        console.log(productsOrdered ,'product order');
+        console.log(props.userData, 'customer addres');
+        console.log(infoAboutCustomer,'customer date');
+
+    }, [infoAboutCustomer])
+
+
+    //--------------------------------
 
     return (
         <>
@@ -135,7 +141,7 @@ function OrderPage(props) {
                             }} >
                                 <img src="https://www.dominospizza.pl/getmedia/01a4fbdd-c165-40c9-882a-62ac87715f37/dominos_skuter.gif.aspx" alt="delivery" />
                                 <span>Przybliżony czas dostawy:</span>
-                                <button className="solid __blue"  onClick={() => {
+                                <button className="solid __blue" onClick={() => {
                                     props.setShowModalcollectTime(true)
                                 }}>Zmienic czas dostawy</button>
                                 <span className="item_time">{props.collectTime[1].delivery.hours}:{props.collectTime[1].delivery.minutes}</span>
@@ -160,7 +166,9 @@ function OrderPage(props) {
                         <form action="">
                             <div>
                                 <label htmlFor="pay">Płatność</label>
-                                <select className="selects" name="pay" id="pay">
+                                <select className="selects" name="pay" id="pay" onChange={(e)=>{
+                                    setInfoAboutCustomer({ ...infoAboutCustomer, paymant: e.target.value });
+                                }}>
                                     <option value="cash">Gotówka</option>
                                     <option value="card">Karta (przy odbiorze) </option>
                                     <option value="online">Online</option>
@@ -173,7 +181,8 @@ function OrderPage(props) {
                                     let regulaExpression = /^[0-9]+$/;
                                     if ((regulaExpression.test(e.target.value)) && (e.target.value.length > 0)) {
                                         setValidation({ ...formValidation, phone: true });
-                                        label.classList.remove('required')
+                                        label.classList.remove('required');
+                                        setInfoAboutCustomer({ ...infoAboutCustomer, phone: e.target.value });
                                     } else {
                                         label.classList.add('required');
                                         setValidation({ ...formValidation, phone: false });
@@ -187,7 +196,8 @@ function OrderPage(props) {
                                     let regulaExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                                     if ((regulaExpression.test(e.target.value)) && (e.target.value.length > 5)) {
                                         setValidation({ ...formValidation, email: true });
-                                        label.classList.remove('required')
+                                        label.classList.remove('required');
+                                        setInfoAboutCustomer({ ...infoAboutCustomer, email: e.target.value });
                                     } else {
                                         label.classList.add('required');
                                         setValidation({ ...formValidation, email: false });
@@ -203,6 +213,7 @@ function OrderPage(props) {
                                     if ((regulaExpression.test(e.target.value)) && (e.target.value.length > 2)) {
                                         setValidation({ ...formValidation, customerName: true });
                                         label.classList.remove('required')
+                                        setInfoAboutCustomer({ ...infoAboutCustomer, customerName: e.target.value });
                                     } else {
                                         label.classList.add('required');
                                         setValidation({ ...formValidation, customerName: false });
@@ -215,7 +226,8 @@ function OrderPage(props) {
                                     <input type="checkbox" name="privatePolitic" id="privatePolitic" onChange={(e) => {
                                         if (e.target.checked) {
                                             setValidation({ ...formValidation, privatPolitic: true });
-                                            e.target.nextElementSibling.classList.remove('required')
+                                            e.target.nextElementSibling.classList.remove('required');
+
                                         } else {
                                             setValidation({ ...formValidation, privatPolitic: false });
                                             e.target.nextElementSibling.classList.add('required')
@@ -229,10 +241,10 @@ function OrderPage(props) {
                             <button className="solid" onClick={(e) => {
                                 e.preventDefault();
                                 cheackValidate();
-                                
+
                             }
                             }>Zamawiam z obowiązkiem zapłaty {props.totalPrice} zł</button>
- 
+
                         </form>
                     </div>
                     <div className="takeContent">
@@ -266,8 +278,8 @@ function OrderPage(props) {
 
                         </div>
 
-                        {Object.keys(props.userData).length>0 ? showDeliveryAdress() : null}
-                    
+                        {Object.keys(props.userData).length > 0 ? showDeliveryAdress() : null}
+
                     </div>
                 </div>
             </div>

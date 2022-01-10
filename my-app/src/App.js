@@ -15,7 +15,7 @@ function App() {
   let [totalPrice, setTotalPrice] = useState([]);
   let [salePrice, setSalePrice] = useState([]);
   let [showModalWindow, setShowModalWindowDelivery] = useState(false);
-  let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, addres: false});
+  let [modalWindows, setmodalWindows] = useState({ takeaway: false, delivery: false, deliverySecondWindow: false, chooseLokal: false, addres: false });
   let [choosedStore, setStore] = useState(false);
   let [productsCounterInBasket, setProductsCounter] = useState(0);
   let [userData, setUserData] = useState({});
@@ -90,10 +90,10 @@ function App() {
 
   useEffect(() => {
   }, [productsCounterInBasket]);
-  
+
   useEffect(() => {
   }, [userData]);
-  
+
 
   useEffect(() => {
     setProductsCounter(Number(localStorage.getItem('productsCounterInBasket')))
@@ -240,7 +240,7 @@ function App() {
           addres: false,
         }
       )
-    }else if (windowItem === "adress") {
+    } else if (windowItem === "adress") {
       setmodalWindows(
         {
           takeaway: false,
@@ -250,7 +250,7 @@ function App() {
           addres: true,
         }
       )
-    }else (
+    } else (
       setmodalWindows(
         {
           takeaway: false,
@@ -264,15 +264,31 @@ function App() {
 
   };
 
- 
+
+  // send Data to server 
+  const sendDataToServer = async (data) => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`error in url 'https://jsonplaceholder.typicode.com/users', error status ${response.status}`)
+    }
+    return await response.json()
+  }
+
+
+
 
   return (
     < Context.Provider value={[addPrice, changeTotalPrice, cheackAndAddToCount, coupons]} >
       <Header totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} getStoreTakeAway={choosedStore} />
-      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData} couponsCount={couponsCount}/>
+      <Navigation products={totalPrice} delProduct={delProductFromBasket} setModalWindow={setshowModalWindow} totalPrice={returnTotalprice(totalPrice)} salePrice={salePrice} productsCounterInBasket={productsCounterInBasket} getStoreTakeAway={choosedStore} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData} couponsCount={couponsCount} sendDataToServer={sendDataToServer}/>
       <Footer />
-      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime}  setUserData={setUserData} setChoosedDelivery={setChoosedDelivery}/> : null}
-      {showModalcollectTime ? <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime}  /> : null}
+      {showModalWindow ? <ModalWindow setModalWindow={setshowModalWindow} modalWindows={modalWindows} showSecondDeliveryWindow={setshowModalWindow} setshowModalWindowDelivery={setShowModalWindowDelivery} setStore={setStore} getStoreTakeAway={choosedStore} setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} setUserData={setUserData} setChoosedDelivery={setChoosedDelivery} sendDataToServer={sendDataToServer}/> : null}
+      {showModalcollectTime ? <TimePicker setCollectTime={setCollectTime} setShowModalcollectTime={setShowModalcollectTime} /> : null}
     </Context.Provider>
   );
 }

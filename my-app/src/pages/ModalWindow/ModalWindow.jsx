@@ -366,7 +366,6 @@ function ModalWindow(props) {
                 } />
                 <Link to="/"> <button className="solid" onClick={(e) => {
                     // e.preventDefault();
-
                     function checkItem(item) {
                         return item === true;
                     }
@@ -377,6 +376,7 @@ function ModalWindow(props) {
                         alert('zamówenie zostalo zlożone, proszę czekać na dostawce')
                         props.setModalWindow();
                         e.target.closest('.modal-window').classList.toggle('active');
+                        props.setshowModalWindowDelivery(false);
                     } else {
                         alert('należy wypelnić wszyskie pola wedlug poleceń')
                     }
