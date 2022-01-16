@@ -108,7 +108,7 @@ function Nav(props) {
     return (
         <>
             <ContextFavorit.Provider value={addFavorit}>
-               
+          
                     <nav className="navigation">
                         {/* {navItems} */}
                         <li className="nav --item" key={'Strona glówna'}><Link to={'Strona glówna'}>{'Strona glówna'}</Link></li>
@@ -127,15 +127,16 @@ function Nav(props) {
                         <li className="nav --item" key={'pizza'}><Link to={'pizza'}>{'pizza'}</Link></li>
                     </nav>
                     <Switch>
-                        <Route exact path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
-                        <Route path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
-                        <Route path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
-                        <Route path="/promocje" component={(props) => <Sale  {...props} />} />
-                        <Route path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
+                        <Route exact path="/Strona glówna" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
+                        <Route exact path="/koszyk" render={(props) => <Basket products={products} delProduct={funDelProduct} {...props} />} />
+                        <Route exact path="/promocje" component={(props) => <Sale  {...props} />} />
+                        <Route exact path="/ulubione" render={(props) => <Favorits globalStore={favorits} delProduct={delProduct}  {...props} />} />
                         <Route exact path="/pizza" render={(props) => <Pizza favoritProduct={favorits}  {...props} />} />
-                        <Route path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData} sendDataToServer={sendDataToServer} {...props} />} />
+                        <Route exact path="/orderPage" render={(props) => <OrderPage products={products} totalPrice={totalPriceInBasket}  salePrice={salePrice} setModalWindow={funShowModalWindow} getStoreTakeAway={getStoreTakeAway} setShowModalcollectTime={setShowModalcollectTime} collectTime={collectTime} choosedDelivery={choosedDelivery} userData={userData} sendDataToServer={sendDataToServer} {...props} />} />
+                        <Route path="/" render={(props) => <Main  setModalWindow={funShowModalWindow} {...props} />} />
+
                     </Switch>
-            
+               
             </ContextFavorit.Provider>
         </>
     )
