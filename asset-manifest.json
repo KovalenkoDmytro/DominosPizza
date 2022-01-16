@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "./static/css/main.ca2c0242.chunk.css",
+    "main.js": "./static/js/main.fb2e2e3f.chunk.js",
+    "main.js.map": "./static/js/main.fb2e2e3f.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.3f4dc3f4.js",
+    "runtime-main.js.map": "./static/js/runtime-main.3f4dc3f4.js.map",
+    "static/js/2.9f891ee2.chunk.js": "./static/js/2.9f891ee2.chunk.js",
+    "static/js/2.9f891ee2.chunk.js.map": "./static/js/2.9f891ee2.chunk.js.map",
+    "static/js/3.0f0dc170.chunk.js": "./static/js/3.0f0dc170.chunk.js",
+    "static/js/3.0f0dc170.chunk.js.map": "./static/js/3.0f0dc170.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.ca2c0242.chunk.css.map": "./static/css/main.ca2c0242.chunk.css.map",
+    "static/js/2.9f891ee2.chunk.js.LICENSE.txt": "./static/js/2.9f891ee2.chunk.js.LICENSE.txt",
+    "static/media/Fonts.scss": "./static/media/fontello.e15a2c3b.svg",
+    "static/media/chili-pepper.c70d078d.svg": "./static/media/chili-pepper.c70d078d.svg",
+    "static/media/facebook.1e4e4ffa.svg": "./static/media/facebook.1e4e4ffa.svg",
+    "static/media/favoritsIcon.601d6c60.png": "./static/media/favoritsIcon.601d6c60.png",
+    "static/media/favourite.db3bb86c.svg": "./static/media/favourite.db3bb86c.svg",
+    "static/media/instagram.50c3e583.svg": "./static/media/instagram.50c3e583.svg",
+    "static/media/new.8675e25a.svg": "./static/media/new.8675e25a.svg",
+    "static/media/vegan.e3cedf90.svg": "./static/media/vegan.e3cedf90.svg",
+    "static/media/youtube.302eb829.svg": "./static/media/youtube.302eb829.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f4dc3f4.js",
+    "static/js/2.9f891ee2.chunk.js",
+    "static/css/main.ca2c0242.chunk.css",
+    "static/js/main.fb2e2e3f.chunk.js"
+  ]
+}
