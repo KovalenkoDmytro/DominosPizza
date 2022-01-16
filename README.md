@@ -1,4 +1,4 @@
 # DominosPizza
-ShopClothes on React
+without RWD
 
 https://dmytrokalenko.github.io/DominosPizza/#/
