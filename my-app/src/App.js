@@ -266,7 +266,10 @@ function App() {
 
 
   // send Data to server 
-  const sendDataToServer = async (data) => {
+
+
+  // let info = {...userData, collectTime,totalPrice} 
+  const sendDataToServer = async(data) => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -278,7 +281,12 @@ function App() {
     }
     return await response.json()
   }
+ 
 
+  // const data = {
+  //     name: "ddddd",
+  //     age: 232,
+  // }
 
 
 

@@ -1,6 +1,5 @@
 import "./OrderPage.scss";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 function OrderPage(props) {
 
     let productsOrdered = props.products;
@@ -19,7 +18,8 @@ function OrderPage(props) {
         {
             paymant: "online",
         }
-    ); 
+    );
+    let timeCollect = {hour: props.collectTime[1].delivery.hours, minutes: props.collectTime[1].delivery.minutes};
 
     useEffect(() => {
         if (props.getStoreTakeAway.length > 0) {
@@ -77,12 +77,19 @@ function OrderPage(props) {
             alert("wymagane wypełnienie wszystkich pól oraz akceptacji polityki prywatności");
         } else if (flag && delivery && Object.keys(props.userData).length == 0) {
             props.setModalWindow("adress")
-       
+
         } else if (flag && !delivery) {
             showModalWindow();
         } else if (flag && delivery && Object.keys(props.userData).length > 0) {
             alert("zamowienie zostalo zlozone");
-           // send data to server  props.sendDataToServer();
+
+
+
+            // send data to server  props.sendDataToServer();
+
+
+
+
             window.location.href = '/Strona glówna';
             localStorage.removeItem('products');
             localStorage.removeItem('productsCounterInBasket');
@@ -108,10 +115,10 @@ function OrderPage(props) {
     // datas to send to server
 
     useEffect(() => {
-        
-        console.log(productsOrdered ,'product order');
+
+        console.log(productsOrdered, 'product order');
         console.log(props.userData, 'customer addres');
-        console.log(infoAboutCustomer,'customer date');
+        console.log(infoAboutCustomer, 'customer date');
 
     }, [infoAboutCustomer])
 
@@ -166,12 +173,13 @@ function OrderPage(props) {
                         <form action="">
                             <div>
                                 <label htmlFor="pay">Płatność</label>
-                                <select className="selects" name="pay" id="pay" onChange={(e)=>{
+                                <select className="selects" name="pay" id="pay" onChange={(e) => {
                                     setInfoAboutCustomer({ ...infoAboutCustomer, paymant: e.target.value });
                                 }}>
+                                    <option value="online">Online</option>
                                     <option value="cash">Gotówka</option>
                                     <option value="card">Karta (przy odbiorze) </option>
-                                    <option value="online">Online</option>
+                                    
                                 </select>
                             </div>
                             <div>
@@ -246,6 +254,17 @@ function OrderPage(props) {
                             }>Zamawiam z obowiązkiem zapłaty {props.totalPrice} zł</button>
 
                         </form>
+                        {/* <button onClick={() => {
+
+                           
+
+                        
+
+                            props.sendDataToServer().then(
+                                data => console.log(data)
+                            ); 
+
+                        }}>vvvvvvvvv</button> */}
                     </div>
                     <div className="takeContent">
                         <div className="content_item">
