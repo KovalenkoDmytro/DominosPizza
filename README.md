@@ -1,4 +1,4 @@
 # DominosPizza
 without RWD
 
-https://dmytrokalenko.github.io/DominosPizza/#/
+https://kovalenkodmytro.github.io/DominosPizza/
